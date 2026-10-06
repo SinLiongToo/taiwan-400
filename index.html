@@ -128,7 +128,7 @@ h2 .en { font-family: var(--f-body); font-size: .78em; }
   </div>
 
   <a class="feature" href="228.html">
-    <span class="f-date">1947.2.27 – 5.16</span>
+    <span class="f-date">1947 – 1992</span>
     <span class="f-body">
       <strong data-k="featT"></strong>
       <span data-k="featD"></span>
@@ -201,8 +201,8 @@ const UI = {
   n4: ['肖像與照片來自維基共享資源（Wikimedia Commons），多為公有領域，近代總統照片依原授權標示出處。沒有可用自由授權肖像的人物以姓氏字卡代替。',
        'Portraits come from Wikimedia Commons, mostly public domain; recent presidential photos are credited under their licenses. Rulers without a freely licensed portrait get a name card instead.'],
   n4s: ['逐張來源與授權','Source and license for each image'],
-  featT: ['專題：二二八事件','Feature: The February 28 Incident'],
-  featD: ['逐日地圖：抗爭如何在一週內擴及全島，又如何被軍隊鎮壓與清鄉，以及之後半世紀的平反。','A day-by-day map of how protest spread across the island in a week, how troops and purges crushed it, and the decades of redress that followed.'],
+  featT: ['專題：二二八與白色恐怖','Feature: 228 and the White Terror'],
+  featD: ['1947 年二二八的逐日地圖，以及 1949–1992 年白色恐怖的監獄、刑場與政治案件，和之後的轉型正義。','A day-by-day map of 1947, the prisons, execution grounds and political cases of the 1949–1992 White Terror, and the road to redress.'],
 };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const uiHTML = (zh, en) => lang==='en' ? esc(en) : lang==='bi' ? `${esc(zh)}<span class="en" lang="en">${esc(en)}</span>` : esc(zh);
@@ -657,7 +657,7 @@ function wrap(text, maxW){
   const toks = text.match(/[\p{Script=Latin}0-9.,;:!?%’'"“”()\/\-–]+|\s|./gu) || [];
   const lines=[]; let line='';
   for (const t of toks) {
-    if (line && ctx.measureText(line+t).width > maxW) { lines.push(line.trimEnd()); line = t.trim() ? t : ''; }
+    if (line && !/^[，。、；：！？）」』,.;:!?)]$/.test(t) && ctx.measureText(line+t).width > maxW) { lines.push(line.trimEnd()); line = t.trim() ? t : ''; }
     else line += t;
   }
   if (line) lines.push(line);

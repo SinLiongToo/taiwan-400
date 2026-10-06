@@ -1,11 +1,11 @@
 # 台灣四百年 · Taiwan: Four Centuries
 
-An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: who ruled, how far state control reached across the island, and how the population changed. A separate feature page follows the February 28 Incident of 1947 day by day.
+An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: who ruled, how far state control reached across the island, and how the population changed. A separate feature page, 二二八與白色恐怖 (228 and the White Terror), follows the February 28 Incident of 1947 day by day and the White Terror of 1949–1992 year by year.
 
 **Live pages**
 
 - 台灣四百年 · Taiwan: Four Centuries — https://sinliongtoo.github.io/taiwan-400/
-- 二二八事件 1947 · The February 28 Incident — https://sinliongtoo.github.io/taiwan-400/228.html
+- 二二八與白色恐怖 · 228 and the White Terror — https://sinliongtoo.github.io/taiwan-400/228.html
 
 ## What's on the pages
 
@@ -16,11 +16,11 @@ An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: w
 - A state-control curve, a population-by-group chart, and 51 key events.
 - A built-in recorder that exports the animation as a 1920×1080 video.
 
-**二二八事件 1947 (feature page)**
+**二二八與白色恐怖 (feature page, two chapters)**
 
-- A day-by-day map from February 27 to May 16, 1947, showing where unrest spread, where troops cracked down, and the purges that followed.
-- Schematic troop movements, and a city-by-city table of when unrest and crackdown began.
-- What came after, from martial law in 1949 to the voiding of convictions in 2018, along with the estimated death toll and further reading.
+- **Chapter 1: the 228 Incident, 1947.** A day-by-day map from February 27 to May 16, showing where unrest spread, where troops cracked down, and the purges that followed. It includes schematic troop movements and a city-by-city table of when unrest and crackdown began.
+- **Chapter 2: the White Terror, 1949–1992.** A year-by-year map of prisons, execution grounds and political cases, with a zoomed inset of Taipei and a table of places and years. The chapter runs through four phases: the purges, silencing dissent, opposition and repression, and ending the laws. Each year shows the ROC year and the year of martial law.
+- **The road to redress:** milestones from 1987 to 2018, the estimated 228 death toll, the 38 years of martial law, and further reading.
 
 Both pages share a language switch with three modes: 中文, EN and 中英. Add `#zh`, `#en` or `#bi` to a URL to open it in that language.
 
@@ -30,7 +30,7 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 |---|---|
 | `index.html` | GitHub Pages entry, generated from `taiwan-400.html` |
 | `taiwan-400.html` | Main page source; also published as a claude.ai artifact |
-| `228.html` | February 28 Incident feature page (standalone) |
+| `228.html` | 二二八與白色恐怖 feature page, two chapters (standalone) |
 | `portraits.js` | Ruler portraits from Wikimedia Commons, embedded as data |
 | `build_pages.py` | Wraps `taiwan-400.html` into `index.html` |
 | `fetch_portraits.py`, `recrop.py` | Re-download and crop the portraits |
@@ -38,6 +38,18 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 After editing `taiwan-400.html`, run `python build_pages.py` and commit both files. `228.html` is a complete page and needs no build step.
 
 ## Changelog
+
+### 2026-10-07: White Terror chapter
+
+- Renamed the feature page from 二二八事件 1947 to **二二八與白色恐怖 · 228 and the White Terror**. It now has two chapters, each with its own animation and controls. Language selection moved to the top of the page.
+- Added chapter 2, **白色恐怖 1949–1992**:
+  - A year-by-year map of 15 places: prisons and detention centers (3 Qingdao East Road, Jingmei, Taiyuan, the Green Island New Life camp and Oasis Villa), the Machangding execution ground, and case sites.
+  - A zoomed Taipei inset, so the many Taipei sites can be read.
+  - 25 dated events, including the April 6 Incident, the Statute for Punishing Rebellion, the Luku Incident, the execution of Uyongu Yatauyungana, the Lei Chen case, the Formosan Self-Salvation Declaration, the Kaohsiung Incident, the Lin family murders, the Chen Wen-chen case, Nylon Deng's self-immolation, and the 1991–92 repeal of the sedition laws.
+  - Four phases, and a subtitle with the ROC year and the year of martial law.
+- Merged the follow-up lists into one "road to redress" (1987–2018). Added the 1998 compensation law for White Terror victims and the National Human Rights Museum. Added a 38-years-of-martial-law panel and new reading links.
+- The main page's feature card now reads 專題：二二八與白色恐怖.
+- Text wrapping no longer starts a line with a punctuation mark such as ， or 。. This fix applies to both pages.
 
 ### 2026-10-07: February 28 Incident feature
 
@@ -84,4 +96,4 @@ After editing `taiwan-400.html`, run `python build_pages.py` and commit both fil
 
 ## Notes
 
-The control areas are a schematic model, not exact borders. Population figures are estimates: censuses from 1905 on, scholarly estimates before that. On the 228 page, some city dates are approximate and the troop routes are schematic. Portraits come from Wikimedia Commons; each image's source and license is listed on the page.
+The control areas are a schematic model, not exact borders. Population figures are estimates: censuses from 1905 on, scholarly estimates before that. On the feature page, some 228 city dates are approximate, the troop routes are schematic, and the years of use for White Terror prisons and execution grounds are approximate; the map shows representative sites, not all of them. Portraits come from Wikimedia Commons; each image's source and license is listed on the page.
