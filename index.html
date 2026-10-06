@@ -63,6 +63,14 @@ button.primary .en { color: #4a3f10; }
 #credits { columns: 2 280px; column-gap: 32px; font-size: 12.5px; margin-top: 8px; }
 #credits li { break-inside: avoid; }
 #credits a { color: var(--muted); }
+.feature { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 6px 22px; align-items: center; padding: 16px 18px; border: 1px solid #5a2a31; border-radius: 6px; background: #1a1418; color: var(--ink); text-decoration: none; }
+.feature:hover { border-color: #c8323c; }
+.feature .f-date { font-family: var(--f-mono); color: #e06a70; font-weight: 600; font-variant-numeric: tabular-nums; }
+.feature strong { display: block; font-family: var(--f-display); font-size: 19px; letter-spacing: .04em; }
+.feature .f-body > span { color: var(--muted); font-size: 14px; display: block; }
+.feature .f-go { font-size: 22px; color: #e06a70; }
+.feature .en { display: block; margin-left: 0; }
+@media (max-width: 560px) { .feature { grid-template-columns: minmax(0, 1fr) auto; } .feature .f-date { grid-column: 1 / -1; } }
 /* bilingual: English rides beside or under the Chinese */
 .en { color: var(--muted); font-size: .86em; margin-left: .45em; font-weight: 400; letter-spacing: 0; }
 h1 .en { display: block; margin-left: 0; font-size: .46em; font-family: var(--f-body); letter-spacing: .02em; }
@@ -118,6 +126,15 @@ h2 .en { font-family: var(--f-body); font-size: .78em; }
     <span id="recMsg"></span>
     <a id="dl" hidden></a>
   </div>
+
+  <a class="feature" href="228.html">
+    <span class="f-date">1947.2.27 – 5.16</span>
+    <span class="f-body">
+      <strong data-k="featT"></strong>
+      <span data-k="featD"></span>
+    </span>
+    <span class="f-go" aria-hidden="true">→</span>
+  </a>
 
   <section class="notes">
     <div>
@@ -184,6 +201,8 @@ const UI = {
   n4: ['肖像與照片來自維基共享資源（Wikimedia Commons），多為公有領域，近代總統照片依原授權標示出處。沒有可用自由授權肖像的人物以姓氏字卡代替。',
        'Portraits come from Wikimedia Commons, mostly public domain; recent presidential photos are credited under their licenses. Rulers without a freely licensed portrait get a name card instead.'],
   n4s: ['逐張來源與授權','Source and license for each image'],
+  featT: ['專題：二二八事件','Feature: The February 28 Incident'],
+  featD: ['逐日地圖：抗爭如何在一週內擴及全島，又如何被軍隊鎮壓與清鄉，以及之後半世紀的平反。','A day-by-day map of how protest spread across the island in a week, how troops and purges crushed it, and the decades of redress that followed.'],
 };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const uiHTML = (zh, en) => lang==='en' ? esc(en) : lang==='bi' ? `${esc(zh)}<span class="en" lang="en">${esc(en)}</span>` : esc(zh);
