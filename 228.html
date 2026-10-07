@@ -39,7 +39,8 @@ body { font-family: var(--f-body); font-size: 15px; line-height: 1.7; }
 .chap { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin: 26px 0 0; font-family: var(--f-display); font-size: clamp(21px, 2.6vw, 27px); letter-spacing: .04em; scroll-margin-top: 16px; }
 .chap small { font-family: var(--f-mono); font-size: 15px; color: var(--ember); font-weight: 600; letter-spacing: 0; }
 .stage { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--bg); }
-canvas.film { display: block; width: 100%; height: auto; }
+canvas.film { display: block; width: 100%; height: auto; max-width: 100%; }
+.wrap > * { min-width: 0; }
 .deck { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding: 12px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
 .deck .scrub { flex: 1 1 260px; display: flex; align-items: center; gap: 10px; min-width: 0; }
 .grp { display: inline-flex; align-items: center; gap: 8px; }

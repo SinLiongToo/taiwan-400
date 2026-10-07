@@ -30,7 +30,8 @@ body { font-family: var(--f-body); font-size: 15px; line-height: 1.7; }
 .head h1 { font-family: var(--f-display); font-weight: 900; font-size: clamp(26px, 4vw, 38px); margin: 0; letter-spacing: .04em; text-wrap: balance; line-height: 1.25; }
 .head p { margin: 0; color: var(--muted); max-width: 66ch; }
 .stage { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--bg); }
-canvas#film { display: block; width: 100%; height: auto; }
+canvas#film { display: block; width: 100%; height: auto; max-width: 100%; }
+.wrap > * { min-width: 0; }
 .deck { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding: 12px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
 .deck .scrub { flex: 1 1 260px; display: flex; align-items: center; gap: 10px; min-width: 0; }
 .deck .grp { display: inline-flex; align-items: center; gap: 8px; }

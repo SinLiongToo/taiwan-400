@@ -50,6 +50,7 @@ After editing `taiwan-400.html`, run `python build_pages.py` and commit both fil
 - Merged the follow-up lists into one "road to redress" (1987–2018). Added the 1998 compensation law for White Terror victims and the National Human Rights Museum. Added a 38-years-of-martial-law panel and new reading links.
 - The main page's feature card now reads 專題：二二八與白色恐怖.
 - Text wrapping no longer starts a line with a punctuation mark such as ， or 。. This fix applies to both pages.
+- Narrow screens: page sections can no longer be pushed wider than the screen by the canvas. Both pages were run through every frame at desktop and phone widths with no script errors.
 
 ### 2026-10-07: February 28 Incident feature
 
