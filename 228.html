@@ -70,7 +70,8 @@ button.primary .en { color: #f3c9c4; }
 .side p { margin: 0; }
 .big { font-family: var(--f-display); color: var(--ink); font-size: clamp(30px, 4vw, 42px); font-weight: 900; line-height: 1.1; font-variant-numeric: tabular-nums; }
 .side a { color: var(--ink); }
-.side ul { margin: 0; padding-left: 1.1em; }
+.side ul, .side ol { margin: 0; padding-left: 1.3em; }
+.refs li { margin-bottom: 6px; font-size: 13.5px; }
 .en { color: var(--muted); font-size: .86em; margin-left: .45em; font-weight: 400; letter-spacing: 0; }
 h1 .en { display: block; margin-left: 0; font-size: .46em; font-family: var(--f-body); letter-spacing: .02em; }
 p .en, li .en, .read h2 .en, .after span .en { display: block; margin-left: 0; }
@@ -149,6 +150,16 @@ p .en, li .en, .read h2 .en, .after span .en { display: block; margin-left: 0; }
         <p data-k="note"></p>
       </div>
       <div>
+        <h2 data-k="refH"></h2>
+        <ol class="refs">
+          <li>行政院研究二二八事件小組（賴澤涵總主筆），《「二二八事件」研究報告》，臺北：時報文化，1994（1992 年公布）。</li>
+          <li>二二八事件紀念基金會，《二二八事件責任歸屬研究報告》，2006。</li>
+          <li>促進轉型正義委員會，《任務總結報告》，2022。</li>
+          <li>國家人權博物館，白色恐怖景美紀念園區、綠島紀念園區介紹資料。</li>
+          <li>維基百科「二二八事件」「台灣白色恐怖時期」條目；Wikipedia, “White Terror (Taiwan).”（2026 年 10 月查閱）</li>
+        </ol>
+      </div>
+      <div>
         <h2 data-k="moreH"></h2>
         <ul>
           <li><a href="https://www.228.org.tw/" target="_blank" rel="noopener" data-k="l1"></a></li>
@@ -191,6 +202,7 @@ const UI = {
   moreH: ['延伸閱讀', 'Further reading'],
   l1: ['二二八事件紀念基金會', '228 Memorial Foundation'],
   l2: ['國家人權博物館', 'National Human Rights Museum'],
+  refH: ['參考資料', 'References'],
 };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const uiHTML = (zh, en) => lang==='en' ? esc(en) : lang==='bi' ? `${esc(zh)}<span class="en" lang="en">${esc(en)}</span>` : esc(zh);

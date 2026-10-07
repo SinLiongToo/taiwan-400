@@ -54,7 +54,9 @@ button.primary .en { color: #4a3f10; }
 .notes ul { padding-left: 1.1em; }
 .notes > div { min-width: 0; }
 .notes summary { cursor: pointer; color: var(--ink); margin-top: 6px; }
-.notes .credits { grid-column: 1 / -1; }
+.notes .credits, .notes .refs { grid-column: 1 / -1; }
+.notes .refs ol { columns: 2 320px; column-gap: 32px; margin: 8px 0 0; padding-left: 1.3em; }
+.notes .refs li { break-inside: avoid; margin-bottom: 6px; }
 #credits { columns: 2 280px; column-gap: 32px; font-size: 12.5px; margin-top: 8px; }
 #credits li { break-inside: avoid; }
 #credits a { color: var(--muted); }
@@ -156,6 +158,21 @@ h2 .en { font-family: var(--f-body); font-size: .78em; }
         <li><span data-k="n3c"></span> <code>ffmpeg -i taiwan-400.mp4 taiwan-400.mov</code></li>
       </ul>
     </div>
+    <div class="refs">
+      <h2 data-k="refH"></h2>
+      <p data-k="refP"></p>
+      <ol>
+        <li>Tonio Andrade, <i>How Taiwan Became Chinese: Dutch, Spanish, and Han Colonization in the Seventeenth Century</i>. New York: Columbia University Press, 2008.</li>
+        <li>John R. Shepherd, <i>Statecraft and Political Economy on the Taiwan Frontier, 1600–1800</i>. Stanford: Stanford University Press, 1993.</li>
+        <li>Paul D. Barclay, <i>Outcasts of Empire: Japan’s Rule on Taiwan’s “Savage Border,” 1874–1945</i>. Oakland: University of California Press, 2018 (open access).</li>
+        <li>臺灣總督府，《臨時臺灣戶口調查》，1905。</li>
+        <li>內政部戶政司，人口統計資料（ris.gov.tw）；原住民族委員會，原住民人口統計（cip.gov.tw）。</li>
+        <li>陳第，《東番記》，1603。</li>
+        <li>行政院研究二二八事件小組，《「二二八事件」研究報告》，臺北：時報文化，1994。</li>
+        <li>康豹（Paul R. Katz），《染血的山谷：日治時期的噍吧哖事件》，臺北：三民書局，2006。</li>
+        <li>統治者與在位年代：維基百科各統治者條目與「臺灣總督」「中華民國總統」列表；肖像來自維基共享資源，逐張來源見下方。</li>
+      </ol>
+    </div>
     <div class="credits">
       <h2 data-k="n4h"></h2>
       <p data-k="n4"></p>
@@ -205,6 +222,8 @@ const UI = {
        'Portraits come from Wikimedia Commons, mostly public domain; recent presidential photos are credited under their licenses. Rulers without a freely licensed portrait get a name card instead.'],
   n4s: ['逐張來源與授權','Source and license for each image'],
   featT: ['專題：二二八與白色恐怖','Feature: 228 and the White Terror'],
+  refH: ['參考資料','References'],
+  refP: ['本頁是綜合整理的教育用視覺化。統治範圍與人口是依下列研究整理的示意與估計，不是精確數據。','This page is an educational visualization compiled from the works below. Control areas and population figures are schematic estimates, not exact data.'],
   feat2T: ['專題：余清芳與西來庵事件','Feature: Yu Qingfang and the Tapani Incident'],
   feat2D: ['日治時期最大規模的漢人武裝抗日：台南山區逐日地圖、人物與臨時法院審判。','The largest Han armed uprising of Japanese rule: a day-by-day map of the Tainan hills, the leaders, and the special court.'],
   featD: ['1947 年二二八的逐日地圖，以及 1949–1992 年白色恐怖的監獄、刑場與政治案件，和之後的轉型正義。','A day-by-day map of 1947, the prisons, execution grounds and political cases of the 1949–1992 White Terror, and the road to redress.'],

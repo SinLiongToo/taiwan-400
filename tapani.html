@@ -65,7 +65,8 @@ button.primary .en { color: #5a3d0c; }
 .side { display: grid; gap: 26px; align-content: start; color: var(--muted); }
 .side p { margin: 0; }
 .side a { color: var(--ink); }
-.side ul { margin: 0; padding-left: 1.1em; }
+.side ul, .side ol { margin: 0; padding-left: 1.3em; }
+.refs li { margin-bottom: 6px; font-size: 13.5px; }
 #credits { font-size: 12.5px; }
 #credits a { color: var(--muted); }
 .en { color: var(--muted); font-size: .86em; margin-left: .45em; font-weight: 400; letter-spacing: 0; }
@@ -119,6 +120,16 @@ p .en, li .en, .read h2 .en, .after span .en { display: block; margin-left: 0; }
         <p data-k="note"></p>
       </div>
       <div>
+        <h2 data-k="refH"></h2>
+        <ol class="refs">
+          <li>康豹（Paul R. Katz），《染血的山谷：日治時期的噍吧哖事件》，臺北：三民書局，2006。</li>
+          <li>Paul R. Katz, <i>When Valleys Turned Blood Red: The Ta-pa-ni Incident in Colonial Taiwan</i>. Honolulu: University of Hawai‘i Press, 2005.</li>
+          <li>林衡道主編，《余清芳抗日革命案全檔》，臺灣省文獻委員會，1975。</li>
+          <li>涂順從，《南瀛抗日誌》，2000。</li>
+          <li>維基百科「西來庵事件」「余清芳」條目；Wikipedia, “Tapani incident.”（2026 年 10 月查閱）</li>
+        </ol>
+      </div>
+      <div>
         <h2 data-k="moreH"></h2>
         <ul>
           <li><a href="https://zh.wikipedia.org/wiki/西來庵事件" target="_blank" rel="noopener">維基百科：西來庵事件</a></li>
@@ -159,10 +170,11 @@ const UI = {
         'The fighting centred on the hills around Tapani (today’s Yujing). Jiang Ding’s men knew the terrain; the Japanese held the villages through a network of police posts. Once the army brought mountain guns in August, the rising collapsed and reprisals followed.'],
   afterH: ['之後', 'Afterward'],
   noteH: ['關於這張地圖', 'About this map'],
-  note: ['地點位置與部分日期為約略值，標示「下旬」「秋」者為無確切日期；行動路線為示意。屠庄的死亡人數各方說法差距很大，這裡不列數字。審判數字依一般引用的臨時法院統計。',
-         'Places and some dates are approximate; entries marked “late May” or “autumn” have no exact date, and movement lines are schematic. Estimates of the massacre deaths vary widely, so none is given here. Court figures follow the commonly cited special-court statistics.'],
+  note: ['主要日期已對照下列參考資料核對；標示「秋」「1916」者沒有確切日期，羅俊的處死日期亦不明。地點位置為約略值，行動路線為示意。判處死刑與實際處死人數各書記載不同，頁面並列不同說法；屠庄的死亡人數差距更大，這裡不列數字。',
+         'Key dates were checked against the references below. Entries marked “autumn” or “1916” have no exact date, and Luo Jun’s execution date is unknown. Place positions are approximate and movement lines schematic. Sources disagree on the numbers sentenced to death and executed, so both figures are shown; massacre estimates vary even more, so none is given.'],
   moreH: ['延伸閱讀', 'Further reading'],
   credH: ['照片來源', 'Photo sources'],
+  refH: ['參考資料', 'References'],
 };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const uiHTML = (zh, en) => lang==='en' ? esc(en) : lang==='bi' ? `${esc(zh)}<span class="en" lang="en">${esc(en)}</span>` : esc(zh);
@@ -190,7 +202,7 @@ const PLACES = {
 };
 // [from, to, start, end, kind]  kind: flee (amber dashed), raid (amber), troops (red), escort (crimson dashed)
 const MOVES = [
-  ['xilai','hideout','1915-05-26','1915-06-12','flee'],
+  ['xilai','hideout','1915-06-01','1915-06-15','flee'],
   ['hideout','jiaxian','1915-07-07','1915-07-09','raid'], ['hideout','aliguan','1915-07-07','1915-07-09','raid'],
   ['hideout','nanzhuang','1915-07-30','1915-08-02','raid'], ['nanzhuang','hutoushan','1915-08-02','1915-08-03','raid'],
   ['court','tapani','1915-08-03','1915-08-05','troops'],
@@ -199,8 +211,10 @@ const MOVES = [
 ].map(([a,b,s,e,k])=>({a:PLACES[a].p, b:PLACES[b].p, s:D(s), e:D(e), k}));
 // [date, zh title, en title, zh text, en text, place, label override]
 const EVENTS = [
-  ['1915-05-25','計畫曝光','The plot is exposed','日警查獲相關人士與文件，展開大規模搜捕西來庵信徒。余清芳逃入山區投靠江定。','Police uncovered members and papers and began mass arrests of Xilai Temple followers. Yu Qingfang fled to the hills to join Jiang Ding.','xilai',['5月下旬','Late May']],
+  ['1915-05-21','密謀信件被截獲','Letters give the plot away','日方截獲兩封相關信件，起事計畫開始曝光。','The authorities intercepted two letters, and the plan began to come to light.','xilai'],
+  ['1915-06-01','大規模搜捕','Mass arrests begin','追查後鎖定余清芳與羅俊，日警展開大規模搜捕西來庵信徒。余清芳逃入山區投靠江定。','The investigation led to Yu Qingfang and Luo Jun, and police began mass arrests of Xilai Temple followers. Yu fled to the hills to join Jiang Ding.','xilai'],
   ['1915-06-29','羅俊被捕','Luo Jun captured','同謀羅俊在嘉義竹頭崎山區被捕。','Co-leader Luo Jun was captured in the hills at Zhutouqi, Chiayi.','zhutouqi'],
+  ['1915-07-06','發布大元帥告示','Yu proclaims the rising','余清芳以「大元帥」名義發布告示宣告起事，建號「大明慈悲國」。','Yu Qingfang issued a proclamation as “Grand Marshal,” declaring the rising and a “Great Ming Compassion State.”','hideout'],
   ['1915-07-09','襲擊甲仙埔一帶派出所','Raids on the Jiaxianpu police posts','余清芳、江定率眾襲擊甲仙埔、阿里關一帶的警察派出所，殺死日警與眷屬。','Yu Qingfang and Jiang Ding led raids on police posts around Jiaxianpu and Aliguan, killing Japanese police and their families.','jiaxian'],
   ['1915-08-02','南庄派出所之役','Attack on the Nanzhuang post','起事者攻陷南庄派出所，多名日警與眷屬身亡。','Rebels overran the Nanzhuang police post; many police and family members died.','nanzhuang'],
   ['1915-08-03','虎頭山之戰','Battle of Hutoushan','起事者在噍吧哖虎頭山與日本警察、軍隊激戰。','Rebels fought Japanese police and troops on Hutoushan above Tapani.','hutoushan'],
@@ -209,14 +223,15 @@ const EVENTS = [
   ['1915-08-22','余清芳被捕','Yu Qingfang captured','余清芳在王萊庄被誘捕，押往台南。','Yu Qingfang was lured into a trap at Wanglai and taken to Tainan.','wanglai'],
   ['1915-08-25','臨時法院開庭','The special court opens','總督府在台南設臨時法院審理，起訴 1,957 人。','The colonial government set up a special court in Tainan and indicted 1,957 people.','court'],
   ['1915-09-23','余清芳遭處死','Yu Qingfang executed','余清芳在台南監獄被執行死刑。','Yu Qingfang was executed at Tainan Prison.','court'],
-  ['1915-10-15','866 人判處死刑','866 death sentences','臨時法院判處 866 人死刑，在日本國內也引起批評。','The court sentenced 866 people to death, drawing criticism even in Japan.','court',['秋','Autumn']],
-  ['1915-11-10','大正天皇即位特赦','The enthronement amnesty','因大正天皇即位大典，尚未執行的死刑減為無期徒刑；實際處死 95 人。','For Emperor Taishō’s enthronement, death sentences not yet carried out were commuted to life; 95 had been executed.','court'],
-  ['1916-04-15','江定接受招降','Jiang Ding surrenders','躲藏山區近一年的江定接受日方招降下山。','After nearly a year in hiding, Jiang Ding accepted an offer to surrender.','hideout',['1916 春','Spring 1916']],
-  ['1916-09-15','江定等人遭處死','Jiang Ding executed','江定與部眾數十人隨後被判處死刑。','Jiang Ding and dozens of his men were sentenced to death and executed.','court',['1916','1916']],
+  ['1915-10-15','866 人判處死刑','866 death sentences','臨時法院判處 866 人死刑（另有 903 人之說），在日本國內也引起批評。','The court sentenced 866 people to death (some sources say 903), drawing criticism even in Japan.','court',['秋','Autumn']],
+  ['1915-11-10','大正天皇即位特赦','The enthronement amnesty','因大正天皇即位大典，尚未執行的死刑減為無期徒刑。實際處死人數有 95 人、132 人等不同說法。','For Emperor Taishō’s enthronement, death sentences not yet carried out were commuted to life. Sources put the number actually executed at 95, 132 or other figures.','court'],
+  ['1916-04-15','江定接受招降','Jiang Ding surrenders','躲藏山區近一年的江定，率部眾 272 人接受日方招降下山。','After nearly a year in hiding, Jiang Ding came down from the hills with 272 men, accepting an offer to surrender.','hideout',['1916.4','Apr 1916']],
+  ['1916-05-18','江定等人被捕','Jiang Ding’s band arrested','招降之後，日方將江定與 272 名部眾全數逮捕。','After the surrender, the authorities arrested Jiang Ding and all 272 of his men.','court'],
+  ['1916-09-15','江定等人遭處死','Jiang Ding executed','江定與多名部眾其後被判處死刑。','Jiang Ding and many of his men were later sentenced to death and executed.','court',['1916','1916']],
 ].map(e=>({ d:D(e[0]), tz:e[1], te:e[2], bz:e[3], be:e[4], at:e[5], lbl:e[6] }));
 const PHASES = [
-  [0, D('1915-07-09'), '謀議與搜捕','Plot and manhunt','#e3c15c','計畫曝光後，日警在台南、嘉義大舉搜捕；余清芳逃入山區，與江定會合。','Once the plot was exposed, police swept Tainan and Chiayi; Yu Qingfang escaped to the hills and joined Jiang Ding.'],
-  [D('1915-07-09'), D('1915-08-07'), '起事','The rising','#e8a33d','起事者襲擊山區的警察派出所，8 月初在虎頭山與軍警正面交戰。','The rebels raided police posts in the hills, then met police and troops head-on at Hutoushan in early August.'],
+  [0, D('1915-07-06'), '謀議與搜捕','Plot and manhunt','#e3c15c','計畫曝光後，日警在台南、嘉義大舉搜捕；余清芳逃入山區，與江定會合。','Once the plot was exposed, police swept Tainan and Chiayi; Yu Qingfang escaped to the hills and joined Jiang Ding.'],
+  [D('1915-07-06'), D('1915-08-07'), '起事','The rising','#e8a33d','起事者襲擊山區的警察派出所，8 月初在虎頭山與軍警正面交戰。','The rebels raided police posts in the hills, then met police and troops head-on at Hutoushan in early August.'],
   [D('1915-08-07'), D('1915-08-23'), '鎮壓與屠庄','Crackdown and massacres','#c8323c','日軍擊潰起事者後，在噍吧哖周邊村落搜捕報復，平民大量傷亡。','After routing the rebels, troops took revenge on the villages around Tapani, and many civilians died.'],
   [D('1915-08-23'), D('1915-11-10'), '臨時法院','The special court','#9a3a46','台南臨時法院在數週內審理近兩千人，判處死刑人數為日治時期之最。','The Tainan special court tried nearly two thousand people in weeks and handed down more death sentences than any other case of Japanese rule.'],
   [D('1915-11-10'), T_END+1, '餘波','Aftermath','#7f8fa0','特赦使多數死刑改判無期徒刑；江定在山中躲藏近一年後投降，仍遭處死。此後抗日轉向非武裝的政治與文化運動。','The amnesty turned most death sentences into life terms. Jiang Ding hid for almost a year, surrendered, and was executed anyway. Resistance afterward turned to unarmed politics and culture.'],
@@ -224,17 +239,17 @@ const PHASES = [
 const phaseAt = t => PHASES.find(p => t>=p[0] && t<p[1]) || PHASES[PHASES.length-1];
 const PEOPLE = [
   { k:'yu', zh:'余清芳', en:'Yu Qingfang', life:'1879–1915', role:['西來庵起事領導者','Leader, Xilai Temple'],
-    st:[[0,'策劃','Plotting'],[D('1915-05-25'),'逃亡','On the run'],[D('1915-07-09'),'起事','Fighting'],[D('1915-08-06'),'逃亡','On the run'],[D('1915-08-22'),'被捕','Captured'],[D('1915-09-23'),'處死','Executed']] },
+    st:[[0,'策劃','Plotting'],[D('1915-06-01'),'逃亡','On the run'],[D('1915-07-06'),'起事','Fighting'],[D('1915-08-06'),'逃亡','On the run'],[D('1915-08-22'),'被捕','Captured'],[D('1915-09-23'),'處死','Executed']] },
   { k:'luo', zh:'羅俊', en:'Luo Jun', life:'1855–1915', role:['同謀，負責嘉義一帶','Co-leader in the Chiayi area'],
-    st:[[0,'策劃','Plotting'],[D('1915-05-25'),'逃亡','On the run'],[D('1915-06-29'),'被捕','Captured'],[D('1915-09-23'),'處死','Executed']] },
+    st:[[0,'策劃','Plotting'],[D('1915-06-01'),'逃亡','On the run'],[D('1915-06-29'),'被捕','Captured'],[D('1915-10-15'),'處死','Executed']] },
   { k:'jiang', zh:'江定', en:'Jiang Ding', life:'1866–1916', role:['山區武裝領袖','Leader of the hill fighters'],
-    st:[[0,'藏身山區','In hiding'],[D('1915-07-09'),'起事','Fighting'],[D('1915-08-06'),'藏匿山區','In hiding'],[D('1916-04-15'),'投降','Surrendered'],[D('1916-09-15'),'處死','Executed']] },
+    st:[[0,'藏身山區','In hiding'],[D('1915-07-06'),'起事','Fighting'],[D('1915-08-06'),'藏匿山區','In hiding'],[D('1916-04-15'),'投降','Surrendered'],[D('1916-05-18'),'被捕','Captured'],[D('1916-09-15'),'處死','Executed']] },
 ];
 const STATUS_COL = { '策劃':'#e3c15c', '逃亡':'#e3c15c', '藏身山區':'#7f8fa0', '藏匿山區':'#7f8fa0', '起事':'#e8a33d', '被捕':'#f0625a', '投降':'#f0625a', '處死':'#c8323c' };
 const STATS = [
-  [D('1915-08-25'), '1,957', '起訴', 'indicted'],
-  [D('1915-10-15'), '866', '判處死刑', 'sentenced to death'],
-  [D('1915-11-10'), '95', '實際處死', 'executed'],
+  [D('1915-08-25'), '1,957', '被捕起訴', 'arrested and charged', '', ''],
+  [D('1915-10-15'), '866', '判處死刑', 'sentenced to death', '另一說 903', '903 in some sources'],
+  [D('1915-11-10'), '95–132', '實際處死', 'executed', '說法不一', 'sources differ'],
 ];
 const AFTER = [
   ['1916','江定等人遭處死，台灣漢人的大規模武裝抗日至此結束。','Jiang Ding and his men are executed; large-scale Han armed resistance in Taiwan comes to an end.'],
@@ -457,15 +472,16 @@ function drawStats(t){
   ctx.font=font(700,14*u,F.b); ctx.fillStyle=C.ink; const tt=tx('臨時法院','The special court'); ctx.fillText(tt, r.x, r.y);
   if (bi) { const w=ctx.measureText(tt).width; ctx.font=font(400,12*u,F.b); ctx.fillStyle=C.muted; ctx.fillText('The special court', r.x+w+8, r.y); }
   const cw=r.w/3;
-  STATS.forEach(([d,num,zh,en],i)=>{
+  STATS.forEach(([d,num,zh,en,nz,ne],i)=>{
     const x=r.x+i*cw, on=t>=d, y=r.y+56*u;
     ctx.font=font(900,40*u,F.d); ctx.fillStyle = on ? (i===0?C.ink:i===1?'#e06a70':'#c8323c') : C.faint; ctx.fillText(on?num:'—', x, y);
     ctx.font=font(500,13*u,F.b); ctx.fillStyle = on ? C.ink : C.faint; ctx.fillText(tx(zh,en), x, y+24*u);
     if (bi) { ctx.font=font(400,11.5*u,F.b); ctx.fillStyle=C.muted; ctx.fillText(en, x, y+40*u); }
+    if (on && nz) { ctx.font=font(400,11.5*u,F.b); ctx.fillStyle=C.muted; ctx.fillText(tx(nz,ne), x, y+(bi?56:40)*u); }
   });
   ctx.font=font(400,13*u,F.b); ctx.fillStyle=C.muted;
   const note = t>=D('1915-11-10') ? tx('其餘死刑因大正天皇即位特赦減為無期徒刑。','The rest were commuted to life imprisonment in the enthronement amnesty.') : tx('人數依臨時法院統計；屠庄死者不在其中。','Figures from the special court; massacre victims are not counted here.');
-  wrap(note, r.w).slice(0,3).forEach((ln,i)=>ctx.fillText(ln, r.x, r.y+(bi?122:106)*u+i*21*u));
+  wrap(note, r.w).slice(0,3).forEach((ln,i)=>ctx.fillText(ln, r.x, r.y+(bi?138:122)*u+i*21*u));
 }
 const SHARE=[0.2,0.25,0.15,0.15,0.25];
 function sx(t){ const r=L.strip; let acc=0; for (let i=0;i<PHASES.length;i++) { const [a,b]=PHASES[i]; const bb=Math.min(b,T_END); if (t<=bb || i===PHASES.length-1) return r.x + r.w*(acc + SHARE[i]*clamp((t-a)/(bb-a),0,1)); acc+=SHARE[i]; } }

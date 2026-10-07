@@ -48,6 +48,18 @@ After editing `taiwan-400.html`, run `python build_pages.py` and commit both fil
 
 ## Changelog
 
+### 2026-10-07: References and fact check
+
+- Added a **References / 參考資料** section to all three pages. Every book or report listed was checked against publisher or library records.
+  - Main page: Andrade (2008), Shepherd (1993), Barclay (2018), the 1905 household census, Ministry of the Interior and Council of Indigenous Peoples statistics, 陳第《東番記》, the 228 research report, and Katz on the Tapani Incident.
+  - 228 and the White Terror: the 1992/1994 Executive Yuan research report, the 2006 responsibility report, the 2022 Commission on Transitional Justice summary report, and the National Human Rights Museum.
+  - Tapani: Katz (2005) and its Chinese edition (2006), 林衡道《余清芳抗日革命案全檔》, 涂順從《南瀛抗日誌》, and Wikipedia.
+- Corrected the Tapani timeline against these sources:
+  - Added the intercepted letters (May 21, 1915), the mass arrests (June 1), Yu Qingfang's "Grand Marshal" proclamation (July 6), and the arrest of Jiang Ding with all 272 of his men (May 18, 1916).
+  - The rising now starts on July 6.
+  - Court figures now show disagreement between sources: 866 sentenced to death (903 in some sources), and 95–132 executed.
+  - Luo Jun's execution date is marked unknown.
+
 ### 2026-10-07: Yu Qingfang and the Tapani Incident
 
 - Added `tapani.html`, **余清芳與西來庵事件 1915 · Yu Qingfang and the Tapani Incident**. The rising is called the 西來庵事件, 噍吧哖事件 and 玉井事件.
@@ -115,6 +127,10 @@ After editing `taiwan-400.html`, run `python build_pages.py` and commit both fil
   - geography: the Taijiang lagoon silting up, railways, high-speed rail and the Tropic of Cancer.
 - Added an era timeline and playback controls, and a recorder that exports MP4/WebM video.
 
+## Sources
+
+Each page ends with a References section. Pages are educational visualizations compiled from those works; where sources disagree, both figures are shown.
+
 ## Notes
 
-The control areas are a schematic model, not exact borders. Population figures are estimates: censuses from 1905 on, scholarly estimates before that. On the Tapani page, place positions and some dates (late May, autumn 1915, 1916) are approximate, and massacre deaths are not given because estimates vary widely. On the 228 page, some 228 city dates are approximate, the troop routes are schematic, and the years of use for White Terror prisons and execution grounds are approximate; the map shows representative sites, not all of them. Portraits come from Wikimedia Commons; each image's source and license is listed on the page.
+The control areas are a schematic model, not exact borders. Population figures are estimates: censuses from 1905 on, scholarly estimates before that. On the Tapani page, place positions and some dates (autumn 1915, 1916) are approximate, sources disagree on the court figures, and massacre deaths are not given because estimates vary widely. On the 228 page, some 228 city dates are approximate, the troop routes are schematic, and the years of use for White Terror prisons and execution grounds are approximate; the map shows representative sites, not all of them. Portraits come from Wikimedia Commons; each image's source and license is listed on the page.
