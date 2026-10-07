@@ -5,6 +5,7 @@ An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: w
 **Live pages**
 
 - 台灣四百年 · Taiwan: Four Centuries — https://sinliongtoo.github.io/taiwan-400/
+- 美軍大空襲 · The Allied Air Raids on Taiwan — https://sinliongtoo.github.io/taiwan-400/airraids.html
 - 余清芳與西來庵事件 · Yu Qingfang and the Tapani Incident — https://sinliongtoo.github.io/taiwan-400/tapani.html
 - 二二八與白色恐怖 · 228 and the White Terror — https://sinliongtoo.github.io/taiwan-400/228.html
 
@@ -16,6 +17,13 @@ An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: w
 - A ruler card with portraits of every governor, emperor and president.
 - A state-control curve, a population-by-group chart, and 51 key events.
 - A built-in recorder that exports the animation as a 1920×1080 video.
+
+**美軍大空襲 1943–1945 (feature page)**
+
+- A day-by-day map from the first US raid (Hsinchu, November 25, 1943) to Japan's surrender on August 15, 1945.
+- Bomber streams fly in from their bases: China (14th and 20th Air Forces), US carriers (Task Force 38), and the Philippines (Fifth Air Force). Each target scorches as raids accumulate.
+- A raid table lists the main raids: Hsinchu, the Formosa Air Battle, the B-29 raid on Okayama, the January 1945 carrier strikes, Tainan, Taipei and Keelung.
+- A list of buildings hit in the Raid on Taipei, plus the colonial government's damage tally (5,582 killed, about 9,000 wounded, 45,340 buildings hit). Disputed Taipei death figures are shown side by side.
 
 **余清芳與西來庵事件 1915 (feature page)**
 
@@ -38,6 +46,7 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 |---|---|
 | `index.html` | GitHub Pages entry, generated from `taiwan-400.html` |
 | `taiwan-400.html` | Main page source; also published as a claude.ai artifact |
+| `airraids.html` | 美軍大空襲 feature page (standalone) |
 | `tapani.html` | 余清芳與西來庵事件 feature page (standalone, portraits embedded) |
 | `228.html` | 二二八與白色恐怖 feature page, two chapters (standalone) |
 | `portraits.js` | Ruler portraits from Wikimedia Commons, embedded as data |
@@ -47,6 +56,16 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 After editing `taiwan-400.html`, run `python build_pages.py` and commit both files. `228.html` is a complete page and needs no build step.
 
 ## Changelog
+
+### 2026-10-08: The Allied air raids on Taiwan
+
+- Added `airraids.html`, **美軍大空襲 1943–1945 · The Allied Air Raids on Taiwan**.
+  - **Map:** a day-by-day map of 9 targets. Animated bomber formations arrive from three directions (China, US carriers, the Philippines), bursts mark each raid, and damage builds up around every target.
+  - **Time:** 10 dated events in four phases: first strikes, the Formosa Air Battle, Japan loses the air, and bombing the cities. Playback slows near each raid so the bombers can be followed.
+  - **Panels:** a major-raids table (date, place, attacking force, aircraft), a list of buildings hit in the Raid on Taipei, and the colonial damage tally. Disputed figures are shown side by side.
+  - Background, an afterward list, references (Taipei Times 2015 and 2024, nippon.com 2020, 戦史叢書《本土防空作戦》, DANFS, Pacific Wrecks, Wikipedia), and the shared 中文 / EN / 中英 switch.
+- The main page now has a card linking to the new feature, and two new timeline events: the Formosa Air Battle (1944) and the Raid on Taipei (1945).
+- Every raid date and figure was checked against the listed references before it went on the page.
 
 ### 2026-10-07: References and fact check
 
@@ -133,4 +152,4 @@ Each page ends with a References section. Pages are educational visualizations c
 
 ## Notes
 
-The control areas are a schematic model, not exact borders. Population figures are estimates: censuses from 1905 on, scholarly estimates before that. On the Tapani page, place positions and some dates (autumn 1915, 1916) are approximate, sources disagree on the court figures, and massacre deaths are not given because estimates vary widely. On the 228 page, some 228 city dates are approximate, the troop routes are schematic, and the years of use for White Terror prisons and execution grounds are approximate; the map shows representative sites, not all of them. Portraits come from Wikimedia Commons; each image's source and license is listed on the page.
+The control areas are a schematic model, not exact borders. Population figures are estimates: censuses from 1905 on, scholarly estimates before that. On the air raids page, bomber directions only show where their bases lay, many smaller 1945 raids are not marked, and the Taipei death toll is disputed (3,000+ by most accounts, 1,768 in Japanese records for the whole prefecture). On the Tapani page, place positions and some dates (autumn 1915, 1916) are approximate, sources disagree on the court figures, and massacre deaths are not given because estimates vary widely. On the 228 page, some 228 city dates are approximate, the troop routes are schematic, and the years of use for White Terror prisons and execution grounds are approximate; the map shows representative sites, not all of them. Portraits come from Wikimedia Commons; each image's source and license is listed on the page.
