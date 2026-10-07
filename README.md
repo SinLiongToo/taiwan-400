@@ -5,6 +5,7 @@ An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: w
 **Live pages**
 
 - 台灣四百年 · Taiwan: Four Centuries — https://sinliongtoo.github.io/taiwan-400/
+- 余清芳與西來庵事件 · Yu Qingfang and the Tapani Incident — https://sinliongtoo.github.io/taiwan-400/tapani.html
 - 二二八與白色恐怖 · 228 and the White Terror — https://sinliongtoo.github.io/taiwan-400/228.html
 
 ## What's on the pages
@@ -15,6 +16,13 @@ An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: w
 - A ruler card with portraits of every governor, emperor and president.
 - A state-control curve, a population-by-group chart, and 51 key events.
 - A built-in recorder that exports the animation as a 1920×1080 video.
+
+**余清芳與西來庵事件 1915 (feature page)**
+
+- A day-by-day map of the Tainan hills from May 1915 to September 1916. It shows terrain, the Zengwen and Nanzixian rivers, and a locator map of Taiwan.
+- The map covers the main places: Xilai Temple, Tapani (Yujing), Hutoushan, the Nanzhuang, Jiaxianpu and Aliguan police posts, Wanglai and Zhutouqi.
+- Movements are drawn by type: rebel raids, flight, Japanese reinforcements, and prisoners taken to Tainan. An expanding zone marks the massacres around Tapani.
+- People cards for Yu Qingfang, Luo Jun and Jiang Ding show each man's status as it changes. Special-court figures (1,957 indicted, 866 sentenced to death, 95 executed) appear as the trial unfolds.
 
 **二二八與白色恐怖 (feature page, two chapters)**
 
@@ -30,6 +38,7 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 |---|---|
 | `index.html` | GitHub Pages entry, generated from `taiwan-400.html` |
 | `taiwan-400.html` | Main page source; also published as a claude.ai artifact |
+| `tapani.html` | 余清芳與西來庵事件 feature page (standalone, portraits embedded) |
 | `228.html` | 二二八與白色恐怖 feature page, two chapters (standalone) |
 | `portraits.js` | Ruler portraits from Wikimedia Commons, embedded as data |
 | `build_pages.py` | Wraps `taiwan-400.html` into `index.html` |
@@ -38,6 +47,17 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 After editing `taiwan-400.html`, run `python build_pages.py` and commit both files. `228.html` is a complete page and needs no build step.
 
 ## Changelog
+
+### 2026-10-07: Yu Qingfang and the Tapani Incident
+
+- Added `tapani.html`, **余清芳與西來庵事件 1915 · Yu Qingfang and the Tapani Incident**. The rising is called the 西來庵事件, 噍吧哖事件 and 玉井事件.
+  - **Geography:** a zoomed terrain map of the Tainan hills with rivers, a Taiwan locator map, and 10 places. Police posts are crossed out once they are attacked.
+  - **Time:** 14 dated events from the exposed plot in late May 1915 to Jiang Ding's execution in 1916, grouped into five phases: plot and manhunt, the rising, crackdown and massacres, the special court, and aftermath. The phase strip is non-linear, so the dense weeks of July–August 1915 get more room.
+  - **Movement:** animated routes for Yu Qingfang's flight, the raids on Jiaxianpu, Aliguan and Nanzhuang, Japanese reinforcements to Tapani, and prisoners escorted to the Tainan court. An expanding zone marks the massacres.
+  - **People:** status cards for Yu Qingfang, Luo Jun and Jiang Ding. The two public-domain prisoner photos come from Wikimedia Commons and are embedded in the page; Luo Jun gets a name card. Executed leaders turn grey.
+  - **The court:** counters for 1,957 indicted, 866 sentenced to death and 95 executed, plus a note on the enthronement amnesty.
+  - Background notes, an "afterward" list (1916–1930), sources, and the shared 中文 / EN / 中英 switch.
+- Added a main-page card that links to the new feature.
 
 ### 2026-10-07: White Terror chapter
 
@@ -97,4 +117,4 @@ After editing `taiwan-400.html`, run `python build_pages.py` and commit both fil
 
 ## Notes
 
-The control areas are a schematic model, not exact borders. Population figures are estimates: censuses from 1905 on, scholarly estimates before that. On the feature page, some 228 city dates are approximate, the troop routes are schematic, and the years of use for White Terror prisons and execution grounds are approximate; the map shows representative sites, not all of them. Portraits come from Wikimedia Commons; each image's source and license is listed on the page.
+The control areas are a schematic model, not exact borders. Population figures are estimates: censuses from 1905 on, scholarly estimates before that. On the Tapani page, place positions and some dates (late May, autumn 1915, 1916) are approximate, and massacre deaths are not given because estimates vary widely. On the 228 page, some 228 city dates are approximate, the troop routes are schematic, and the years of use for White Terror prisons and execution grounds are approximate; the map shows representative sites, not all of them. Portraits come from Wikimedia Commons; each image's source and license is listed on the page.

@@ -128,6 +128,15 @@ h2 .en { font-family: var(--f-body); font-size: .78em; }
     <a id="dl" hidden></a>
   </div>
 
+  <a class="feature" href="tapani.html">
+    <span class="f-date">1915</span>
+    <span class="f-body">
+      <strong data-k="feat2T"></strong>
+      <span data-k="feat2D"></span>
+    </span>
+    <span class="f-go" aria-hidden="true">→</span>
+  </a>
+
   <a class="feature" href="228.html">
     <span class="f-date">1947 – 1992</span>
     <span class="f-body">
@@ -203,6 +212,8 @@ const UI = {
        'Portraits come from Wikimedia Commons, mostly public domain; recent presidential photos are credited under their licenses. Rulers without a freely licensed portrait get a name card instead.'],
   n4s: ['逐張來源與授權','Source and license for each image'],
   featT: ['專題：二二八與白色恐怖','Feature: 228 and the White Terror'],
+  feat2T: ['專題：余清芳與西來庵事件','Feature: Yu Qingfang and the Tapani Incident'],
+  feat2D: ['日治時期最大規模的漢人武裝抗日：台南山區逐日地圖、人物與臨時法院審判。','The largest Han armed uprising of Japanese rule: a day-by-day map of the Tainan hills, the leaders, and the special court.'],
   featD: ['1947 年二二八的逐日地圖，以及 1949–1992 年白色恐怖的監獄、刑場與政治案件，和之後的轉型正義。','A day-by-day map of 1947, the prisons, execution grounds and political cases of the 1949–1992 White Terror, and the road to redress.'],
 };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
