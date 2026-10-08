@@ -6,6 +6,8 @@ An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: w
 
 - 台灣四百年 · Taiwan: Four Centuries — https://sinliongtoo.github.io/taiwan-400/
 - 鄭成功攻台 · Koxinga Takes Taiwan — https://sinliongtoo.github.io/taiwan-400/koxinga.html
+- 乙未戰爭 · The 1895 War for Taiwan — https://sinliongtoo.github.io/taiwan-400/yiwei.html
+- 霧社事件 · The Musha Incident — https://sinliongtoo.github.io/taiwan-400/wushe.html
 - 美軍大空襲 · The Allied Air Raids on Taiwan — https://sinliongtoo.github.io/taiwan-400/airraids.html
 - 余清芳與西來庵事件 · Yu Qingfang and the Tapani Incident — https://sinliongtoo.github.io/taiwan-400/tapani.html
 - 二二八與白色恐怖 · 228 and the White Terror — https://sinliongtoo.github.io/taiwan-400/228.html
@@ -24,6 +26,18 @@ An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: w
 - A day-by-day map of the Taijiang lagoon as it was in 1661, redrawn with the Tayouan and Baxemboy sandbars, the Luermen channel, Fort Zeelandia, the Utrecht redoubt and Fort Provintia. A strait inset shows the route from Kinmen via Penghu.
 - The Zheng fleet enters through Luermen, the battles of May 1 play out, and forts change hands. The siege line, the Dutch relief fleet, the bombardment of the Utrecht redoubt and the Dutch departure are all animated.
 - Cards for both commanders (Zheng Chenggong and Frederick Coyett) with portraits, their forces and their changing status, plus a siege-day counter (273 days).
+
+**乙未戰爭 1895 (feature page)**
+
+- A day-by-day map of Japan's 1895 invasion: the occupied area (red) sweeps south from the Aodi landing past the Republic of Formosa and its militias (teal). The landings at Budai and Fangliao close in on Tainan.
+- 19 events from the Treaty of Shimonoseki to the Battle of Changxing, including Keelung, Taipei, Hsinchu, Jianbishan, Miaoli, Baguashan, Chiayi and Tainan.
+- People cards for Tang Jingsong, Liu Yongfu, Wu Tang-hsing and Kabayama Sukenori. Casualty figures appear at the end; where sources disagree, both are shown.
+
+**霧社事件 1930 (feature page)**
+
+- A schematic map of the Musha highlands: the six Tgdaya villages change state over time (before, rising, destroyed, emptied). It also shows Japanese columns, aircraft and gas, the Toda attack on the detention shelters, and the forced removal to Kawanakajima.
+- People cards for Mona Rudao (public-domain photo, embedded) and Ishizuka Eizō, plus figures that appear in sequence: 134, about 2,500, about 640, 216 and 298.
+- The afterward list runs from the 1934 discovery of Mona Rudao's remains to the Seediq recognition in 2008 and the film *Seediq Bale* (2011).
 
 **美軍大空襲 1943–1945 (feature page)**
 
@@ -53,6 +67,8 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 |---|---|
 | `index.html` | GitHub Pages entry, generated from `taiwan-400.html` |
 | `taiwan-400.html` | Main page source; also published as a claude.ai artifact |
+| `yiwei.html` | 乙未戰爭 feature page (standalone; uses `portraits.js`) |
+| `wushe.html` | 霧社事件 feature page (standalone; Mona Rudao photo embedded; uses `portraits.js`) |
 | `koxinga.html` | 鄭成功攻台 feature page (standalone; uses `portraits.js`) |
 | `airraids.html` | 美軍大空襲 feature page (standalone) |
 | `tapani.html` | 余清芳與西來庵事件 feature page (standalone, portraits embedded) |
@@ -64,6 +80,19 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 After editing `taiwan-400.html`, run `python build_pages.py` and commit both files. `228.html` is a complete page and needs no build step.
 
 ## Changelog
+
+### 2026-10-08: The 1895 war and the Musha Incident
+
+- Added `yiwei.html`, **乙未戰爭 1895 · The 1895 War for Taiwan**.
+  - **Map:** the occupation front moves from Aodi to Tainan, with the Japanese overland route, the sea landings, battle bursts, and towns turning red as they fall. The mountains and the east are marked as outside this campaign.
+  - **Time:** 19 dated events in five phases: cession and the Republic, the north falls, the militias of the centre, the push south, and pacified but not at peace.
+  - **Panels:** four people cards with changing status, and a casualty panel that gives both sets of Japanese figures (164–333 killed in action, 4,642–8,170 dead of disease) and about 14,000 Taiwanese dead.
+- Added `wushe.html`, **霧社事件 1930 · The Musha Incident**.
+  - **Map:** a schematic of the Musha highlands along the upper Zhuoshui River, with the six Tgdaya villages (Mhebu, Bwarung, Gungu, Truwan, Suku, Drodux), Musha school, the Mhebu caves, the detention shelters, the Toda group, and Kawanakajima.
+  - **Time:** 8 events from the October 27 attack to the May 6, 1931 removal, in five phases. Undated items are marked as ranges, and Mona Rudao's date of death is noted as disputed.
+  - **Panels:** people cards and figures that appear as the story reaches them.
+- Both pages have references, an afterward list, and the shared 中文 / EN / 中英 switch. Facts were checked against Wikipedia (zh/en) and its cited sources; where the zh and en articles disagree, both figures are shown.
+- The main page now has six feature cards in chronological order: 1661, 1895, 1915, 1930, 1943–45, 1947–92.
 
 ### 2026-10-08: Koxinga takes Taiwan
 
@@ -171,4 +200,4 @@ Each page ends with a References section. Pages are educational visualizations c
 
 ## Notes
 
-The control areas are a schematic model, not exact borders. Population figures are estimates: censuses from 1905 on, scholarly estimates before that. On the Koxinga page, the 1661 lagoon geography and fort positions are approximate, some dates are given as ranges, and Chinese sources record Hans Radis's defection differently. On the air raids page, bomber directions only show where their bases lay, many smaller 1945 raids are not marked, and the Taipei death toll is disputed (3,000+ by most accounts, 1,768 in Japanese records for the whole prefecture). On the Tapani page, place positions and some dates (autumn 1915, 1916) are approximate, sources disagree on the court figures, and massacre deaths are not given because estimates vary widely. On the 228 page, some 228 city dates are approximate, the troop routes are schematic, and the years of use for White Terror prisons and execution grounds are approximate; the map shows representative sites, not all of them. Portraits come from Wikimedia Commons; each image's source and license is listed on the page.
+The control areas are a schematic model, not exact borders. Population figures are estimates: censuses from 1905 on, scholarly estimates before that. On the 1895 page, occupied areas are a schematic based on when each town fell, and the mountains and east are left out. On the Musha page, village and site positions are schematic. On the Koxinga page, the 1661 lagoon geography and fort positions are approximate, some dates are given as ranges, and Chinese sources record Hans Radis's defection differently. On the air raids page, bomber directions only show where their bases lay, many smaller 1945 raids are not marked, and the Taipei death toll is disputed (3,000+ by most accounts, 1,768 in Japanese records for the whole prefecture). On the Tapani page, place positions and some dates (autumn 1915, 1916) are approximate, sources disagree on the court figures, and massacre deaths are not given because estimates vary widely. On the 228 page, some 228 city dates are approximate, the troop routes are schematic, and the years of use for White Terror prisons and execution grounds are approximate; the map shows representative sites, not all of them. Portraits come from Wikimedia Commons; each image's source and license is listed on the page.
