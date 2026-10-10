@@ -5,6 +5,7 @@ An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: w
 **Live pages**
 
 - 台灣四百年 · Taiwan: Four Centuries — https://sinliongtoo.github.io/taiwan-400/
+- 荷西時期 · Dutch and Spanish Formosa — https://sinliongtoo.github.io/taiwan-400/dutch.html
 - 鄭成功攻台 · Koxinga Takes Taiwan — https://sinliongtoo.github.io/taiwan-400/koxinga.html
 - 乙未戰爭 · The 1895 War for Taiwan — https://sinliongtoo.github.io/taiwan-400/yiwei.html
 - 霧社事件 · The Musha Incident — https://sinliongtoo.github.io/taiwan-400/wushe.html
@@ -20,6 +21,11 @@ An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: w
 - A ruler card with portraits of every governor, emperor and president.
 - A state-control curve, a population-by-group chart, and 51 key events.
 - A built-in recorder that exports the animation as a 1920×1080 video.
+
+**荷西時期 1622–1662 (feature page)**
+
+- A year-by-year map of Dutch (orange) and Spanish (rose) reach against Indigenous land (green): Penghu in 1622, Tayouan from 1624, Spanish Keelung and Tamsui from 1626 and 1628, the 1635–36 pacification, the expulsion of Spain in 1642, the Landdag ties to the villages, and the decline after 1654.
+- 19 events. The panels show a VOC census bar chart (1647–1656, peaking at 315 villages and 68,657 people in 1650), trade and settler figures (151,400 deerskins, 1.73 million catties of sugar, 50,000–60,000 Chinese settlers), and four people cards.
 
 **鄭成功攻台 1661–1662 (feature page)**
 
@@ -69,6 +75,7 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 | `taiwan-400.html` | Main page source; also published as a claude.ai artifact |
 | `yiwei.html` | 乙未戰爭 feature page (standalone; uses `portraits.js`) |
 | `wushe.html` | 霧社事件 feature page (standalone; Mona Rudao photo embedded; uses `portraits.js`) |
+| `dutch.html` | 荷西時期 feature page (standalone; uses `portraits.js`) |
 | `koxinga.html` | 鄭成功攻台 feature page (standalone; uses `portraits.js`) |
 | `airraids.html` | 美軍大空襲 feature page (standalone) |
 | `tapani.html` | 余清芳與西來庵事件 feature page (standalone, portraits embedded) |
@@ -80,6 +87,15 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 After editing `taiwan-400.html`, run `python build_pages.py` and commit both files. `228.html` is a complete page and needs no build step.
 
 ## Changelog
+
+### 2026-10-10: Dutch and Spanish Formosa
+
+- Added `dutch.html`, **荷西時期 1622–1662 · Dutch and Spanish Formosa**.
+  - **Map:** a control model for the VOC, Spain, the Ming in Penghu, and Indigenous land. The southwestern sphere grows with the 1636 peace assembly and the Landdag, the north changes hands in 1642, Pimaba in the east is included, and control weakens after 1654 as the census shows.
+  - **Time:** 19 events in five phases: Penghu to Tayouan, a foothold, pacification, the height, and unrest and the end. The page ends at the surrender and links to the Koxinga feature.
+  - **Panels:** a VOC census chart (1647–1656), trade and settler figures, and people cards for Nuyts, Candidius, Carreño and Coyett, with portraits where public-domain images exist. The year line shows the Ming, Qing and Southern Ming reign years.
+  - **References:** Andrade (2008, 2011), Wu Tsong-min's working paper on village leasing, and the VOC census via Wikipedia. Dates and figures were checked against Wikipedia's Dutch Formosa, Spanish Formosa, pacification campaign and Landdag articles. The disputed 1629 Mattau death toll is noted.
+- Added a main-page card for the new feature. There are now seven feature cards in chronological order.
 
 ### 2026-10-08: The 1895 war and the Musha Incident
 
@@ -200,4 +216,4 @@ Each page ends with a References section. Pages are educational visualizations c
 
 ## Notes
 
-The control areas are a schematic model, not exact borders. Population figures are estimates: censuses from 1905 on, scholarly estimates before that. On the 1895 page, occupied areas are a schematic based on when each town fell, and the mountains and east are left out. On the Musha page, village and site positions are schematic. On the Koxinga page, the 1661 lagoon geography and fort positions are approximate, some dates are given as ranges, and Chinese sources record Hans Radis's defection differently. On the air raids page, bomber directions only show where their bases lay, many smaller 1945 raids are not marked, and the Taipei death toll is disputed (3,000+ by most accounts, 1,768 in Japanese records for the whole prefecture). On the Tapani page, place positions and some dates (autumn 1915, 1916) are approximate, sources disagree on the court figures, and massacre deaths are not given because estimates vary widely. On the 228 page, some 228 city dates are approximate, the troop routes are schematic, and the years of use for White Terror prisons and execution grounds are approximate; the map shows representative sites, not all of them. Portraits come from Wikimedia Commons; each image's source and license is listed on the page.
+The control areas are a schematic model, not exact borders. Population figures are estimates: censuses from 1905 on, scholarly estimates before that. On the 1895 page, occupied areas are a schematic based on when each town fell, and the mountains and east are left out. On the Musha page, village and site positions are schematic. On the Dutch and Spanish page, control areas are a schematic model of mostly indirect rule. On the Koxinga page, the 1661 lagoon geography and fort positions are approximate, some dates are given as ranges, and Chinese sources record Hans Radis's defection differently. On the air raids page, bomber directions only show where their bases lay, many smaller 1945 raids are not marked, and the Taipei death toll is disputed (3,000+ by most accounts, 1,768 in Japanese records for the whole prefecture). On the Tapani page, place positions and some dates (autumn 1915, 1916) are approximate, sources disagree on the court figures, and massacre deaths are not given because estimates vary widely. On the 228 page, some 228 city dates are approximate, the troop routes are schematic, and the years of use for White Terror prisons and execution grounds are approximate; the map shows representative sites, not all of them. Portraits come from Wikimedia Commons; each image's source and license is listed on the page.
