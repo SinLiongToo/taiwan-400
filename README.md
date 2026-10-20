@@ -7,6 +7,7 @@ An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: w
 - 台灣四百年 · Taiwan: Four Centuries — https://sinliongtoo.github.io/taiwan-400/
 - 荷西時期 · Dutch and Spanish Formosa — https://sinliongtoo.github.io/taiwan-400/dutch.html
 - 郭懷一事件 · The Guo Huaiyi Rebellion — https://sinliongtoo.github.io/taiwan-400/guo.html
+- 清代分類械鬥 · Feuds Between Settler Groups — https://sinliongtoo.github.io/taiwan-400/feuds.html
 - 林爽文事件 · The Lin Shuangwen Rebellion — https://sinliongtoo.github.io/taiwan-400/linshuangwen.html
 - 戴潮春事件 · The Dai Chaochun Rebellion — https://sinliongtoo.github.io/taiwan-400/daichaochun.html
 - 鄭成功攻台 · Koxinga Takes Taiwan — https://sinliongtoo.github.io/taiwan-400/koxinga.html
@@ -31,6 +32,8 @@ An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: w
 - 19 events. The panels show a VOC census bar chart (1647–1656, peaking at 315 villages and 68,657 people in 1650), trade and settler figures (151,400 deerskins, 1.73 million catties of sugar, 50,000–60,000 Chinese settlers), and four people cards.
 
 **郭懷一事件 1652 (feature page)**: a day-by-day map of the Tainan–Kaohsiung area (Saccam, the Dutch relief, the Sinkan, Siraya and Makatao allies, Houhong), with people cards and figures.
+
+**清代分類械鬥 1721–1862 (feature page)**: a year-by-year map over a schematic of settler origins (Quanzhou on the coast, Zhangzhou inland, Hakka in the foothills and the Liudui). It marks the documented feuds from the 1721 Hoklo–Hakka split to the 1859 northern feud, with a Taipei Basin inset showing the 1853 guild war, the move to Dadaocheng and the Banqiao counterattack.
 
 **林爽文事件 1786–1788 (feature page)**: town states over time (rebel-held, under siege, Qing-held, loyal militias), Fukang'an's campaign, and the renaming of Zhuluo as Chiayi.
 
@@ -87,7 +90,7 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 | `yiwei.html` | 乙未戰爭 feature page (standalone; uses `portraits.js`) |
 | `wushe.html` | 霧社事件 feature page (standalone; Mona Rudao photo embedded; uses `portraits.js`) |
 | `dutch.html` | 荷西時期 feature page (standalone; uses `portraits.js`) |
-| `guo.html`, `linshuangwen.html`, `daichaochun.html` | Rebellion feature pages (generated) |
+| `guo.html`, `linshuangwen.html`, `daichaochun.html`, `feuds.html` | Rebellion and feud feature pages (generated) |
 | `tools/build_rebellions.py`, `tools/rebellions/` | Builder plus shared head, film engine and one chapter spec per page |
 | `uprisings.html` | Old combined page, now a short page linking to the split pages |
 | `tools/smoke.js` | Smoke test: runs a page's script against a stub DOM for 4,000 frames (`node tools/smoke.js page.html 400`) |
@@ -102,6 +105,14 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 After editing `taiwan-400.html`, run `python build_pages.py` and commit both files. `228.html` is a complete page and needs no build step.
 
 ## Changelog
+
+### 2026-10-20: Feuds between settler groups
+
+- Added `feuds.html`, **清代分類械鬥 · Feuds Between Settler Groups in Qing Taiwan (1721–1862)**, built from the shared engine (`tools/rebellions/feud.js`).
+  - **Map:** island dots coloured by a schematic of settler origin. 9 events: the 1721 Liudui; the 1782 Changhua feud (290+ executed, 320+ exiled); Lin Shuangwen's origin lines; the 1806–09 feuds at Zhuqian, Lugang and Houlong (400+ Quanzhou losses); the 1853 Upper and Lower Guilds feud and the move to Dadaocheng; the 1859–60 northern feud; the Xiahai City God Temple; and Dai Chaochun's origin lines.
+  - **Inset:** a Taipei Basin view (Mengjia, Dadaocheng, Xinzhuang, Banqiao, Shilin) showing the 1853 move and the 1859 counterattack.
+  - Only well-documented feuds are included. Hoklo–Hakka feuds of 1826 and 1844, which could not be confirmed, are left out, and so are references whose details could not be checked.
+- The main page now has eleven feature cards.
 
 ### 2026-10-20: Dai Chaochun, and the rebellion pages split
 
