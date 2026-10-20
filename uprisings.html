@@ -248,7 +248,7 @@ function pulse(p){ const [x,y]=P(...p), ph=(performance.now()/1000)%1; ctx.strok
 // ================= chapter film =================
 const LAYOUTS = {
   land: { W:1600, H:900, u:1, title:{x:56,y:58}, date:{x:52,y:180,size:104}, year:{x:58,y:218}, phase:{x:58,y:278,size:34}, pdesc:{x:58,y:318,w:370,lh:27,max:4},
-    event:{x:58,y:478,w:370}, map:{x:450,y:24,w:600,h:800}, people:{x:1100,y:56,w:440,rh:92}, figs:{x:1100,y:440,w:440,rh:56}, strip:{x:56,y:846,w:1488,h:28} },
+    event:{x:58,y:478,w:370}, map:{x:450,y:24,w:600,h:800}, people:{x:1100,y:56,w:440,rh:92}, figs:{x:1100,y:476,w:440,rh:56}, strip:{x:56,y:846,w:1488,h:28} },
   port: { W:720, H:2040, u:1.3, title:{x:28,y:50}, date:{x:24,y:140,size:84}, year:{x:30,y:178}, phase:{x:28,y:234,size:30}, pdesc:{x:28,y:274,w:664,lh:30,max:2},
     map:{x:16,y:330,w:688,h:640}, event:{x:28,y:1020,w:664}, people:{x:28,y:1210,w:664,rh:96}, figs:{x:28,y:1620,w:664,rh:58}, strip:{x:28,y:1970,w:664,h:32} },
 };
@@ -473,8 +473,8 @@ const ev = list => list.map(e=>({ ds:e[0], tz:e[1], te:e[2], bz:e[3], be:e[4], a
   const B=[119.98, 21.85, 121.28, 25.02];
   const TOWNS = {
     dali:     { zh:'大里杙（林爽文據點）', en:'Dali (Lin’s base)', p:[120.68,24.10], side:'r' },
-    changhua: { zh:'彰化', en:'Changhua', p:[120.54,24.08], side:'l', dy:-10 },
-    lugang:   { zh:'鹿港', en:'Lugang', p:[120.43,24.06], side:'l', dy:12 },
+    changhua: { zh:'彰化', en:'Changhua', p:[120.54,24.08], side:'l', dy:-22 },
+    lugang:   { zh:'鹿港', en:'Lugang', p:[120.43,24.06], side:'l', dy:16 },
     zhuqian:  { zh:'竹塹', en:'Zhuqian (Hsinchu)', p:[120.97,24.80], side:'l' },
     xinpu:    { zh:'新埔（客家義民）', en:'Xinpu (Hakka militia)', p:[121.07,24.83], side:'r' },
     zhuluo:   { zh:'諸羅', en:'Zhuluo', p:[120.45,23.48], side:'l' },
