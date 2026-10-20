@@ -6,6 +6,7 @@ An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: w
 
 - 台灣四百年 · Taiwan: Four Centuries — https://sinliongtoo.github.io/taiwan-400/
 - 荷西時期 · Dutch and Spanish Formosa — https://sinliongtoo.github.io/taiwan-400/dutch.html
+- 郭懷一與林爽文 · Guo Huaiyi and Lin Shuangwen — https://sinliongtoo.github.io/taiwan-400/uprisings.html
 - 鄭成功攻台 · Koxinga Takes Taiwan — https://sinliongtoo.github.io/taiwan-400/koxinga.html
 - 乙未戰爭 · The 1895 War for Taiwan — https://sinliongtoo.github.io/taiwan-400/yiwei.html
 - 霧社事件 · The Musha Incident — https://sinliongtoo.github.io/taiwan-400/wushe.html
@@ -26,6 +27,12 @@ An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: w
 
 - A year-by-year map of Dutch (orange) and Spanish (rose) reach against Indigenous land (green): Penghu in 1622, Tayouan from 1624, Spanish Keelung and Tamsui from 1626 and 1628, the 1635–36 pacification, the expulsion of Spain in 1642, the Landdag ties to the villages, and the decline after 1654.
 - 19 events. The panels show a VOC census bar chart (1647–1656, peaking at 315 villages and 68,657 people in 1650), trade and settler figures (151,400 deerskins, 1.73 million catties of sugar, 50,000–60,000 Chinese settlers), and four people cards.
+
+**郭懷一與林爽文 (feature page, two chapters)**
+
+- **Chapter 1: the Guo Huaiyi rebellion, 1652.** A day-by-day map of the Tainan–Kaohsiung area with the Taijiang lagoon. It follows the leak, the attack on Saccam, the Dutch relief, the gathering of Sinkan, Siraya and Makatao allies, and the battle at Houhong.
+- **Chapter 2: the Lin Shuangwen rebellion, 1786–88.** A map of western Taiwan in which each town changes over time between rebel-held, under siege, Qing-held and loyal militias (Hakka and Quanzhou). It ends with Fukang'an's campaign from Lugang, the relief of Zhuluo (renamed Chiayi) and Lin's capture at Laoquqi.
+- Both chapters have people cards (Fukang'an's portrait is embedded) and figures that appear in sequence. Where sources disagree, both figures are shown.
 
 **鄭成功攻台 1661–1662 (feature page)**
 
@@ -76,6 +83,8 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 | `yiwei.html` | 乙未戰爭 feature page (standalone; uses `portraits.js`) |
 | `wushe.html` | 霧社事件 feature page (standalone; Mona Rudao photo embedded; uses `portraits.js`) |
 | `dutch.html` | 荷西時期 feature page (standalone; uses `portraits.js`) |
+| `uprisings.html` | 郭懷一與林爽文 feature page, two chapters (standalone; Fukang'an portrait embedded) |
+| `tools/smoke.js` | Smoke test: runs a page's script against a stub DOM for 4,000 frames (`node tools/smoke.js page.html 400`) |
 | `koxinga.html` | 鄭成功攻台 feature page (standalone; uses `portraits.js`) |
 | `airraids.html` | 美軍大空襲 feature page (standalone) |
 | `tapani.html` | 余清芳與西來庵事件 feature page (standalone, portraits embedded) |
@@ -87,6 +96,16 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 After editing `taiwan-400.html`, run `python build_pages.py` and commit both files. `228.html` is a complete page and needs no build step.
 
 ## Changelog
+
+### 2026-10-20: Guo Huaiyi and Lin Shuangwen
+
+- Added `uprisings.html`, **郭懷一與林爽文 · Guo Huaiyi and Lin Shuangwen**, with two chapters built on a shared film engine.
+  - **Guo Huaiyi, 1652:** 6 events from Sep 7 to Sep 19 in four phases. The rebel zone moves from Yuxingwei to Saccam and then south to Houhong; Dutch and Indigenous columns converge on it. The figures cover rebels (4,000–5,000), musketeers (120, or 160), allies (about 1,480), Chinese dead (3,000–4,000) and Dutch killed (8–14).
+  - **Lin Shuangwen, 1786–88:** 12 events from the Dali jailbreak (Jan 16, 1787) to Zhuang Datian's capture, in five phases. Town states change over time, siege rings appear, and Fukang'an's two-pronged campaign is animated. People cards cover Lin, Zhuang, Chai Daji and Fukang'an (public-domain portrait from the twenty meritorious officials series).
+  - Comparison text, an afterward list, references (Huber and Fan in 臺灣文獻, Andrade, Shepherd, 欽定平定臺灣紀略, 重修臺灣省通志, Wikipedia), and the shared language switch.
+  - Facts were checked against the zh and en Wikipedia articles. One claim that could not be confirmed (Chai Daji's later execution) was left out, and the wording of the Qianlong edict renaming Zhuluo is paraphrased, not quoted.
+- Added `tools/smoke.js`, the smoke test used for every page.
+- The main page now has eight feature cards in chronological order.
 
 ### 2026-10-10: Dutch and Spanish Formosa
 
@@ -216,4 +235,4 @@ Each page ends with a References section. Pages are educational visualizations c
 
 ## Notes
 
-The control areas are a schematic model, not exact borders. Population figures are estimates: censuses from 1905 on, scholarly estimates before that. On the 1895 page, occupied areas are a schematic based on when each town fell, and the mountains and east are left out. On the Musha page, village and site positions are schematic. On the Dutch and Spanish page, control areas are a schematic model of mostly indirect rule. On the Koxinga page, the 1661 lagoon geography and fort positions are approximate, some dates are given as ranges, and Chinese sources record Hans Radis's defection differently. On the air raids page, bomber directions only show where their bases lay, many smaller 1945 raids are not marked, and the Taipei death toll is disputed (3,000+ by most accounts, 1,768 in Japanese records for the whole prefecture). On the Tapani page, place positions and some dates (autumn 1915, 1916) are approximate, sources disagree on the court figures, and massacre deaths are not given because estimates vary widely. On the 228 page, some 228 city dates are approximate, the troop routes are schematic, and the years of use for White Terror prisons and execution grounds are approximate; the map shows representative sites, not all of them. Portraits come from Wikimedia Commons; each image's source and license is listed on the page.
+The control areas are a schematic model, not exact borders. Population figures are estimates: censuses from 1905 on, scholarly estimates before that. On the 1895 page, occupied areas are a schematic based on when each town fell, and the mountains and east are left out. On the Musha page, village and site positions are schematic. On the Guo Huaiyi and Lin Shuangwen page, places such as Yuxingwei and Houhong are approximate, and town states are schematic. On the Dutch and Spanish page, control areas are a schematic model of mostly indirect rule. On the Koxinga page, the 1661 lagoon geography and fort positions are approximate, some dates are given as ranges, and Chinese sources record Hans Radis's defection differently. On the air raids page, bomber directions only show where their bases lay, many smaller 1945 raids are not marked, and the Taipei death toll is disputed (3,000+ by most accounts, 1,768 in Japanese records for the whole prefecture). On the Tapani page, place positions and some dates (autumn 1915, 1916) are approximate, sources disagree on the court figures, and massacre deaths are not given because estimates vary widely. On the 228 page, some 228 city dates are approximate, the troop routes are schematic, and the years of use for White Terror prisons and execution grounds are approximate; the map shows representative sites, not all of them. Portraits come from Wikimedia Commons; each image's source and license is listed on the page.
