@@ -109,6 +109,16 @@ After editing `taiwan-400.html`, run `python build_pages.py` and commit both fil
 
 ## Changelog
 
+### 2026-10-20: Fact check of the main timeline
+
+- The 51 events, the era texts and every ruler's tenure on the main page were rechecked. Fixes:
+  - Aodi landing: the Japanese came ashore four days after the Republic of Formosa was declared (May 25 → May 29), not "more than ten days" after.
+  - Lin Shuangwen's rising is moved to January 1787 (lunar 11th month of 1786), and Zhu Yigui's to May 1721.
+  - 1662: Koxinga set up Chengtian Prefecture; the name Tungning came later, under Zheng Jing.
+  - 1945: about 460,000 Japanese soldiers and civilians were repatriated, not 400,000.
+  - 1987: family visits to China, the end of the press ban and legal new parties came in the years after martial law ended, not all at once.
+  - Andō Teibi took office on May 1, 1915. Chen Yi's tenure and Wei Tao-ming's start are set to May 16, 1947.
+
 ### 2026-10-20: Fact check of the 228 and White Terror page
 
 - **228 chapter:** each event was rechecked against the zh Wikipedia articles on the 228 Incident, the Kaohsiung crackdown, the Chiayi militias, the local settlement committees and Tang De-zhang.
