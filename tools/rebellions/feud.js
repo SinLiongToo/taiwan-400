@@ -81,7 +81,7 @@
       const D=S.D, r=L.map, u=L.u;
       // Taipei basin inset (shown from 1820 on)
       const a = smooth(D('1820-01-01'), D('1825-01-01'), t); if (a<=0) return;
-      const I={ x:r.x+10, y:r.y+10, w:250*u, h:190*u };
+      const I={ x:r.x+10, y:r.y+10, w:205*u, h:168*u };
       ctx.globalAlpha=a;
       ctx.fillStyle='rgba(8,21,29,0.94)'; ctx.fillRect(I.x,I.y,I.w,I.h); ctx.strokeStyle=C.faint; ctx.lineWidth=1; ctx.strokeRect(I.x,I.y,I.w,I.h);
       const k=Math.min(I.w/((INB[2]-INB[0])*COS), (I.h-24*u)/(INB[3]-INB[1])), ox=I.x+(I.w-(INB[2]-INB[0])*COS*k)/2, oy=I.y+20*u;

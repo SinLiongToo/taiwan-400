@@ -314,9 +314,9 @@ function Film(S){
       const nm=tx(pp.zh,pp.en); fitFont(nm, 900, 20*u, F.d, r.w-pw-150*u, 12); ctx.fillStyle=C.ink; ctx.fillText(nm, x0, y+20*u);
       let yy=y+40*u; if (bi) { fitFont(pp.en, 500, 12*u, F.b, r.w-pw-140*u, 9); ctx.fillStyle=C.muted; ctx.fillText(pp.en, x0, yy); yy+=17*u; }
       fitFont(tx(...pp.role), 400, 12.5*u, F.b, r.w-pw-24*u, 9); ctx.fillStyle=C.muted; ctx.fillText(tx(...pp.role), x0, yy);
-      const chip = bi ? `${st[1]} ${st[2]}` : tx(st[1],st[2]); ctx.font=font(700,12*u,F.b);
+      if (st[1] !== '—') { const chip = bi ? `${st[1]} ${st[2]}` : tx(st[1],st[2]); ctx.font=font(700,12*u,F.b);
       const cw=ctx.measureText(chip).width+16*u, cx=r.x+r.w-cw, cy=y+3*u;
-      ctx.fillStyle=rgba(hex(col),0.18); rrect(cx,cy,cw,22*u,11*u); ctx.fill(); ctx.strokeStyle=col; ctx.lineWidth=1.2; ctx.stroke(); ctx.fillStyle=col; ctx.fillText(chip, cx+8*u, cy+15.5*u);
+      ctx.fillStyle=rgba(hex(col),0.18); rrect(cx,cy,cw,22*u,11*u); ctx.fill(); ctx.strokeStyle=col; ctx.lineWidth=1.2; ctx.stroke(); ctx.fillStyle=col; ctx.fillText(chip, cx+8*u, cy+15.5*u); }
       ctx.strokeStyle=C.grid; ctx.beginPath(); ctx.moveTo(r.x, y+ph+12*u); ctx.lineTo(r.x+r.w, y+ph+12*u); ctx.stroke();
     });
   }

@@ -310,9 +310,9 @@ function Film(S){
       const nm=tx(pp.zh,pp.en); fitFont(nm, 900, 20*u, F.d, r.w-pw-150*u, 12); ctx.fillStyle=C.ink; ctx.fillText(nm, x0, y+20*u);
       let yy=y+40*u; if (bi) { fitFont(pp.en, 500, 12*u, F.b, r.w-pw-140*u, 9); ctx.fillStyle=C.muted; ctx.fillText(pp.en, x0, yy); yy+=17*u; }
       fitFont(tx(...pp.role), 400, 12.5*u, F.b, r.w-pw-24*u, 9); ctx.fillStyle=C.muted; ctx.fillText(tx(...pp.role), x0, yy);
-      const chip = bi ? `${st[1]} ${st[2]}` : tx(st[1],st[2]); ctx.font=font(700,12*u,F.b);
+      if (st[1] !== '—') { const chip = bi ? `${st[1]} ${st[2]}` : tx(st[1],st[2]); ctx.font=font(700,12*u,F.b);
       const cw=ctx.measureText(chip).width+16*u, cx=r.x+r.w-cw, cy=y+3*u;
-      ctx.fillStyle=rgba(hex(col),0.18); rrect(cx,cy,cw,22*u,11*u); ctx.fill(); ctx.strokeStyle=col; ctx.lineWidth=1.2; ctx.stroke(); ctx.fillStyle=col; ctx.fillText(chip, cx+8*u, cy+15.5*u);
+      ctx.fillStyle=rgba(hex(col),0.18); rrect(cx,cy,cw,22*u,11*u); ctx.fill(); ctx.strokeStyle=col; ctx.lineWidth=1.2; ctx.stroke(); ctx.fillStyle=col; ctx.fillText(chip, cx+8*u, cy+15.5*u); }
       ctx.strokeStyle=C.grid; ctx.beginPath(); ctx.moveTo(r.x, y+ph+12*u); ctx.lineTo(r.x+r.w, y+ph+12*u); ctx.stroke();
     });
   }
@@ -435,7 +435,7 @@ const ev = list => list.map(e=>({ ds:e[0], tz:e[1], te:e[2], bz:e[3], be:e[4], a
       const D=S.D, r=L.map, u=L.u;
       // Taipei basin inset (shown from 1820 on)
       const a = smooth(D('1820-01-01'), D('1825-01-01'), t); if (a<=0) return;
-      const I={ x:r.x+10, y:r.y+10, w:250*u, h:190*u };
+      const I={ x:r.x+10, y:r.y+10, w:205*u, h:168*u };
       ctx.globalAlpha=a;
       ctx.fillStyle='rgba(8,21,29,0.94)'; ctx.fillRect(I.x,I.y,I.w,I.h); ctx.strokeStyle=C.faint; ctx.lineWidth=1; ctx.strokeRect(I.x,I.y,I.w,I.h);
       const k=Math.min(I.w/((INB[2]-INB[0])*COS), (I.h-24*u)/(INB[3]-INB[1])), ox=I.x+(I.w-(INB[2]-INB[0])*COS*k)/2, oy=I.y+20*u;
