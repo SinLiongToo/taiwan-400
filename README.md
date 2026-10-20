@@ -6,7 +6,9 @@ An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: w
 
 - 台灣四百年 · Taiwan: Four Centuries — https://sinliongtoo.github.io/taiwan-400/
 - 荷西時期 · Dutch and Spanish Formosa — https://sinliongtoo.github.io/taiwan-400/dutch.html
-- 郭懷一與林爽文 · Guo Huaiyi and Lin Shuangwen — https://sinliongtoo.github.io/taiwan-400/uprisings.html
+- 郭懷一事件 · The Guo Huaiyi Rebellion — https://sinliongtoo.github.io/taiwan-400/guo.html
+- 林爽文事件 · The Lin Shuangwen Rebellion — https://sinliongtoo.github.io/taiwan-400/linshuangwen.html
+- 戴潮春事件 · The Dai Chaochun Rebellion — https://sinliongtoo.github.io/taiwan-400/daichaochun.html
 - 鄭成功攻台 · Koxinga Takes Taiwan — https://sinliongtoo.github.io/taiwan-400/koxinga.html
 - 乙未戰爭 · The 1895 War for Taiwan — https://sinliongtoo.github.io/taiwan-400/yiwei.html
 - 霧社事件 · The Musha Incident — https://sinliongtoo.github.io/taiwan-400/wushe.html
@@ -28,11 +30,13 @@ An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: w
 - A year-by-year map of Dutch (orange) and Spanish (rose) reach against Indigenous land (green): Penghu in 1622, Tayouan from 1624, Spanish Keelung and Tamsui from 1626 and 1628, the 1635–36 pacification, the expulsion of Spain in 1642, the Landdag ties to the villages, and the decline after 1654.
 - 19 events. The panels show a VOC census bar chart (1647–1656, peaking at 315 villages and 68,657 people in 1650), trade and settler figures (151,400 deerskins, 1.73 million catties of sugar, 50,000–60,000 Chinese settlers), and four people cards.
 
-**郭懷一與林爽文 (feature page, two chapters)**
+**郭懷一事件 1652 (feature page)**: a day-by-day map of the Tainan–Kaohsiung area (Saccam, the Dutch relief, the Sinkan, Siraya and Makatao allies, Houhong), with people cards and figures.
 
-- **Chapter 1: the Guo Huaiyi rebellion, 1652.** A day-by-day map of the Tainan–Kaohsiung area with the Taijiang lagoon. It follows the leak, the attack on Saccam, the Dutch relief, the gathering of Sinkan, Siraya and Makatao allies, and the battle at Houhong.
-- **Chapter 2: the Lin Shuangwen rebellion, 1786–88.** A map of western Taiwan in which each town changes over time between rebel-held, under siege, Qing-held and loyal militias (Hakka and Quanzhou). It ends with Fukang'an's campaign from Lugang, the relief of Zhuluo (renamed Chiayi) and Lin's capture at Laoquqi.
-- Both chapters have people cards (Fukang'an's portrait is embedded) and figures that appear in sequence. Where sources disagree, both figures are shown.
+**林爽文事件 1786–1788 (feature page)**: town states over time (rebel-held, under siege, Qing-held, loyal militias), Fukang'an's campaign, and the renaming of Zhuluo as Chiayi.
+
+**戴潮春事件 1862–1865 (feature page)**: a month-by-month map of central Taiwan, covering the fall of Changhua, the sieges of Chiayi, Dajia and Azhaowu, the stalemate, and the Qing counteroffensive by Ding Yuejian from the north and Lin Wencha from the south.
+
+The three rebellion pages are built from shared parts in `tools/rebellions/` by `tools/build_rebellions.py`. Edit the parts, then rebuild.
 
 **鄭成功攻台 1661–1662 (feature page)**
 
@@ -83,7 +87,9 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 | `yiwei.html` | 乙未戰爭 feature page (standalone; uses `portraits.js`) |
 | `wushe.html` | 霧社事件 feature page (standalone; Mona Rudao photo embedded; uses `portraits.js`) |
 | `dutch.html` | 荷西時期 feature page (standalone; uses `portraits.js`) |
-| `uprisings.html` | 郭懷一與林爽文 feature page, two chapters (standalone; Fukang'an portrait embedded) |
+| `guo.html`, `linshuangwen.html`, `daichaochun.html` | Rebellion feature pages (generated) |
+| `tools/build_rebellions.py`, `tools/rebellions/` | Builder plus shared head, film engine and one chapter spec per page |
+| `uprisings.html` | Old combined page, now a short page linking to the split pages |
 | `tools/smoke.js` | Smoke test: runs a page's script against a stub DOM for 4,000 frames (`node tools/smoke.js page.html 400`) |
 | `koxinga.html` | 鄭成功攻台 feature page (standalone; uses `portraits.js`) |
 | `airraids.html` | 美軍大空襲 feature page (standalone) |
@@ -96,6 +102,17 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 After editing `taiwan-400.html`, run `python build_pages.py` and commit both files. `228.html` is a complete page and needs no build step.
 
 ## Changelog
+
+### 2026-10-20: Dai Chaochun, and the rebellion pages split
+
+- Split the combined Guo Huaiyi and Lin Shuangwen page into `guo.html` and `linshuangwen.html`, each with its own background, references and links. `uprisings.html` now points to the new pages, so old links still work.
+- Added `daichaochun.html`, **戴潮春事件 1862–1865 · The Dai Chaochun Rebellion**.
+  - **Map:** central Taiwan with 11 places (Sizhangli, Changhua, Lugang, Azhaowu, Dajia, Wuchagang, Beidou, Douliumen, Chiayi, Beishinan, Xiaopuxin). Each place changes over time between rebel-held, under siege, Qing-held and militia-held, and the Qing advance comes in from the north and the south.
+  - **Time:** 14 events in five phases. The page moves month by month and labels events by season or lunar month, because the sources mostly give lunar dates or years. The one exact Gregorian date is Lin Richeng's death (Feb 6, 1864).
+  - **Panels:** people cards for Dai Chaochun, Lin Richeng, Ding Yuejian and Lin Wencha, and figures (600 troops, 10,000+ society members, about 1,000 braves, about 3 years, no reliable death toll).
+  - **References:** 林豪《東瀛紀事》, 吳德功《戴案紀略》, 丁曰健《治臺必告錄》, 連橫《臺灣通史》, Meskill on the Wufeng Lins, 許雪姬, 謝國興, and Wikipedia.
+- **Shared engine:** the three rebellion pages are now generated from shared parts (`tools/rebellions/engine.js` plus one chapter spec each) by `tools/build_rebellions.py`. The engine now lets a page define its own date display (`big`, `sub`), which the Dai page uses for month-level dates.
+- The main page now has ten feature cards in chronological order.
 
 ### 2026-10-20: Guo Huaiyi and Lin Shuangwen
 

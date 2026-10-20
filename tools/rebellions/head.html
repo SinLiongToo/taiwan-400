@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="郭懷一與林爽文：1652 年荷蘭時期的郭懷一事件與 1786–1788 年清代的林爽文事件，兩次漢人移民大型起事的逐日地圖。Guo Huaiyi (1652) and Lin Shuangwen (1786–1788): two great settler uprisings, mapped day by day.">
+<title>郭懷一與林爽文</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: two chapter "films" (Guo Huaiyi 1652 under the Dutch, Lin Shuangwen 1786–88 under the Qing), each a canvas with its own deck, then a reading column. Same sea-ink family as 台灣四百年; ember for the risings, VOC orange and Qing gold for the states, teal for militias that sided with the state. */
+:root {
+  color-scheme: dark;
+  --bg: #08151d;
+  --panel: #0e212c;
+  --line: #21404f;
+  --ink: #ece6d6;
+  --muted: #8fa6b0;
+  --ember: #e8743d;
+  --gold: #ecd04f;
+  --focus: #7fd3d0;
+  --f-display: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+  --f-body: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+html, body { background: var(--bg); color: var(--ink); margin: 0; }
+body { font-family: var(--f-body); font-size: 15px; line-height: 1.7; }
+.wrap { max-width: 1320px; margin: 0 auto; padding-inline: 16px; padding-block: 20px 56px; display: grid; gap: 14px; }
+.wrap > * { min-width: 0; }
+.top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 20px; }
+.back { color: var(--muted); font-size: 13.5px; text-decoration: none; }
+.back:hover { color: var(--ink); }
+.head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 24px; }
+.head h1 { font-family: var(--f-display); font-weight: 900; font-size: clamp(26px, 4vw, 38px); margin: 0; letter-spacing: .04em; text-wrap: balance; line-height: 1.25; }
+.head p { margin: 0; color: var(--muted); max-width: 66ch; }
+.chapters { display: flex; flex-wrap: wrap; gap: 8px; }
+.chapters a { color: var(--ink); text-decoration: none; border: 1px solid var(--line); border-radius: 4px; padding: 5px 12px; font-size: 14px; }
+.chapters a:hover { border-color: var(--muted); }
+.chap { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin: 26px 0 0; font-family: var(--f-display); font-size: clamp(21px, 2.6vw, 27px); letter-spacing: .04em; scroll-margin-top: 16px; }
+.chap small { font-family: var(--f-mono); font-size: 15px; color: var(--ember); font-weight: 600; letter-spacing: 0; }
+.stage { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--bg); }
+canvas.film { display: block; width: 100%; height: auto; max-width: 100%; }
+.deck { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding: 12px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+.deck .scrub { flex: 1 1 260px; display: flex; align-items: center; gap: 10px; min-width: 0; }
+.grp { display: inline-flex; align-items: center; gap: 8px; }
+input[type=range] { flex: 1; min-width: 0; accent-color: var(--ember); }
+output { font-family: var(--f-mono); font-variant-numeric: tabular-nums; min-width: 9ch; color: var(--ember); font-weight: 600; }
+button, select { font: inherit; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 4px; padding: 6px 12px; cursor: pointer; }
+button:hover, select:hover { border-color: var(--muted); }
+button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible, canvas:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+button.primary { background: var(--ember); color: #1d0b04; border-color: var(--ember); font-weight: 700; min-width: 5.5em; }
+button.primary .en { color: #5e2610; }
+.seg { display: inline-flex; }
+.seg button { border-radius: 0; }
+.seg button + button { border-left: 0; }
+.seg button:first-child { border-radius: 4px 0 0 4px; }
+.seg button:last-child { border-radius: 0 4px 4px 0; }
+.seg button[aria-pressed="true"] { background: var(--line); }
+.lbl { color: var(--muted); font-size: 13px; letter-spacing: .06em; }
+.read { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 32px 48px; border-top: 1px solid var(--line); padding-top: 22px; margin-top: 18px; }
+@media (max-width: 820px) { .read { grid-template-columns: minmax(0, 1fr); } }
+.read h2 { font-family: var(--f-display); font-size: 21px; margin: 0 0 12px; letter-spacing: .04em; }
+.read p { margin: 0 0 12px; max-width: 66ch; }
+.after { list-style: none; margin: 0; padding: 0; display: grid; }
+.after li { display: grid; grid-template-columns: 4.2em minmax(0, 1fr); gap: 14px; padding-block: 10px; border-bottom: 1px solid var(--line); }
+.after li:last-child { border-bottom: 0; }
+.after b { font-family: var(--f-mono); font-variant-numeric: tabular-nums; color: var(--ember); font-weight: 600; }
+.after span { min-width: 0; }
+.side { display: grid; gap: 26px; align-content: start; color: var(--muted); }
+.side p { margin: 0; }
+.side a { color: var(--ink); }
+.side ul, .side ol { margin: 0; padding-left: 1.3em; }
+.refs li { margin-bottom: 6px; font-size: 13.5px; }
+#credits { font-size: 12.5px; }
+#credits a { color: var(--muted); }
+.en { color: var(--muted); font-size: .86em; margin-left: .45em; font-weight: 400; letter-spacing: 0; }
+h1 .en { display: block; margin-left: 0; font-size: .46em; font-family: var(--f-body); letter-spacing: .02em; }
+p .en, li .en, .read h2 .en, .after span .en { display: block; margin-left: 0; }
+.read h2 .en { font-family: var(--f-body); font-size: .62em; }
+.chap .en { font-family: var(--f-body); font-size: .6em; }
+</style>
+</head>
+<body>
