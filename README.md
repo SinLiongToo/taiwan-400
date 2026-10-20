@@ -109,6 +109,16 @@ After editing `taiwan-400.html`, run `python build_pages.py` and commit both fil
 
 ## Changelog
 
+### 2026-10-20: Fact check of the Indigenous resistance page
+
+- Re-checked every claim against the NAER materials (re-read in full), the zh Wikipedia articles on 新城事件 and 拉荷·阿雷, and the en Wikipedia article on Sakuma Samata. Corrections:
+  - **Xincheng:** dated Dec 23, 1896. The 13 dead are now "reported", because Wikipedia's infobox gives the toll as unknown. The causes now list all the accounts: disregard for custom, taking gold from the river, and, in oral history, assault on a woman.
+  - **Sakuma's term:** Apr 11, 1906 – May 1, 1915 (the old end month was wrong).
+  - **Lahu Ali's peace:** the date is now given as April 22, 1933 (one account) or May (another), and the stronghold now falls at that date.
+  - **Alimang Sikan:** sources disagree on how he was related to Lahu Ali, so the relationship is no longer stated. Lahu Ali's seven kills at Dafen have been added.
+  - **Cikasuan:** now notes that the conflict lasted until 1914 (NAER).
+- **Map model fix:** the Five-Year Plan targeted the northern mountains, so the control model now advances the north and the central-south on separate schedules. The south is no longer shown as conquered by 1914, and the Truku heartland stays Indigenous until the Taroko war ends. Checked with a screenshot.
+
 ### 2026-10-20: Indigenous resistance to Japanese rule
 
 - Added `indigenous.html`, **原住民族抗日 1896–1933 · Indigenous Resistance to Japanese Rule**, built from the shared engine (`tools/rebellions/indigenous.js`).
