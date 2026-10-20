@@ -12,6 +12,7 @@ An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: w
 - 戴潮春事件 · The Dai Chaochun Rebellion — https://sinliongtoo.github.io/taiwan-400/daichaochun.html
 - 鄭成功攻台 · Koxinga Takes Taiwan — https://sinliongtoo.github.io/taiwan-400/koxinga.html
 - 乙未戰爭 · The 1895 War for Taiwan — https://sinliongtoo.github.io/taiwan-400/yiwei.html
+- 原住民族抗日 · Indigenous Resistance to Japanese Rule — https://sinliongtoo.github.io/taiwan-400/indigenous.html
 - 霧社事件 · The Musha Incident — https://sinliongtoo.github.io/taiwan-400/wushe.html
 - 美軍大空襲 · The Allied Air Raids on Taiwan — https://sinliongtoo.github.io/taiwan-400/airraids.html
 - 余清芳與西來庵事件 · Yu Qingfang and the Tapani Incident — https://sinliongtoo.github.io/taiwan-400/tapani.html
@@ -53,6 +54,8 @@ The three rebellion pages are built from shared parts in `tools/rebellions/` by 
 - 19 events from the Treaty of Shimonoseki to the Battle of Changxing, including Keelung, Taipei, Hsinchu, Jianbishan, Miaoli, Baguashan, Chiayi and Tainan.
 - People cards for Tang Jingsong, Liu Yongfu, Wu Tang-hsing and Kabayama Sukenori. Casualty figures appear at the end; where sources disagree, both are shown.
 
+**原住民族抗日 1896–1933 (feature page)**: a year-by-year map in which Japanese control and a schematic guard-line frontier push into Indigenous land. It covers Xincheng (1896), Dabao (1900–06), Nanzhuang (1902), Weili (1906), Cikasuan and the Yoshino settler village (1908–09), the Five-Year Plan, the Taroko war (1914), Dafen (1915, 1921) and Lahu Ali's peace (1933). People cards cover Watan Sekuh, Rih A-kuai, Lahu Ali (public-domain photo) and Sakuma Samata.
+
 **霧社事件 1930 (feature page)**
 
 - A schematic map of the Musha highlands: the six Tgdaya villages change state over time (before, rising, destroyed, emptied). It also shows Japanese columns, aircraft and gas, the Toda attack on the detention shelters, and the forced removal to Kawanakajima.
@@ -90,7 +93,7 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 | `yiwei.html` | 乙未戰爭 feature page (standalone; uses `portraits.js`) |
 | `wushe.html` | 霧社事件 feature page (standalone; Mona Rudao photo embedded; uses `portraits.js`) |
 | `dutch.html` | 荷西時期 feature page (standalone; uses `portraits.js`) |
-| `guo.html`, `linshuangwen.html`, `daichaochun.html`, `feuds.html` | Rebellion and feud feature pages (generated) |
+| `guo.html`, `linshuangwen.html`, `daichaochun.html`, `feuds.html`, `indigenous.html` | Rebellion, feud and Indigenous-resistance feature pages (generated) |
 | `tools/build_rebellions.py`, `tools/rebellions/` | Builder plus shared head, film engine and one chapter spec per page |
 | `uprisings.html` | Old combined page, now a short page linking to the split pages |
 | `tools/smoke.js` | Smoke test: runs a page's script against a stub DOM for 4,000 frames (`node tools/smoke.js page.html 400`) |
@@ -105,6 +108,15 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 After editing `taiwan-400.html`, run `python build_pages.py` and commit both files. `228.html` is a complete page and needs no build step.
 
 ## Changelog
+
+### 2026-10-20: Indigenous resistance to Japanese rule
+
+- Added `indigenous.html`, **原住民族抗日 1896–1933 · Indigenous Resistance to Japanese Rule**, built from the shared engine (`tools/rebellions/indigenous.js`).
+  - **Map:** the island's dots show Japanese control spreading into the mountains on the schedule of the mountain policy. A highlighted band marks the guard-line frontier, and Lahu Ali's Bunun stronghold stays Indigenous until 1933.
+  - **Time:** 15 events in five phases, with each place labelled by its people (Truku, Atayal, Saisiyat, Amis, Bunun, Seediq).
+  - **Figures:** 13, 39, about 1,000, 12, 23 and about 80, each appearing in turn.
+  - **Sources:** facts were checked against the National Academy for Educational Research's supplementary materials on the Taroko and Cikasuan incidents (read in full) and the zh Wikipedia articles on Nanzhuang, Dabao and Dafen. The Lidongshan and Daguanshan incidents, which could not be confirmed, are left out.
+- The main page now has twelve feature cards.
 
 ### 2026-10-20: Feuds between settler groups
 
