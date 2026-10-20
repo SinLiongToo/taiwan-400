@@ -1,6 +1,6 @@
 // ================= chapter: Dai Chaochun, 1862–1865 =================
 {
-  const B=[120.25, 23.40, 121.00, 24.45];
+  const B=[120.08, 23.40, 121.00, 24.45];
   const TOWNS = {
     sizhangli: { zh:'四張犁（戴潮春據點）', en:'Sizhangli (Dai’s base)', p:[120.70,24.18], side:'r' },
     dajia:     { zh:'大甲', en:'Dajia', p:[120.62,24.35], side:'l' },
