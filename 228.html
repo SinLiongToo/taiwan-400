@@ -137,7 +137,7 @@ p .en, li .en, .read h2 .en, .after span .en { display: block; margin-left: 0; }
     <div class="side">
       <div>
         <h2 data-k="tollH"></h2>
-        <div class="big">18,000–28,000</div>
+        <div class="big">8,324–11,841</div>
         <p data-k="toll"></p>
       </div>
       <div>
@@ -154,6 +154,7 @@ p .en, li .en, .read h2 .en, .after span .en { display: block; margin-left: 0; }
         <ol class="refs">
           <li>行政院研究二二八事件小組（賴澤涵總主筆），《「二二八事件」研究報告》，臺北：時報文化，1994（1992 年公布）。</li>
           <li>二二八事件紀念基金會，《二二八事件責任歸屬研究報告》，2006。</li>
+          <li>陳儀深、薛化元主編，《二二八事件真相與轉型正義報告》，臺北：二二八事件紀念基金會，2021。</li>
           <li>促進轉型正義委員會，《任務總結報告》，2022。</li>
           <li>國家人權博物館，白色恐怖景美紀念園區、綠島紀念園區介紹資料。</li>
           <li>維基百科「二二八事件」「台灣白色恐怖時期」條目；Wikipedia, “White Terror (Taiwan).”（2026 年 10 月查閱）</li>
@@ -190,9 +191,9 @@ const UI = {
   ch1: ['一、二二八事件','1. The February 28 Incident'], ch2: ['二、白色恐怖','2. The White Terror'],
   play: ['播放','Play'], pause: ['暫停','Pause'], replay: ['重播','Replay'], speed: ['速度','Speed'],
   afterH: ['轉型正義之路', 'The road to redress'],
-  tollH: ['二二八死亡人數', 'Deaths in 1947'],
-  toll: ['1992 年行政院《二二八事件研究報告》以人口學方法推估的死亡人數。確切數字至今沒有定論。',
-         'The estimate in the Executive Yuan’s 1992 research report, based on demographic analysis. The exact toll is still unknown.'],
+  tollH: ['二二八死亡與失蹤人數', 'Dead and missing, 1947'],
+  toll: ['官方文獻可確認的最低死亡與失蹤人數（陳儀深、薛化元主編，2021）。1992 年行政院研究小組公布報告時，陳寬政以人口學方法推估死亡約 18,000–28,000 人，但此數字未列入正式出版的報告。確切數字至今沒有定論。',
+         'The minimum number of dead and missing that official records can confirm (Chen Yi-shen and Hsueh Hua-yuan, eds., 2021). When the Executive Yuan’s research group released its report in 1992, Chen Kuan-cheng gave a demographic estimate of about 18,000–28,000 deaths, but that figure was left out of the published report. The exact toll is still unknown.'],
   mlH: ['戒嚴', 'Martial law'], mlBig: ['38 年', '38 years'],
   ml: ['1949 年 5 月 20 日至 1987 年 7 月 15 日，是當時世界上持續最久的戒嚴之一。',
        'From May 20, 1949 to July 15, 1987, one of the longest periods of martial law in the world at the time.'],
@@ -372,22 +373,22 @@ const ROUTES = [
   ['taipei','yilan','03-17','03-18'], ['keelung','hualien','03-14','03-17',true], ['hualien','taitung','03-17','03-18'],
 ].map(([a,b,s,e,sea])=>({a:CITY[a].p, b:CITY[b].p, s:dayOf(s), e:dayOf(e), sea:!!sea}));
 const EV228 = [
-  ['02-27','天馬茶房前緝菸','Cigarette raid at Tianma Teahouse','專賣局查緝員在台北大稻埕查緝私菸，以槍托擊傷菸販林江邁，又開槍擊中旁觀民眾陳文溪，陳翌日身亡。','Monopoly Bureau agents seized contraband cigarettes in Dadaocheng, struck vendor Lin Jiang-mai with a gun butt, and shot bystander Chen Wen-xi, who died the next day.','taipei'],
+  ['02-27','天馬茶房前緝菸','Cigarette raid at Tianma Teahouse','專賣局查緝員在台北大稻埕查緝私菸，以槍柄擊傷菸販林江邁，又開槍擊中旁觀民眾陳文溪，陳翌日身亡。','Monopoly Bureau agents seized contraband cigarettes in Dadaocheng, struck vendor Lin Jiang-mai with a pistol butt, and shot bystander Chen Wen-xi, who died the next day.','taipei'],
   ['02-28','長官公署前開槍','Shots at the Chief Executive’s office','請願群眾前往行政長官公署，衛兵以機槍掃射。民眾占領台灣廣播電台，消息傳遍全島。台北宣布戒嚴。','Protesters marched to the Chief Executive’s office and guards fired machine guns into the crowd. People took over the radio station and the news spread island-wide. Taipei was put under martial law.','taipei'],
   ['03-01','抗爭擴及北部','Protest spreads north','基隆、板橋、桃園相繼發生衝突；台北士紳組成「緝菸血案調查委員會」。','Clashes broke out in Keelung, Banqiao and Taoyuan. Taipei civic leaders formed a committee to investigate the shooting.','keelung'],
-  ['03-02','二二八事件處理委員會','The 228 Settlement Committee','調查委員會擴大為處理委員會，與長官公署談判。台中、嘉義、台南、宜蘭群眾集會。','The committee grew into the 228 Incident Settlement Committee to negotiate with the government. Crowds rallied in Taichung, Chiayi, Tainan and Yilan.','taichung'],
-  ['03-03','嘉義水上機場之戰','Fighting at Shuishang airfield','嘉義民兵包圍水上機場與軍營，雙方對峙。','Militias in Chiayi surrounded Shuishang airfield and army camps.','shuishang'],
-  ['03-04','東部與南部響應','The east and south join','高雄、屏東、花蓮、台東相繼成立地方處理委員會。','Local committees formed in Kaohsiung, Pingtung, Hualien and Taitung.','hualien'],
-  ['03-06','高雄要塞出兵','The Kaohsiung garrison attacks','高雄要塞司令彭孟緝派兵攻擊市政府與火車站，前往談判的代表遭扣押或殺害。','Garrison commander Peng Meng-chi sent troops against Kaohsiung city hall and the railway station; negotiators were detained or killed.','kaohsiung'],
-  ['03-07','三十二條處理大綱','The 32 Demands','處理委員會提出政治改革要求，包括省自治與人權保障，陳儀拒絕。','The Settlement Committee presented demands for political reform, including provincial self-rule and civil rights. Chen Yi rejected them.','taipei'],
-  ['03-08','國軍登陸基隆','Troops land at Keelung','整編第二十一師自基隆登陸，沿途開槍掃射。','The Reorganized 21st Division landed at Keelung and fired on people along the way.','keelung'],
-  ['03-09','台北再度戒嚴','Martial law again in Taipei','軍隊進入台北展開搜捕。林茂生、陳炘、王添灯等社會菁英在之後數日被帶走，從此失蹤或遇害。','Troops entered Taipei and began arrests. In the following days leading figures such as Lin Mao-sheng, Chen Xin and Wang Tian-deng were taken away and never returned.','taipei'],
-  ['03-10','處理委員會被解散','The committee is dissolved','陳儀宣布處理委員會為非法組織，下令解散。','Chen Yi declared the Settlement Committee illegal and ordered it dissolved.','taipei'],
+  ['03-02','二二八事件處理委員會','The 228 Settlement Committee','調查委員會決定擴大納入各界代表，改組為處理委員會，3月3日在中山堂召開首次會議。衝突擴及台中、嘉義、台南等地。','The investigation committee agreed to take in wider representation and became the 228 Incident Settlement Committee, which first met at Zhongshan Hall on March 3. Unrest spread to Taichung, Chiayi and Tainan.','taichung'],
+  ['03-03','嘉義民兵與駐軍交戰','Chiayi militias fight the garrison','嘉義成立處理委員會與防衛司令部（陳復志任司令），民兵與水上機場、紅毛埤軍械庫等處的駐軍交戰。','Chiayi formed a settlement committee and a defence command under Chen Fu-zhi, and militias fought the troops at Shuishang airfield and the Hongmaopi arsenal.','shuishang'],
+  ['03-04','各地成立處理委員會','Local committees form','處理委員會通知 17 個縣市成立地方分會。基隆、宜蘭、台東當日成立，花蓮於翌日成立。','The committee asked 17 cities and counties to form local branches. Keelung, Yilan and Taitung set theirs up that day and Hualien the next.','hualien'],
+  ['03-06','高雄要塞出兵','The Kaohsiung garrison attacks','高雄要塞司令彭孟緝派兵攻擊市政府、火車站與高雄中學，前往談判的代表遭扣押，死者約 350 人。','Garrison commander Peng Meng-chi sent troops against Kaohsiung city hall, the railway station and Kaohsiung Middle School. The negotiators who came to him were arrested; about 350 people died.','kaohsiung'],
+  ['03-07','三十二條處理大綱','The 32 Demands','王添灯草擬的《三十二條處理大綱》在處理委員會通過，要求政治改革與高度自治，面呈陳儀。確定援軍將至後，陳儀斷然拒絕。','The committee adopted the 32 Demands drafted by Wang Tian-deng, calling for political reform and wide self-rule, and handed them to Chen Yi. Once he knew reinforcements were coming, Chen Yi flatly rejected them.','taipei'],
+  ['03-08','國軍登陸基隆','Troops land at Keelung','福建增援的憲兵團當晚在基隆登陸，劉雨卿的整編第二十一師隨後陸續上岸，各地展開大規模軍事鎮壓。','Military police from Fujian landed at Keelung that night, and Liu Yu-qing’s Reorganized 21st Division followed in stages. Large-scale crackdowns began across the island.','keelung'],
+  ['03-09','軍隊進入台北','Troops enter Taipei','憲兵於凌晨乘卡車進入台北，警備總司令部發布安民布告，展開搜捕。林茂生、陳炘、王添灯等社會菁英在之後數日被帶走，從此失蹤或遇害。','Troops entered Taipei and began arrests. In the following days leading figures such as Lin Mao-sheng, Chen Xin and Wang Tian-deng were taken away and never returned.','taipei'],
+  ['03-10','全台戒嚴','Island-wide martial law','陳儀宣布全台戒嚴，解散處理委員會等團體。','Chen Yi declared martial law across Taiwan and dissolved the Settlement Committee and other groups.','taipei'],
   ['03-12','二七部隊撤往埔里','The 27 Brigade retreats to Puli','台中的民兵「二七部隊」撤入埔里山區。','Taichung’s militia, the 27 Brigade, withdrew into the hills at Puli.','puli'],
-  ['03-13','湯德章於台南遇害','Tang De-zhang executed in Tainan','律師湯德章被押至台南市區公開槍決。','Lawyer Tang De-zhang was shot in public in central Tainan.','tainan'],
+  ['03-13','湯德章於台南遇害','Tang De-zhang executed in Tainan','律師、台南市處理委員會治安組長湯德章在 3 月 11 日被捕、遭刑求，13 日被押上卡車遊街，於民生綠園公開槍決。','Lawyer Tang De-zhang, security chief of the Tainan committee, was arrested on March 11 and tortured. On the 13th he was paraded on a truck and shot in public at Minsheng Green, now a park in his name.','tainan'],
   ['03-16','烏牛欄之役','Battle of Wuniulan','二七部隊在埔里烏牛欄橋與國軍交戰後解散。','The 27 Brigade fought government troops at Wuniulan Bridge near Puli, then disbanded.','puli'],
   ['03-17','白崇禧來台宣慰','Bai Chongxi arrives','國防部長白崇禧抵台處理善後。','Defense Minister Bai Chongxi arrived to oversee the aftermath.','taipei'],
-  ['03-20','清鄉開始','The purges begin','全島展開清鄉：清查戶口、鼓勵密告、連坐處分。','Island-wide purges began: house searches, informants and collective punishment.',null],
+  ['03-20','清鄉開始','The purges begin','陳儀發布《為實施清鄉告民眾書》，全島劃為 7 個綏靖區展開清鄉：清查戶口、鼓勵密告、連坐處分。','Chen Yi announced the purges. The island was split into seven pacification zones for house searches, informants and collective punishment.',null],
   ['03-25','陳澄波於嘉義車站前遇害','Chen Cheng-po executed in Chiayi','畫家、嘉義市參議員陳澄波等人在嘉義火車站前被公開槍決。','Painter and Chiayi councillor Chen Cheng-po and others were shot in front of Chiayi Station.','chiayi'],
   ['04-22','撤銷長官公署','The executive office is abolished','行政院決議撤銷台灣省行政長官公署，改設台灣省政府。','The Executive Yuan abolished the Chief Executive’s office and created a provincial government.',null],
   ['05-16','清鄉結束','The purges end','魏道明就任台灣省政府主席，宣布結束清鄉。','Wei Tao-ming took office as provincial chairman and declared the purges over.','taipei'],
@@ -517,9 +518,9 @@ const EVWT = [
   [1950.44,'吳石案','Wu Shi case','國防部參謀次長吳石以共諜罪名在馬場町被槍決。','Vice Chief of General Staff Wu Shi was executed at Machangding as a Communist spy.','machangding'],
   [1950.45,'檢肅匪諜條例','Statute for Denouncing Spies','鼓勵檢舉「匪諜」，被告財產沒收後可分給告密者。','It encouraged denunciations and gave informants a share of the accused’s confiscated property.',null],
   [1951.4,'綠島新生訓導處','Green Island “New Life” camp','政治犯被送往綠島進行勞動改造與思想教育。','Political prisoners were shipped to Green Island for forced labor and reeducation.','greenisland'],
-  [1952.99,'鹿窟事件','Luku Incident','軍警包圍石碇鹿窟村，數百名村民被捕，多人遭槍決。','Troops surrounded Luku village in Shiding; hundreds were arrested and many were executed.','luku'],
+  [1952.99,'鹿窟事件','Luku Incident','軍警包圍石碇鹿窟村搜捕「共黨武裝基地」，400 多人被捕，35 人遭槍決。','Troops surrounded Luku village in Shiding, hunting a supposed Communist base. Over 400 people were arrested and 35 were executed.','luku'],
   [1954.29,'高一生、湯守仁遇害','Uyongu Yatauyungana executed','鄒族菁英高一生、湯守仁等人遭槍決，原住民自治的構想就此斷絕。','Tsou leaders Uyongu Yatauyungana (Kao Yi-sheng) and Tang Shou-jen were executed, ending hopes of Indigenous self-rule.','alishan'],
-  [1960.68,'雷震案','Lei Chen case','《自由中國》發行人雷震籌組反對黨，被以「知匪不報」判刑十年。','Lei Chen, publisher of Free China, was jailed for ten years after trying to found an opposition party.','qingdao'],
+  [1960.68,'雷震案','Lei Chen case','《自由中國》發行人雷震籌組反對黨，被以「為匪宣傳」「知匪不報」判刑十年。','Lei Chen, publisher of Free China, tried to found an opposition party and was jailed for ten years for “spreading Communist propaganda” and “failing to report a spy.”','qingdao'],
   [1964.72,'台灣人民自救運動宣言','Formosan Self-Salvation Declaration','彭明敏與學生謝聰敏、魏廷朝在印刷宣言時被捕。','Peng Ming-min and his students Hsieh Tsung-min and Wei Ting-chao were arrested while printing their declaration.','ntu'],
   [1968.2,'柏楊案','Bo Yang case','作家柏楊因翻譯《大力水手》漫畫被控影射元首，入獄九年多。','Writer Bo Yang spent over nine years in prison for a Popeye comic translation said to mock the leader.',null],
   [1968.5,'景美看守所啟用','Jingmei detention center opens','警備總部軍法處遷到新店景美，此後重大政治案件在此審判。','The Garrison Command’s military court moved to Jingmei, where major political trials were later held.','jingmei'],
@@ -528,7 +529,7 @@ const EVWT = [
   [1977.88,'中壢事件','Zhongli Incident','選舉舞弊引發群眾包圍警察局，黨外運動聲勢大增。','Vote-rigging set off a crowd siege of a police station, and the Tangwai opposition gained strength.','zhongli'],
   [1979.94,'美麗島事件','Kaohsiung Incident','人權日遊行遭鎮壓，黨外領袖被捕，隔年在景美接受軍法大審。','A Human Rights Day rally was suppressed; opposition leaders were arrested and tried by military court at Jingmei the next year.','kaohsiung'],
   [1980.16,'林宅血案','Lin family murders','美麗島受刑人林義雄的母親與雙胞胎女兒在家中遇害，至今未破案。','The mother and twin daughters of jailed opposition leader Lin Yi-hsiung were murdered at home; the case is unsolved.','lin'],
-  [1981.5,'陳文成事件','Chen Wen-chen case','旅美學者陳文成被警備總部約談後，陳屍台大校園。','Professor Chen Wen-chen was found dead on the NTU campus a day after questioning by the Garrison Command.','ntu'],
+  [1981.5,'陳文成事件','Chen Wen-chen case','旅美學者陳文成被警備總部帶走約談，隔日清晨陳屍台大校園。','Carnegie Mellon assistant professor Chen Wen-chen was taken for questioning by the Garrison Command and found dead on the NTU campus the next morning.','ntu'],
   [1984.79,'江南案','Henry Liu murder','作家劉宜良（江南）在美國被情報局指使的幫派份子槍殺。','Writer Henry Liu was shot in California by gangsters acting for Taiwan’s military intelligence.',null],
   [1986.74,'民主進步黨成立','The DPP is founded','黨外人士在圓山飯店宣布組黨，挑戰戒嚴下的黨禁。','Opposition figures announced a new party at the Grand Hotel, defying the ban on parties.','grand'],
   [1987.54,'解除戒嚴','Martial law lifted','38 年的戒嚴結束，政治犯陸續獲釋。','Thirty-eight years of martial law ended and political prisoners began to be released.',null],

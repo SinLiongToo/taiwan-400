@@ -109,6 +109,23 @@ After editing `taiwan-400.html`, run `python build_pages.py` and commit both fil
 
 ## Changelog
 
+### 2026-10-20: Fact check of the 228 and White Terror page
+
+- **228 chapter:** each event was rechecked against the zh Wikipedia articles on the 228 Incident, the Kaohsiung crackdown, the Chiayi militias, the local settlement committees and Tang De-zhang.
+  - 2/27: Lin Jiang-mai was struck with a pistol butt, not a rifle butt.
+  - 3/2–3/3: the settlement committee was reorganized on 3/2 and held its first meeting on 3/3.
+  - 3/3: Chiayi formed its committee and defence command, and militias fought the garrison at Shuishang airfield and the Hongmaopi arsenal.
+  - 3/4: the local committees are now listed by their actual dates (Keelung, Yilan and Taitung on 3/4; Hualien on 3/5).
+  - 3/6: the Kaohsiung crackdown also hit Kaohsiung Middle School, and about 350 people died.
+  - 3/7: the 32 Demands were drafted by Wang Tian-deng and rejected only once Chen Yi knew troops were coming.
+  - 3/8: military police from Fujian landed first, followed by the 21st Division.
+  - 3/9: "martial law again in Taipei" is replaced by troops entering Taipei.
+  - 3/10: island-wide martial law and the dissolution of the committee.
+  - 3/13: Tang De-zhang was arrested on 3/11 and shot at Minsheng Green.
+  - 3/20: the purge proclamation and seven pacification zones.
+- **Death toll:** the panel now shows the official minimum of 8,324–11,841 dead and missing (Chen Yi-shen and Hsueh Hua-yuan, eds., 2021). It notes that Chen Kuan-cheng's 18,000–28,000 estimate from 1992 was left out of the published report. The 2021 report is added to the references.
+- **White Terror chapter:** Luku now gives 400+ arrested and 35 executed. Lei Chen's charges, and the timeline and title for Chen Wen-chen, are made more precise. The other 22 events, the prison and execution-site years and the "what came after" list were confirmed.
+
 ### 2026-10-20: Fact check of the Indigenous resistance page
 
 - Re-checked every claim against the NAER materials (re-read in full), the zh Wikipedia articles on 新城事件 and 拉荷·阿雷, and the en Wikipedia article on Sakuma Samata. Corrections:
