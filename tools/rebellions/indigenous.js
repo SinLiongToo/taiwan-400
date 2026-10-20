@@ -72,7 +72,9 @@
       // Lahu Ali's mountains held out until 1933; Musha briefly in 1930
       const holdout = y < 1933.35 && dist([d.lon,d.lat],[120.98,23.24]) < 0.13;
       const musha = y > 1930.82 && y < 1931.2 && dist([d.lon,d.lat],[121.13,24.03]) < 0.1;
-      if (holdout || musha) return [INDG, 0.75];
+      // the Truku heartland stayed Indigenous until the Taroko war ended (Aug 31, 1914)
+      const taroko = y < 1914.67 && d.lat > 23.95 && d.lat < 24.35 && d.lon > 121.25 && d.m > 0.12;
+      if (holdout || musha || taroko) return [INDG, 0.75];
       if (Math.abs(d.m - mth) < 0.035 && mth < 1) return [LINE, 0.85];
       return d.m < mth ? [[0,1,2].map(j=>BASE[j]+(JPN[j]-BASE[j])*0.55), 0.6] : [INDG, 0.4+0.35*d.m];
     },
