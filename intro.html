@@ -1,22 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="l-bi">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="A practical guide to explaining 400 years of Taiwan's history in English: a 30-second version, six eras, key terms, careful phrasing and answers to common questions.">
+<meta name="description" content="A practical guide to explaining 400 years of Taiwan's history in English, with Chinese alongside: a 30-second version, six eras, key terms, careful phrasing and answers to common questions. 如何用英文介紹台灣歷史，附中文對照。">
 <title>Introducing Taiwan's History</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
 <style>
-/* Layout: one reading column in the 台灣四百年 sea-ink look. A to-scale era ribbon (1600–2026) opens the page; each era below repeats the ribbon colour as its marker. Single deliberate dark theme, shared with the other pages. */
+/* Layout: one reading column in the 台灣四百年 sea-ink look; in 中英 mode it widens and each passage pairs English (left) with Chinese (right), stacking on phones. A to-scale era ribbon (1600–2026) opens the page; each era repeats its ribbon colour. Single deliberate dark theme, shared with the other pages. */
 :root {
   color-scheme: dark;
   --bg: #08151d;
   --panel: #0e212c;
   --line: #21404f;
   --ink: #ece6d6;
+  --ink2: #cdc6b4;
   --muted: #8fa6b0;
   --gold: #ecd04f;
   --focus: #7fd3d0;
@@ -28,22 +29,41 @@
 html, body { background: var(--bg); color: var(--ink); margin: 0; }
 body { font-family: var(--f-body); font-size: 16px; line-height: 1.7; }
 .wrap { max-width: 760px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 24px 64px; display: grid; gap: 44px; }
+html.l-bi .wrap { max-width: 1080px; }
 .wrap > * { min-width: 0; }
 a { color: var(--gold); }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* language: .e = English, .z = Chinese */
+html.l-en .z, html.l-zh .e { display: none !important; }
+.z { color: var(--ink2); }
+.pair { display: grid; gap: 6px; }
+.pair > * { min-width: 0; }
+@media (min-width: 760px) { html.l-bi .pair { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; } }
+html.l-bi li > .z, html.l-bi td > .z, html.l-bi h2 > .z, html.l-bi h3 > .z { display: block; }
+
+.top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 20px; }
 .back { font-size: 14px; color: var(--muted); text-decoration: none; }
 .back:hover { color: var(--ink); }
+.seg { display: inline-flex; }
+.seg button { border-radius: 0; }
+.seg button + button { border-left: 0; }
+.seg button:first-child { border-radius: 4px 0 0 4px; }
+.seg button:last-child { border-radius: 0 4px 4px 0; }
+.seg button[aria-pressed="true"] { background: var(--line); }
 header { display: grid; gap: 14px; }
 .eyebrow { font-family: var(--f-mono); font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0; }
 h1 { font-family: var(--f-display); font-weight: 900; font-size: clamp(30px, 6vw, 46px); line-height: 1.2; margin: 0; text-wrap: balance; letter-spacing: .01em; }
 h1 span { display: block; font-size: .5em; font-weight: 500; color: var(--muted); margin-top: 6px; letter-spacing: .08em; }
-.lede { margin: 0; color: var(--muted); font-size: 17px; max-width: 62ch; }
+.lede { color: var(--muted); font-size: 17px; }
 h2 { font-family: var(--f-display); font-weight: 700; font-size: 24px; line-height: 1.3; margin: 0 0 4px; text-wrap: balance; }
+h2 .z { font-size: .78em; font-weight: 500; }
 h2 small { display: block; font-family: var(--f-body); font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: .06em; }
 h3 { font-family: var(--f-display); font-weight: 700; font-size: 19px; margin: 0; line-height: 1.35; }
+h3 .z { font-size: .85em; font-weight: 500; }
 section { display: grid; gap: 14px; }
 p { margin: 0; }
-.zh { font-family: var(--f-body); color: var(--muted); font-size: .9em; }
+.note { color: var(--muted); font-size: 15px; }
 
 /* era ribbon, drawn to scale: flex-grow = years */
 .ribbon { display: grid; gap: 6px; }
@@ -54,29 +74,32 @@ p { margin: 0; }
 .ticks span { position: absolute; top: 0; transform: translateX(-50%); }
 .ticks span:first-child { transform: none; }
 .legend { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 13.5px; color: var(--muted); }
-.legend i, .era i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: none; }
-.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: none; }
+.legend > span { display: inline-flex; align-items: center; gap: 7px; }
 
 /* the 30-second script */
-.say { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 20px 22px; display: grid; gap: 14px; }
-.say blockquote { margin: 0; font-family: var(--f-display); font-size: 18.5px; line-height: 1.75; font-weight: 500; }
+.say { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 20px 22px; display: grid; gap: 16px; }
+.say blockquote { margin: 0; font-family: var(--f-display); font-size: 18px; line-height: 1.75; font-weight: 500; }
+.say blockquote.z { font-size: 17px; line-height: 1.9; }
 .say .row { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
 button { font: inherit; font-size: 14px; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 4px; padding: 5px 12px; cursor: pointer; }
 button:hover { border-color: var(--muted); }
 .status { font-size: 13px; color: var(--muted); }
 
 /* eras */
-.eras { display: grid; gap: 30px; }
+.eras { display: grid; gap: 34px; }
 .era { display: grid; grid-template-columns: 10px minmax(0, 1fr); gap: 0 16px; }
-.era > i { width: 10px; height: auto; border-radius: 3px; }
-.era > div { display: grid; gap: 8px; min-width: 0; }
+.era > i { width: 10px; border-radius: 3px; }
+.era > div { display: grid; gap: 10px; min-width: 0; }
 .era .when { font-family: var(--f-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; letter-spacing: .04em; }
-.era .line { border-left: 2px solid var(--line); padding-left: 12px; font-style: italic; color: var(--ink); }
+.era .line { border-left: 2px solid var(--line); padding-left: 12px; }
+.era .line .e { font-style: italic; }
 .era .line b { font-style: normal; font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .1em; color: var(--muted); display: block; }
 .era ul { margin: 0; padding-left: 1.1em; color: var(--muted); font-size: 15px; }
+.era ul .z { color: var(--ink2); opacity: .85; }
 .era .more { font-size: 14px; display: flex; flex-wrap: wrap; gap: 4px 14px; }
 
-/* glossary */
+/* tables */
 .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
 table { border-collapse: collapse; width: 100%; font-size: 15px; min-width: 520px; }
 th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
@@ -84,23 +107,26 @@ tr:last-child td { border-bottom: 0; }
 th { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; background: var(--panel); }
 td:first-child { font-weight: 700; white-space: nowrap; }
 td:nth-child(2) { white-space: nowrap; color: var(--muted); }
+td .z { margin-top: 4px; font-size: .94em; }
 
 /* tips and Q&A */
-.tips { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
-.tips li { display: grid; gap: 2px; }
-.tips b { color: var(--ink); }
-.tips span { color: var(--muted); }
-.qa { display: grid; gap: 22px; }
-.qa div { display: grid; gap: 6px; }
+.tips { margin: 0; padding: 0; list-style: none; display: grid; gap: 18px; }
+.tips b { display: block; color: var(--ink); }
+.tips p.e { color: var(--muted); }
+.qa { display: grid; gap: 26px; }
+.qa > div { display: grid; gap: 8px; }
 .qa h3 { font-size: 17.5px; }
-.qa p { color: var(--muted); }
-.outline { margin: 0; padding-left: 1.4em; display: grid; gap: 10px; }
+.qa p.e { color: var(--muted); }
+.outline { margin: 0; padding-left: 1.4em; display: grid; gap: 14px; }
 .outline li::marker { font-family: var(--f-mono); color: var(--gold); }
 .outline b { display: block; }
-.outline span { color: var(--muted); font-size: 15px; }
-.links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px 24px; margin: 0; padding: 0; list-style: none; font-size: 15px; }
+.outline .pair p.e { color: var(--muted); font-size: 15px; }
+.outline .pair p.z { font-size: 15px; }
+.links { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px 24px; margin: 0; padding: 0; list-style: none; font-size: 15px; }
 .links li { display: flex; gap: 10px; align-items: baseline; }
 .links .y { font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; min-width: 4.5ch; }
+.links .z { margin-left: .4em; font-size: .92em; }
+html.l-zh .links .z { margin-left: 0; color: var(--gold); }
 footer { border-top: 1px solid var(--line); padding-top: 16px; font-size: 13.5px; color: var(--muted); display: grid; gap: 8px; }
 @media (max-width: 480px) { .say blockquote { font-size: 17px; } h2 { font-size: 22px; } }
 </style>
@@ -108,133 +134,170 @@ footer { border-top: 1px solid var(--line); padding-top: 16px; font-size: 13.5px
 <body>
 <main class="wrap">
   <header>
-    <a class="back" href="./">← 台灣四百年 · Back to the animated timeline</a>
-    <p class="eyebrow">A guide for speakers · 1600–2026</p>
+    <div class="top">
+      <a class="back" href="./">← 台灣四百年 · Back to the animated timeline</a>
+      <div class="seg" role="group" aria-label="Language 語言">
+        <button id="langZh" type="button" aria-pressed="false" lang="zh-Hant">中文</button>
+        <button id="langEn" type="button" aria-pressed="false" lang="en">EN</button>
+        <button id="langBi" type="button" aria-pressed="true">中英</button>
+      </div>
+    </div>
+    <p class="eyebrow">A guide for speakers · 給講者的導覽 · 1600–2026</p>
     <h1>Introducing Taiwan's History<span>如何用英文介紹台灣歷史</span></h1>
-    <p class="lede">What to say when someone asks "So what's Taiwan's history?" A version you can say in 30 seconds, the six eras with a sentence for each, the words people often get wrong, and short answers to the questions that usually follow.</p>
+    <div class="pair lede">
+      <p class="e">What to say when someone asks "So what's Taiwan's history?" A version you can say in 30 seconds, the six eras with a sentence for each, the words people often get wrong, and short answers to the questions that usually follow.</p>
+      <p class="z" lang="zh-Hant">當有人問「台灣的歷史是怎樣的？」時可以怎麼回答：一段 30 秒就能說完的版本、六個時代各一句話、常被用錯的詞彙，以及接下來常被問到的問題與簡短回答。</p>
+    </div>
   </header>
 
   <section class="ribbon" aria-labelledby="h-ribbon">
-    <h2 id="h-ribbon">Four centuries at a glance<small>Each colour's width is to scale</small></h2>
+    <h2 id="h-ribbon"><span class="e">Four centuries at a glance</span> <span class="z" lang="zh-Hant">四百年一覽</span><small><span class="e">Each colour's width is to scale</span><span class="z" lang="zh-Hant">　各色塊寬度依實際年數比例繪製</span></small></h2>
     <div class="bar" role="img" aria-label="Era ribbon from 1600 to 2026: Indigenous until 1624, Dutch and Spanish to 1662, Zheng to 1683, Qing to 1895, Japanese to 1945, Republic of China since.">
-      <a href="#era-ind" style="flex-grow:24.6;background:var(--c-ind)" title="Indigenous island, before 1624"></a>
-      <a href="#era-voc" style="flex-grow:37.5;background:var(--c-voc)" title="Dutch and Spanish, 1624–1662"></a>
-      <a href="#era-zheng" style="flex-grow:21.5;background:var(--c-zheng)" title="Zheng kingdom, 1662–1683"></a>
-      <a href="#era-qing" style="flex-grow:211.8;background:var(--c-qing)" title="Qing rule, 1683–1895"></a>
-      <a href="#era-jpn" style="flex-grow:50.4;background:var(--c-jpn)" title="Japanese rule, 1895–1945"></a>
-      <a href="#era-roc" style="flex-grow:80.2;background:var(--c-roc)" title="Republic of China, 1945–today"></a>
+      <a href="#era-ind" style="flex-grow:24.6;background:var(--c-ind)" title="Indigenous island 原住民族的島嶼, –1624"></a>
+      <a href="#era-voc" style="flex-grow:37.5;background:var(--c-voc)" title="Dutch and Spanish 荷西, 1624–1662"></a>
+      <a href="#era-zheng" style="flex-grow:21.5;background:var(--c-zheng)" title="Zheng 明鄭, 1662–1683"></a>
+      <a href="#era-qing" style="flex-grow:211.8;background:var(--c-qing)" title="Qing 清領, 1683–1895"></a>
+      <a href="#era-jpn" style="flex-grow:50.4;background:var(--c-jpn)" title="Japan 日治, 1895–1945"></a>
+      <a href="#era-roc" style="flex-grow:80.2;background:var(--c-roc)" title="Republic of China 中華民國, 1945–"></a>
     </div>
     <div class="ticks" aria-hidden="true"><span style="left:0">1600</span><span style="left:23.47%">1700</span><span style="left:46.95%">1800</span><span style="left:70.42%">1900</span><span style="left:93.9%">2000</span></div>
     <div class="legend">
-      <span><i style="background:var(--c-ind)"></i>Indigenous</span>
-      <span><i style="background:var(--c-voc)"></i>Dutch &amp; Spanish</span>
-      <span><i style="background:var(--c-zheng)"></i>Zheng</span>
-      <span><i style="background:var(--c-qing)"></i>Qing</span>
-      <span><i style="background:var(--c-jpn)"></i>Japan</span>
-      <span><i style="background:var(--c-roc)"></i>Republic of China</span>
+      <span><i style="background:var(--c-ind)"></i><span class="e">Indigenous</span><span class="z" lang="zh-Hant">原住民族</span></span>
+      <span><i style="background:var(--c-voc)"></i><span class="e">Dutch &amp; Spanish</span><span class="z" lang="zh-Hant">荷西</span></span>
+      <span><i style="background:var(--c-zheng)"></i><span class="e">Zheng</span><span class="z" lang="zh-Hant">明鄭</span></span>
+      <span><i style="background:var(--c-qing)"></i><span class="e">Qing</span><span class="z" lang="zh-Hant">清領</span></span>
+      <span><i style="background:var(--c-jpn)"></i><span class="e">Japan</span><span class="z" lang="zh-Hant">日治</span></span>
+      <span><i style="background:var(--c-roc)"></i><span class="e">Republic of China</span><span class="z" lang="zh-Hant">中華民國</span></span>
     </div>
-    <p class="zh">The Qing era is by far the longest, at 212 years. Japanese rule lasted 50 years and the Republic of China has governed for 80.</p>
+    <div class="pair note">
+      <p class="e">The Qing era is by far the longest, at 212 years. Japanese rule lasted 50 years and the Republic of China has governed for 80.</p>
+      <p class="z" lang="zh-Hant">清領時期最長，達 212 年；日治 50 年，中華民國至今統治 80 年。</p>
+    </div>
   </section>
 
   <section aria-labelledby="h-30">
-    <h2 id="h-30">The 30-second version<small>Read it aloud; it takes about half a minute</small></h2>
+    <h2 id="h-30"><span class="e">The 30-second version</span> <span class="z" lang="zh-Hant">30 秒版本</span><small><span class="e">Read it aloud; it takes about half a minute</span><span class="z" lang="zh-Hant">　照著唸，大約半分鐘</span></small></h2>
     <div class="say">
-      <blockquote id="script30">Taiwan was home to Austronesian Indigenous peoples for thousands of years before any state arrived. In the 1600s the Dutch and Spanish set up trading posts, until Koxinga, a Ming loyalist, drove the Dutch out in 1662. The Qing Empire ruled the island for two centuries, then lost it to Japan in 1895. After 1945 the Republic of China took over. The 228 Incident of 1947 and 38 years of martial law followed, and in the 1980s and 90s Taiwan became a democracy. Its people's sense of who they are has kept changing ever since.</blockquote>
-      <div class="row"><button id="copy30" type="button">Copy the text</button><span class="status" id="copyMsg" role="status"></span></div>
+      <div class="pair">
+        <blockquote class="e" id="script30">Taiwan was home to Austronesian Indigenous peoples for thousands of years before any state arrived. In the 1600s the Dutch and Spanish set up trading posts, until Koxinga, a Ming loyalist, drove the Dutch out in 1662. The Qing Empire ruled the island for two centuries, then lost it to Japan in 1895. After 1945 the Republic of China took over. The 228 Incident of 1947 and 38 years of martial law followed, and in the 1980s and 90s Taiwan became a democracy. Its people's sense of who they are has kept changing ever since.</blockquote>
+        <blockquote class="z" id="script30z" lang="zh-Hant">在任何國家到來之前，台灣數千年來是南島語族原住民族的家園。1600 年代，荷蘭人與西班牙人在此設立貿易據點，直到明朝遺臣鄭成功於 1662 年逐走荷蘭人。清帝國統治台灣兩百多年，1895 年將台灣割讓給日本。1945 年後由中華民國接管，隨後發生 1947 年的二二八事件與長達 38 年的戒嚴；1980 與 90 年代，台灣走向民主。從那時起，台灣人對「我們是誰」的認同也持續在改變。</blockquote>
+      </div>
+      <div class="row"><button id="copy30" type="button"><span class="e">Copy the text</span><span class="z" lang="zh-Hant"> 複製文字</span></button><span class="status" id="copyMsg" role="status"></span></div>
     </div>
   </section>
 
   <section aria-labelledby="h-eras">
-    <h2 id="h-eras">Six eras, a sentence for each<small>Start with the sentence; add the details if there is time</small></h2>
+    <h2 id="h-eras"><span class="e">Six eras, a sentence for each</span> <span class="z" lang="zh-Hant">六個時代，各一句話</span><small><span class="e">Start with the sentence; add the details if there is time</span><span class="z" lang="zh-Hant">　先說那一句，有時間再補充細節</span></small></h2>
     <div class="eras">
       <article class="era" id="era-ind"><i style="background:var(--c-ind)"></i><div>
-        <span class="when">BEFORE 1624</span>
-        <h3>An Indigenous island <span class="zh">原住民族的島嶼</span></h3>
-        <p class="line"><b>SAY</b>Before 1624, Taiwan belonged to its Indigenous peoples. Many linguists think the Austronesian languages, spoken from Madagascar to Hawaiʻi, first spread from here.</p>
+        <span class="when">BEFORE 1624 · 1624 年以前</span>
+        <h3><span class="e">An Indigenous island</span> <span class="z" lang="zh-Hant">原住民族的島嶼</span></h3>
+        <div class="line"><b>SAY · 這樣說</b><div class="pair">
+          <p class="e">Before 1624, Taiwan belonged to its Indigenous peoples. Many linguists think the Austronesian languages, spoken from Madagascar to Hawaiʻi, first spread from here.</p>
+          <p class="z" lang="zh-Hant">1624 年以前，台灣屬於島上的原住民族。許多語言學家認為，從馬達加斯加到夏威夷都有人使用的南島語言，最早就是從這裡擴散出去的。</p>
+        </div></div>
         <ul>
-          <li>Villages governed themselves; in the centre a multi-village alliance, the Middag kingdom, ruled several communities.</li>
-          <li>Chinese fishermen, traders and pirates worked the coast, but the Ming dynasty only patrolled Penghu, the islands in the strait.</li>
+          <li><span class="e">Villages governed themselves; in the centre a multi-village alliance, the Middag kingdom, ruled several communities.</span><span class="z" lang="zh-Hant">各部落自治；中部有跨部落的大肚王國，統領多個社群。</span></li>
+          <li><span class="e">Chinese fishermen, traders and pirates worked the coast, but the Ming dynasty only patrolled Penghu, the islands in the strait.</span><span class="z" lang="zh-Hant">漢人漁民、海商與海盜在沿海活動，但明朝只在海峽中的澎湖巡防。</span></li>
         </ul>
       </div></article>
       <article class="era" id="era-voc"><i style="background:var(--c-voc)"></i><div>
         <span class="when">1624 – 1662</span>
-        <h3>Dutch and Spanish Formosa <span class="zh">荷西時期</span></h3>
-        <p class="line"><b>SAY</b>The Dutch East India Company ran the southwest as a trading colony from Fort Zeelandia, near today's Tainan, while Spain held the north until 1642.</p>
+        <h3><span class="e">Dutch and Spanish Formosa</span> <span class="z" lang="zh-Hant">荷西時期</span></h3>
+        <div class="line"><b>SAY · 這樣說</b><div class="pair">
+          <p class="e">The Dutch East India Company ran the southwest as a trading colony from Fort Zeelandia, near today's Tainan, while Spain held the north until 1642.</p>
+          <p class="z" lang="zh-Hant">荷蘭東印度公司以今台南附近的熱蘭遮城為據點，把西南部經營成貿易殖民地；西班牙則佔據北部，直到 1642 年。</p>
+        </div></div>
         <ul>
-          <li>The company traded deerskins and sugar, and brought Chinese settlers over to farm.</li>
-          <li>It ruled Indigenous villages through elders at yearly assemblies (the Landdag), and put down the Guo Huaiyi uprising of Chinese farmers in 1652.</li>
+          <li><span class="e">The company traded deerskins and sugar, and brought Chinese settlers over to farm.</span><span class="z" lang="zh-Hant">公司經營鹿皮與蔗糖貿易，並招募漢人來台開墾。</span></li>
+          <li><span class="e">It ruled Indigenous villages through elders at yearly assemblies (the Landdag), and put down the Guo Huaiyi uprising of Chinese farmers in 1652.</span><span class="z" lang="zh-Hant">它透過每年的「地方會議」經由長老統治原住民村社，並在 1652 年鎮壓漢人農民的郭懷一事件。</span></li>
         </ul>
-        <p class="more"><a href="dutch.html">Dutch &amp; Spanish Formosa</a><a href="guo.html">Guo Huaiyi, 1652</a></p>
+        <p class="more"><a href="dutch.html"><span class="e">Dutch &amp; Spanish Formosa</span><span class="z" lang="zh-Hant"> 荷西時期</span></a><a href="guo.html"><span class="e">Guo Huaiyi, 1652</span><span class="z" lang="zh-Hant"> 郭懷一事件</span></a></p>
       </div></article>
       <article class="era" id="era-zheng"><i style="background:var(--c-zheng)"></i><div>
         <span class="when">1662 – 1683</span>
-        <h3>The Zheng kingdom <span class="zh">明鄭・東寧</span></h3>
-        <p class="line"><b>SAY</b>Koxinga (Zheng Chenggong) besieged Fort Zeelandia for nine months and expelled the Dutch, setting up the first Han Chinese state on Taiwan.</p>
+        <h3><span class="e">The Zheng kingdom</span> <span class="z" lang="zh-Hant">明鄭・東寧</span></h3>
+        <div class="line"><b>SAY · 這樣說</b><div class="pair">
+          <p class="e">Koxinga (Zheng Chenggong) besieged Fort Zeelandia for nine months and expelled the Dutch, setting up the first Han Chinese state on Taiwan.</p>
+          <p class="z" lang="zh-Hant">鄭成功圍攻熱蘭遮城九個月，逐出荷蘭人，在台灣建立第一個漢人政權。</p>
+        </div></div>
         <ul>
-          <li>His son Zheng Jing ran it as the Kingdom of Tungning, still using the fallen Ming calendar.</li>
-          <li>The Qing admiral Shi Lang took Penghu in 1683 and the kingdom surrendered.</li>
+          <li><span class="e">His son Zheng Jing ran it as the Kingdom of Tungning, still using the fallen Ming calendar.</span><span class="z" lang="zh-Hant">其子鄭經以「東寧」為名治理，仍沿用已滅亡的明朝永曆年號。</span></li>
+          <li><span class="e">The Qing admiral Shi Lang took Penghu in 1683 and the kingdom surrendered.</span><span class="z" lang="zh-Hant">1683 年清朝水師提督施琅攻下澎湖，東寧政權投降。</span></li>
         </ul>
-        <p class="more"><a href="koxinga.html">Koxinga takes Taiwan</a></p>
+        <p class="more"><a href="koxinga.html"><span class="e">Koxinga takes Taiwan</span><span class="z" lang="zh-Hant"> 鄭成功攻台</span></a></p>
       </div></article>
       <article class="era" id="era-qing"><i style="background:var(--c-qing)"></i><div>
         <span class="when">1683 – 1895</span>
-        <h3>Qing rule <span class="zh">清領時期</span></h3>
-        <p class="line"><b>SAY</b>For about two centuries the Qing treated Taiwan as a frontier. Settlers from Fujian and Guangdong farmed the western plains while the mountains stayed Indigenous.</p>
+        <h3><span class="e">Qing rule</span> <span class="z" lang="zh-Hant">清領時期</span></h3>
+        <div class="line"><b>SAY · 這樣說</b><div class="pair">
+          <p class="e">For about two centuries the Qing treated Taiwan as a frontier. Settlers from Fujian and Guangdong farmed the western plains while the mountains stayed Indigenous.</p>
+          <p class="z" lang="zh-Hant">大約兩百年間，清朝把台灣當作邊疆。來自福建與廣東的移民開墾西部平原，山區則仍是原住民族的天地。</p>
+        </div></div>
         <ul>
-          <li>Life was turbulent. The Lin Shuangwen (1787) and Dai Chaochun (1862) rebellions broke out, and settler groups fought feuds by home region.</li>
-          <li>After the 1874 Mudan Incident the Qing invested more. Taiwan became a province in 1885 and got its first railway in 1891.</li>
+          <li><span class="e">Life was turbulent. The Lin Shuangwen (1787) and Dai Chaochun (1862) rebellions broke out, and settler groups fought feuds by home region.</span><span class="z" lang="zh-Hant">社會動盪：爆發林爽文（1787）與戴潮春（1862）等民變，移民也依祖籍分類械鬥。</span></li>
+          <li><span class="e">After the 1874 Mudan Incident the Qing invested more. Taiwan became a province in 1885 and got its first railway in 1891.</span><span class="z" lang="zh-Hant">1874 年牡丹社事件後，清廷加強經營；1885 年台灣建省，1891 年第一條鐵路通車。</span></li>
         </ul>
-        <p class="more"><a href="linshuangwen.html">Lin Shuangwen</a><a href="daichaochun.html">Dai Chaochun</a><a href="feuds.html">Settler feuds</a></p>
+        <p class="more"><a href="linshuangwen.html"><span class="e">Lin Shuangwen</span><span class="z" lang="zh-Hant"> 林爽文</span></a><a href="daichaochun.html"><span class="e">Dai Chaochun</span><span class="z" lang="zh-Hant"> 戴潮春</span></a><a href="feuds.html"><span class="e">Settler feuds</span><span class="z" lang="zh-Hant"> 分類械鬥</span></a></p>
       </div></article>
       <article class="era" id="era-jpn"><i style="background:var(--c-jpn)"></i><div>
         <span class="when">1895 – 1945</span>
-        <h3>Japanese rule <span class="zh">日治時期</span></h3>
-        <p class="line"><b>SAY</b>China ceded Taiwan to Japan in 1895, and Japan became the first state to govern the whole island, mountains included.</p>
+        <h3><span class="e">Japanese rule</span> <span class="z" lang="zh-Hant">日治時期</span></h3>
+        <div class="line"><b>SAY · 這樣說</b><div class="pair">
+          <p class="e">China ceded Taiwan to Japan in 1895, and Japan became the first state to govern the whole island, mountains included.</p>
+          <p class="z" lang="zh-Hant">1895 年清朝將台灣割讓給日本，日本成為第一個統治全島（包括山區）的國家。</p>
+        </div></div>
         <ul>
-          <li>It built railways, schools, police and land registers, and fought resistance from the 1895 war to the Tapani (1915) and Musha (1930) uprisings.</li>
-          <li>During the war with China it pushed assimilation (the Kōminka movement), and Allied bombing hit the island in 1944–45.</li>
+          <li><span class="e">It built railways, schools, police and land registers, and fought resistance from the 1895 war to the Tapani (1915) and Musha (1930) uprisings.</span><span class="z" lang="zh-Hant">日本建立鐵路、學校、警察與土地登記制度，並鎮壓從乙未戰爭到西來庵（1915）、霧社（1930）的各種抵抗。</span></li>
+          <li><span class="e">During the war with China it pushed assimilation (the Kōminka movement), and Allied bombing hit the island in 1944–45.</span><span class="z" lang="zh-Hant">中日戰爭期間推行同化政策（皇民化運動）；1944–45 年台灣遭盟軍轟炸。</span></li>
         </ul>
-        <p class="more"><a href="yiwei.html">The 1895 war</a><a href="indigenous.html">Indigenous resistance</a><a href="tapani.html">Tapani</a><a href="wushe.html">Musha</a><a href="airraids.html">Air raids</a></p>
+        <p class="more"><a href="yiwei.html"><span class="e">The 1895 war</span><span class="z" lang="zh-Hant"> 乙未戰爭</span></a><a href="indigenous.html"><span class="e">Indigenous resistance</span><span class="z" lang="zh-Hant"> 原住民族抗日</span></a><a href="tapani.html"><span class="e">Tapani</span><span class="z" lang="zh-Hant"> 西來庵</span></a><a href="wushe.html"><span class="e">Musha</span><span class="z" lang="zh-Hant"> 霧社</span></a><a href="airraids.html"><span class="e">Air raids</span><span class="z" lang="zh-Hant"> 大空襲</span></a></p>
       </div></article>
       <article class="era" id="era-roc"><i style="background:var(--c-roc)"></i><div>
-        <span class="when">1945 – TODAY</span>
-        <h3>The Republic of China on Taiwan <span class="zh">戰後・中華民國</span></h3>
-        <p class="line"><b>SAY</b>The Republic of China took over in 1945 and moved its government to Taipei in 1949. After decades of authoritarian rule, Taiwan democratised from the late 1980s.</p>
+        <span class="when">1945 – TODAY · 至今</span>
+        <h3><span class="e">The Republic of China on Taiwan</span> <span class="z" lang="zh-Hant">戰後・中華民國</span></h3>
+        <div class="line"><b>SAY · 這樣說</b><div class="pair">
+          <p class="e">The Republic of China took over in 1945 and moved its government to Taipei in 1949. After decades of authoritarian rule, Taiwan democratised from the late 1980s.</p>
+          <p class="z" lang="zh-Hant">中華民國在 1945 年接管台灣，1949 年中央政府遷到台北。經過數十年威權統治，台灣從 1980 年代末走向民主化。</p>
+        </div></div>
         <ul>
-          <li>The 228 Incident (1947) was followed by martial law from 1949 to 1987, a period known as the White Terror.</li>
-          <li>Since then Taiwan has had direct presidential elections from 1996, the first change of ruling party in 2000, an apology to Indigenous peoples in 2016, and Asia's first same-sex marriage law in 2019.</li>
+          <li><span class="e">The 228 Incident (1947) was followed by martial law from 1949 to 1987, a period known as the White Terror.</span><span class="z" lang="zh-Hant">二二八事件（1947）之後，是 1949 到 1987 年的戒嚴，這段時期稱為白色恐怖。</span></li>
+          <li><span class="e">Since then Taiwan has had direct presidential elections from 1996, the first change of ruling party in 2000, an apology to Indigenous peoples in 2016, and Asia's first same-sex marriage law in 2019.</span><span class="z" lang="zh-Hant">此後有 1996 年首次總統直選、2000 年首次政黨輪替、2016 年總統向原住民族道歉，以及 2019 年亞洲第一部同婚法律。</span></li>
         </ul>
-        <p class="more"><a href="228.html">228 and the White Terror</a></p>
+        <p class="more"><a href="228.html"><span class="e">228 and the White Terror</span><span class="z" lang="zh-Hant"> 二二八與白色恐怖</span></a></p>
       </div></article>
     </div>
   </section>
 
   <section aria-labelledby="h-words">
-    <h2 id="h-words">Words to get right<small>Terms that come up in almost every conversation</small></h2>
+    <h2 id="h-words"><span class="e">Words to get right</span> <span class="z" lang="zh-Hant">要用對的詞彙</span><small><span class="e">Terms that come up in almost every conversation</span><span class="z" lang="zh-Hant">　幾乎每次談到都會用上的詞</span></small></h2>
     <div class="tablewrap"><table>
-      <thead><tr><th>English</th><th>中文</th><th>What it means</th></tr></thead>
+      <thead><tr><th>English</th><th>中文</th><th>What it means · 意思</th></tr></thead>
       <tbody>
-        <tr><td>Indigenous peoples</td><td>原住民族</td><td>The official English term. Taiwan recognises 16 peoples, such as the Amis, Atayal, Paiwan, Bunun and Truku, about 2.5% of the population. Avoid "aborigines".</td></tr>
-        <tr><td>Austronesian</td><td>南島語族</td><td>The language family of Taiwan's Indigenous peoples, which also includes Malay, Tagalog, Māori and Hawaiian.</td></tr>
-        <tr><td>Hoklo</td><td>福佬・閩南</td><td>Descendants of settlers from southern Fujian, the largest group; they speak Taiwanese (Taigi).</td></tr>
-        <tr><td>Hakka</td><td>客家</td><td>Descendants of settlers mostly from Guangdong, with their own language.</td></tr>
-        <tr><td>Waishengren</td><td>外省人</td><td>People who came from China with the ROC after 1945, and their families.</td></tr>
-        <tr><td>VOC</td><td>荷蘭東印度公司</td><td>The Dutch East India Company, which ran Dutch Formosa.</td></tr>
-        <tr><td>Koxinga</td><td>國姓爺・鄭成功</td><td>"Lord of the Imperial Surname", the Western name for Zheng Chenggong.</td></tr>
-        <tr><td>Cession</td><td>割讓</td><td>The 1895 Treaty of Shimonoseki, by which the Qing gave Taiwan and Penghu to Japan.</td></tr>
-        <tr><td>228 Incident</td><td>二二八事件</td><td>The 1947 uprising and military crackdown, named after its date, February 28.</td></tr>
-        <tr><td>White Terror</td><td>白色恐怖</td><td>Political persecution under martial law: arrests, military trials and executions.</td></tr>
-        <tr><td>Tangwai</td><td>黨外</td><td>"Outside the party": the opposition movement before new parties were legal.</td></tr>
-        <tr><td>Transitional justice</td><td>轉型正義</td><td>Dealing with past state abuses, for example by voiding political convictions and opening archives.</td></tr>
+        <tr><td>Indigenous peoples</td><td>原住民族</td><td><span class="e">The official English term. Taiwan recognises 16 peoples, such as the Amis, Atayal, Paiwan, Bunun and Truku, about 2.5% of the population. Avoid "aborigines".</span><span class="z" lang="zh-Hant">官方英文用語。台灣承認 16 族，如阿美、泰雅、排灣、布農、太魯閣，約佔人口 2.5%。避免用 aborigines。</span></td></tr>
+        <tr><td>Austronesian</td><td>南島語族</td><td><span class="e">The language family of Taiwan's Indigenous peoples, which also includes Malay, Tagalog, Māori and Hawaiian.</span><span class="z" lang="zh-Hant">台灣原住民族所屬的語系，也包括馬來語、他加祿語、毛利語與夏威夷語。</span></td></tr>
+        <tr><td>Hoklo</td><td>福佬・閩南</td><td><span class="e">Descendants of settlers from southern Fujian, the largest group; they speak Taiwanese (Taigi).</span><span class="z" lang="zh-Hant">閩南移民的後代，人數最多，說台語。</span></td></tr>
+        <tr><td>Hakka</td><td>客家</td><td><span class="e">Descendants of settlers mostly from Guangdong, with their own language.</span><span class="z" lang="zh-Hant">多來自廣東的移民後代，有自己的語言。</span></td></tr>
+        <tr><td>Waishengren</td><td>外省人</td><td><span class="e">People who came from China with the ROC after 1945, and their families.</span><span class="z" lang="zh-Hant">1945 年後隨中華民國政府從中國來台的人及其家人。</span></td></tr>
+        <tr><td>VOC</td><td>荷蘭東印度公司</td><td><span class="e">The Dutch East India Company, which ran Dutch Formosa.</span><span class="z" lang="zh-Hant">統治荷治台灣的荷蘭東印度公司。</span></td></tr>
+        <tr><td>Koxinga</td><td>國姓爺・鄭成功</td><td><span class="e">"Lord of the Imperial Surname", the Western name for Zheng Chenggong.</span><span class="z" lang="zh-Hant">「國姓爺」的音譯，西方對鄭成功的稱呼。</span></td></tr>
+        <tr><td>Cession</td><td>割讓</td><td><span class="e">The 1895 Treaty of Shimonoseki, by which the Qing gave Taiwan and Penghu to Japan.</span><span class="z" lang="zh-Hant">指 1895 年《馬關條約》，清朝將台灣與澎湖割讓給日本。</span></td></tr>
+        <tr><td>228 Incident</td><td>二二八事件</td><td><span class="e">The 1947 uprising and military crackdown, named after its date, February 28.</span><span class="z" lang="zh-Hant">1947 年的民眾抗爭與軍隊鎮壓，以 2 月 28 日為名。</span></td></tr>
+        <tr><td>White Terror</td><td>白色恐怖</td><td><span class="e">Political persecution under martial law: arrests, military trials and executions.</span><span class="z" lang="zh-Hant">戒嚴下的政治迫害：逮捕、軍法審判與處決。</span></td></tr>
+        <tr><td>Tangwai</td><td>黨外</td><td><span class="e">"Outside the party": the opposition movement before new parties were legal.</span><span class="z" lang="zh-Hant">「國民黨以外」，指開放組黨前的反對運動。</span></td></tr>
+        <tr><td>Transitional justice</td><td>轉型正義</td><td><span class="e">Dealing with past state abuses, for example by voiding political convictions and opening archives.</span><span class="z" lang="zh-Hant">處理過去國家暴力，例如撤銷政治案件判決、開放檔案。</span></td></tr>
       </tbody>
     </table></div>
   </section>
 
   <section aria-labelledby="h-names">
-    <h2 id="h-names">Names and spellings<small>Why the same name can be written three ways</small></h2>
-    <p>Taiwan spent decades using older romanisations, mainly Wade–Giles, before it adopted Hanyu Pinyin in 2009. People and many places keep their established spellings. Use the form a person used for themselves, and expect your listener to know the older one.</p>
+    <h2 id="h-names"><span class="e">Names and spellings</span> <span class="z" lang="zh-Hant">人名與地名的拼法</span><small><span class="e">Why the same name can be written three ways</span><span class="z" lang="zh-Hant">　同一個名字為什麼有好幾種寫法</span></small></h2>
+    <div class="pair">
+      <p class="e">Taiwan spent decades using older romanisations, mainly Wade–Giles, before it adopted Hanyu Pinyin in 2009. People and many places keep their established spellings. Use the form a person used for themselves, and expect your listener to know the older one.</p>
+      <p class="z" lang="zh-Hant">台灣數十年來使用較舊的拼音系統（主要是威妥瑪拼音），2009 年才改採漢語拼音。人名和許多地名仍保留原本的拼法。介紹人物時，用當事人自己使用的拼法；聽眾通常也比較熟悉舊拼法。</p>
+    </div>
     <div class="tablewrap"><table>
-      <thead><tr><th>Usual in English</th><th>中文</th><th>Pinyin, for comparison</th></tr></thead>
+      <thead><tr><th>Usual in English · 英文慣用</th><th>中文</th><th>Pinyin · 漢語拼音</th></tr></thead>
       <tbody>
         <tr><td>Chiang Kai-shek</td><td>蔣中正（介石）</td><td>Jiang Jieshi</td></tr>
         <tr><td>Lee Teng-hui</td><td>李登輝</td><td>Li Denghui</td></tr>
@@ -247,75 +310,149 @@ footer { border-top: 1px solid var(--line); padding-top: 16px; font-size: 13.5px
   </section>
 
   <section aria-labelledby="h-care">
-    <h2 id="h-care">Saying it carefully<small>Habits that keep you accurate and avoid arguments</small></h2>
+    <h2 id="h-care"><span class="e">Saying it carefully</span> <span class="z" lang="zh-Hant">謹慎的說法</span><small><span class="e">Habits that keep you accurate and avoid arguments</span><span class="z" lang="zh-Hant">　讓說法準確、少起爭執的習慣</span></small></h2>
     <ul class="tips">
-      <li><b>Say who governed, and when.</b><span>"The Qing ruled Taiwan from 1683 to 1895" is a fact your listener can check. Words like "always" and "never" turn history into an argument.</span></li>
-      <li><b>Remember the Qing ruled only part of the island.</b><span>For most of its 212 years Qing government stopped at the foothills. Japan was the first state to control the mountains.</span></li>
-      <li><b>Keep "Taiwan" and "the Republic of China" distinct when it matters.</b><span>Taiwan is the island and its people; the Republic of China is the state that has governed it since 1945. Before 1945 the ROC had never ruled Taiwan.</span></li>
-      <li><b>Give disputed numbers as ranges, with a source.</b><span>For 228, official records confirm at least 8,324–11,841 dead and missing (Chen Yi-shen and Hsueh Hua-yuan, eds., 2021). Older estimates run higher.</span></li>
-      <li><b>Name Indigenous peoples individually.</b><span>"The Seediq rose at Musha in 1930" tells more than "the aborigines rebelled".</span></li>
-      <li><b>Leave room for different memories.</b><span>Families experienced Japanese rule, 1945 and martial law in very different ways. "Many people remember…" is often truer than "Taiwanese felt…".</span></li>
+      <li><div class="pair">
+        <div class="e"><b>Say who governed, and when.</b><p class="e">"The Qing ruled Taiwan from 1683 to 1895" is a fact your listener can check. Words like "always" and "never" turn history into an argument.</p></div>
+        <div class="z" lang="zh-Hant"><b>說清楚誰統治、在什麼時候。</b><p>「清朝在 1683 到 1895 年統治台灣」是聽眾可以查證的事實；「一直」「從來不」這類字眼，會把歷史變成爭論。</p></div>
+      </div></li>
+      <li><div class="pair">
+        <div class="e"><b>Remember the Qing ruled only part of the island.</b><p class="e">For most of its 212 years Qing government stopped at the foothills. Japan was the first state to control the mountains.</p></div>
+        <div class="z" lang="zh-Hant"><b>記得清朝只統治部分地區。</b><p>212 年中的大部分時間，清朝的治理止於山腳；日本才是第一個控制山區的國家。</p></div>
+      </div></li>
+      <li><div class="pair">
+        <div class="e"><b>Keep "Taiwan" and "the Republic of China" distinct when it matters.</b><p class="e">Taiwan is the island and its people; the Republic of China is the state that has governed it since 1945. Before 1945 the ROC had never ruled Taiwan.</p></div>
+        <div class="z" lang="zh-Hant"><b>必要時區分「台灣」與「中華民國」。</b><p>台灣指這座島和島上的人；中華民國是自 1945 年起統治台灣的國家。1945 年以前，中華民國從未統治過台灣。</p></div>
+      </div></li>
+      <li><div class="pair">
+        <div class="e"><b>Give disputed numbers as ranges, with a source.</b><p class="e">For 228, official records confirm at least 8,324–11,841 dead and missing (Chen Yi-shen and Hsueh Hua-yuan, eds., 2021). Older estimates run higher.</p></div>
+        <div class="z" lang="zh-Hant"><b>有爭議的數字用範圍表示，並註明出處。</b><p>以二二八為例，官方文獻可確認的死亡與失蹤人數至少 8,324–11,841 人（陳儀深、薛化元主編，2021）；較早的推估更高。</p></div>
+      </div></li>
+      <li><div class="pair">
+        <div class="e"><b>Name Indigenous peoples individually.</b><p class="e">"The Seediq rose at Musha in 1930" tells more than "the aborigines rebelled".</p></div>
+        <div class="z" lang="zh-Hant"><b>說出原住民族的族名。</b><p>「1930 年賽德克族在霧社起事」比「原住民造反」傳達更多資訊。</p></div>
+      </div></li>
+      <li><div class="pair">
+        <div class="e"><b>Leave room for different memories.</b><p class="e">Families experienced Japanese rule, 1945 and martial law in very different ways. "Many people remember…" is often truer than "Taiwanese felt…".</p></div>
+        <div class="z" lang="zh-Hant"><b>為不同的記憶留空間。</b><p>不同家庭對日治、1945 年與戒嚴的經驗差異很大。「許多人記得……」往往比「台灣人覺得……」更貼近事實。</p></div>
+      </div></li>
     </ul>
   </section>
 
   <section aria-labelledby="h-qa">
-    <h2 id="h-qa">Questions people ask<small>Short, factual answers</small></h2>
+    <h2 id="h-qa"><span class="e">Questions people ask</span> <span class="z" lang="zh-Hant">常見問題</span><small><span class="e">Short, factual answers</span><span class="z" lang="zh-Hant">　簡短、根據事實的回答</span></small></h2>
     <div class="qa">
-      <div><h3>Has Taiwan always been part of China?</h3>
-        <p>It has had several rulers. Before 1624 no state governed it. The Dutch and Spanish came next, then the Zheng kingdom (1662–1683), the Qing (1683–1895), Japan (1895–1945) and, since 1945, the Republic of China. The People's Republic of China claims Taiwan but has never governed it, and Taiwan's international status remains disputed.</p></div>
-      <div><h3>Who are the Taiwanese?</h3>
-        <p>About 23 million people. Most descend from Hoklo or Hakka settlers of the Qing era. Others are families who arrived with the ROC after 1945. There are 16 recognised Indigenous peoples, and a growing number of new immigrants, many from Southeast Asia. Most people today say they identify as Taiwanese.</p></div>
-      <div><h3>What happened in 1947?</h3>
-        <p>On February 27 a cigarette raid in Taipei turned violent, and the next day protests spread across the island against Chen Yi's administration. In March troops from China crushed them. Thousands were killed, including many local leaders, and for decades the event could not be discussed in public. February 28 is now a national day of remembrance.</p></div>
-      <div><h3>When did Taiwan become a democracy?</h3>
-        <p>Gradually. Martial law ended in 1987, and the national legislature was fully re-elected in 1991–1992. Presidents have been directly elected since 1996, and power first passed peacefully to the opposition in 2000.</p></div>
-      <div><h3>Why do people speak Mandarin, Taiwanese and Hakka?</h3>
-        <p>Each layer of history left a language. Indigenous languages are the oldest. Hoklo and Hakka settlers brought their own, and Japanese was the school language until 1945. Mandarin became the national language under the ROC, and since the 1990s the other languages have been revived in schools and media.</p></div>
+      <div><h3><span class="e">Has Taiwan always been part of China?</span> <span class="z" lang="zh-Hant">台灣一直都是中國的一部分嗎？</span></h3>
+        <div class="pair">
+          <p class="e">It has had several rulers. Before 1624 no state governed it. The Dutch and Spanish came next, then the Zheng kingdom (1662–1683), the Qing (1683–1895), Japan (1895–1945) and, since 1945, the Republic of China. The People's Republic of China claims Taiwan but has never governed it, and Taiwan's international status remains disputed.</p>
+          <p class="z" lang="zh-Hant">台灣經歷過多個統治者。1624 年以前沒有任何國家統治；之後是荷蘭與西班牙，接著是明鄭（1662–1683）、清朝（1683–1895）、日本（1895–1945），1945 年起是中華民國。中華人民共和國主張擁有台灣，但從未統治過台灣；台灣的國際地位至今仍有爭議。</p>
+        </div></div>
+      <div><h3><span class="e">Who are the Taiwanese?</span> <span class="z" lang="zh-Hant">台灣人是誰？</span></h3>
+        <div class="pair">
+          <p class="e">About 23 million people. Most descend from Hoklo or Hakka settlers of the Qing era. Others are families who arrived with the ROC after 1945. There are 16 recognised Indigenous peoples, and a growing number of new immigrants, many from Southeast Asia. Most people today say they identify as Taiwanese.</p>
+          <p class="z" lang="zh-Hant">約 2,300 萬人。多數是清代福佬或客家移民的後代；也有 1945 年後隨中華民國來台的家庭；另有 16 個官方承認的原住民族，以及人數漸增、許多來自東南亞的新住民。如今多數人表示自己認同為台灣人。</p>
+        </div></div>
+      <div><h3><span class="e">What happened in 1947?</span> <span class="z" lang="zh-Hant">1947 年發生了什麼事？</span></h3>
+        <div class="pair">
+          <p class="e">On February 27 a cigarette raid in Taipei turned violent, and the next day protests spread across the island against Chen Yi's administration. In March troops from China crushed them. Thousands were killed, including many local leaders, and for decades the event could not be discussed in public. February 28 is now a national day of remembrance.</p>
+          <p class="z" lang="zh-Hant">2 月 27 日，台北一場查緝私菸演變成流血衝突，隔天抗議陳儀政府的行動擴及全島。3 月，從中國派來的軍隊展開鎮壓，數以千計的人遇害，其中包括許多地方菁英；此後數十年，這件事無法公開討論。如今 2 月 28 日是國定的和平紀念日。</p>
+        </div></div>
+      <div><h3><span class="e">When did Taiwan become a democracy?</span> <span class="z" lang="zh-Hant">台灣什麼時候成為民主國家？</span></h3>
+        <div class="pair">
+          <p class="e">Gradually. Martial law ended in 1987, and the national legislature was fully re-elected in 1991–1992. Presidents have been directly elected since 1996, and power first passed peacefully to the opposition in 2000.</p>
+          <p class="z" lang="zh-Hant">是逐步完成的。1987 年解除戒嚴，1991–1992 年國會全面改選；1996 年起總統由人民直選，2000 年首次和平移轉政權給反對黨。</p>
+        </div></div>
+      <div><h3><span class="e">Why do people speak Mandarin, Taiwanese and Hakka?</span> <span class="z" lang="zh-Hant">為什麼台灣人說華語、台語和客語？</span></h3>
+        <div class="pair">
+          <p class="e">Each layer of history left a language. Indigenous languages are the oldest. Hoklo and Hakka settlers brought their own, and Japanese was the school language until 1945. Mandarin became the national language under the ROC, and since the 1990s the other languages have been revived in schools and media.</p>
+          <p class="z" lang="zh-Hant">每一層歷史都留下了語言。原住民族語最古老；福佬與客家移民帶來各自的語言；1945 年以前學校教日語；中華民國時期華語成為國語；1990 年代起，其他語言在學校與媒體中逐漸復振。</p>
+        </div></div>
     </div>
   </section>
 
   <section aria-labelledby="h-talk">
-    <h2 id="h-talk">A five-minute talk, step by step<small>An order that works for a class, a meeting or a visitor</small></h2>
+    <h2 id="h-talk"><span class="e">A five-minute talk, step by step</span> <span class="z" lang="zh-Hant">五分鐘簡報的順序</span><small><span class="e">An order that works for a class, a meeting or a visitor</span><span class="z" lang="zh-Hant">　適用於課堂、會議或接待訪客</span></small></h2>
     <ol class="outline">
-      <li><b>Start with the map (30 s).</b><span>An island of about 36,000 km² that the Tropic of Cancer runs through, with mountains taller than any in Japan. Geography explains why the mountains stayed Indigenous for so long.</span></li>
-      <li><b>The first people (30 s).</b><span>Austronesian peoples, thousands of years of settlement, and a language family that reached across the Pacific.</span></li>
-      <li><b>Outsiders arrive by sea (45 s).</b><span>The Dutch, the Spanish, then Koxinga. Taiwan entered world trade as a stop between Japan, China and Southeast Asia.</span></li>
-      <li><b>The Qing frontier (45 s).</b><span>Settlers, rebellions and feuds; a province only in 1885.</span></li>
-      <li><b>The Japanese colony (45 s).</b><span>Modern infrastructure built alongside armed suppression; a generation educated in Japanese.</span></li>
-      <li><b>1945 to 1987 (60 s).</b><span>The ROC takeover, 228, the arrival of the central government in 1949, and martial law.</span></li>
-      <li><b>Democracy and identity (45 s).</b><span>Elections, apologies and the revival of local languages. Finish with a question, such as how people in Taiwan might tell this story differently.</span></li>
+      <li><b><span class="e">Start with the map (30 s).</span> <span class="z" lang="zh-Hant">從地圖開始（30 秒）</span></b><div class="pair">
+        <p class="e">An island of about 36,000 km² that the Tropic of Cancer runs through, with mountains taller than any in Japan. Geography explains why the mountains stayed Indigenous for so long.</p>
+        <p class="z" lang="zh-Hant">一座約 36,000 平方公里、北回歸線穿過的島，山比日本任何一座都高。地理說明了山區為何長期是原住民族的領域。</p></div></li>
+      <li><b><span class="e">The first people (30 s).</span> <span class="z" lang="zh-Hant">最早的居民（30 秒）</span></b><div class="pair">
+        <p class="e">Austronesian peoples, thousands of years of settlement, and a language family that reached across the Pacific.</p>
+        <p class="z" lang="zh-Hant">南島民族、數千年的定居歷史，以及遍及太平洋的語系。</p></div></li>
+      <li><b><span class="e">Outsiders arrive by sea (45 s).</span> <span class="z" lang="zh-Hant">外來者從海上來（45 秒）</span></b><div class="pair">
+        <p class="e">The Dutch, the Spanish, then Koxinga. Taiwan entered world trade as a stop between Japan, China and Southeast Asia.</p>
+        <p class="z" lang="zh-Hant">荷蘭人、西班牙人，然後是鄭成功。台灣成為日本、中國與東南亞之間的轉運站，進入世界貿易。</p></div></li>
+      <li><b><span class="e">The Qing frontier (45 s).</span> <span class="z" lang="zh-Hant">清朝的邊疆（45 秒）</span></b><div class="pair">
+        <p class="e">Settlers, rebellions and feuds; a province only in 1885.</p>
+        <p class="z" lang="zh-Hant">移民、民變與械鬥；直到 1885 年才建省。</p></div></li>
+      <li><b><span class="e">The Japanese colony (45 s).</span> <span class="z" lang="zh-Hant">日本殖民地（45 秒）</span></b><div class="pair">
+        <p class="e">Modern infrastructure built alongside armed suppression; a generation educated in Japanese.</p>
+        <p class="z" lang="zh-Hant">現代化建設與武力鎮壓並行；整整一代人接受日語教育。</p></div></li>
+      <li><b><span class="e">1945 to 1987 (60 s).</span> <span class="z" lang="zh-Hant">1945 到 1987 年（60 秒）</span></b><div class="pair">
+        <p class="e">The ROC takeover, 228, the arrival of the central government in 1949, and martial law.</p>
+        <p class="z" lang="zh-Hant">中華民國接管、二二八、1949 年中央政府遷台與戒嚴。</p></div></li>
+      <li><b><span class="e">Democracy and identity (45 s).</span> <span class="z" lang="zh-Hant">民主與認同（45 秒）</span></b><div class="pair">
+        <p class="e">Elections, apologies and the revival of local languages. Finish with a question, such as how people in Taiwan might tell this story differently.</p>
+        <p class="z" lang="zh-Hant">選舉、道歉與本土語言復振。最後以一個問題收尾，例如：台灣不同的人會怎麼講這段故事？</p></div></li>
     </ol>
   </section>
 
   <section aria-labelledby="h-more">
-    <h2 id="h-more">See it on the map<small>Animated pages from this site, in time order</small></h2>
+    <h2 id="h-more"><span class="e">See it on the map</span> <span class="z" lang="zh-Hant">在地圖上看</span><small><span class="e">Animated pages from this site, in time order</span><span class="z" lang="zh-Hant">　本站的動畫專題，依時間排序</span></small></h2>
     <ul class="links">
-      <li><span class="y">1600–</span><a href="./">台灣四百年 · The full timeline</a></li>
-      <li><span class="y">1622</span><a href="dutch.html">Dutch &amp; Spanish Formosa</a></li>
-      <li><span class="y">1652</span><a href="guo.html">The Guo Huaiyi rebellion</a></li>
-      <li><span class="y">1661</span><a href="koxinga.html">Koxinga takes Taiwan</a></li>
-      <li><span class="y">1721</span><a href="feuds.html">Feuds between settler groups</a></li>
-      <li><span class="y">1786</span><a href="linshuangwen.html">The Lin Shuangwen rebellion</a></li>
-      <li><span class="y">1862</span><a href="daichaochun.html">The Dai Chaochun rebellion</a></li>
-      <li><span class="y">1895</span><a href="yiwei.html">The 1895 war</a></li>
-      <li><span class="y">1896</span><a href="indigenous.html">Indigenous resistance</a></li>
-      <li><span class="y">1915</span><a href="tapani.html">The Tapani Incident</a></li>
-      <li><span class="y">1930</span><a href="wushe.html">The Musha Incident</a></li>
-      <li><span class="y">1944</span><a href="airraids.html">The Allied air raids</a></li>
-      <li><span class="y">1947</span><a href="228.html">228 and the White Terror</a></li>
+      <li><span class="y">1600–</span><a href="./"><span class="e">The full timeline</span><span class="z" lang="zh-Hant">台灣四百年</span></a></li>
+      <li><span class="y">1622</span><a href="dutch.html"><span class="e">Dutch &amp; Spanish Formosa</span><span class="z" lang="zh-Hant">荷西時期</span></a></li>
+      <li><span class="y">1652</span><a href="guo.html"><span class="e">The Guo Huaiyi rebellion</span><span class="z" lang="zh-Hant">郭懷一事件</span></a></li>
+      <li><span class="y">1661</span><a href="koxinga.html"><span class="e">Koxinga takes Taiwan</span><span class="z" lang="zh-Hant">鄭成功攻台</span></a></li>
+      <li><span class="y">1721</span><a href="feuds.html"><span class="e">Feuds between settler groups</span><span class="z" lang="zh-Hant">分類械鬥</span></a></li>
+      <li><span class="y">1786</span><a href="linshuangwen.html"><span class="e">The Lin Shuangwen rebellion</span><span class="z" lang="zh-Hant">林爽文事件</span></a></li>
+      <li><span class="y">1862</span><a href="daichaochun.html"><span class="e">The Dai Chaochun rebellion</span><span class="z" lang="zh-Hant">戴潮春事件</span></a></li>
+      <li><span class="y">1895</span><a href="yiwei.html"><span class="e">The 1895 war</span><span class="z" lang="zh-Hant">乙未戰爭</span></a></li>
+      <li><span class="y">1896</span><a href="indigenous.html"><span class="e">Indigenous resistance</span><span class="z" lang="zh-Hant">原住民族抗日</span></a></li>
+      <li><span class="y">1915</span><a href="tapani.html"><span class="e">The Tapani Incident</span><span class="z" lang="zh-Hant">西來庵事件</span></a></li>
+      <li><span class="y">1930</span><a href="wushe.html"><span class="e">The Musha Incident</span><span class="z" lang="zh-Hant">霧社事件</span></a></li>
+      <li><span class="y">1944</span><a href="airraids.html"><span class="e">The Allied air raids</span><span class="z" lang="zh-Hant">美軍大空襲</span></a></li>
+      <li><span class="y">1947</span><a href="228.html"><span class="e">228 and the White Terror</span><span class="z" lang="zh-Hant">二二八與白色恐怖</span></a></li>
     </ul>
   </section>
 
   <footer>
-    <p>Dates and figures match the fact-checked timeline and feature pages on this site; their reference lists give the sources. The population share for Indigenous peoples is the Council of Indigenous Peoples' figure, rounded.</p>
-    <p><a href="./">← Back to 台灣四百年</a></p>
+    <div class="pair">
+      <p class="e">Dates and figures match the fact-checked timeline and feature pages on this site; their reference lists give the sources. The population share for Indigenous peoples is the Council of Indigenous Peoples' figure, rounded.</p>
+      <p class="z" lang="zh-Hant">日期與數字皆與本站已查核的時間軸與專題頁一致，出處見各頁參考資料。原住民族人口比例取自原住民族委員會數據並取概數。</p>
+    </div>
+    <p><a href="./">← 台灣四百年 · Back</a></p>
   </footer>
 </main>
 <script>
+// language: 中文 / EN / 中英, remembered per viewer; #zh, #en, #bi in the link override
+const LANGS = ['zh','en','bi'], KEY = 'tw400-intro-lang';
+let lang = 'bi';
+try { const v = localStorage.getItem(KEY); if (LANGS.includes(v)) lang = v; } catch (e) {}
+const h = location.hash.slice(1); if (LANGS.includes(h)) lang = h;
+const btn = { zh: document.getElementById('langZh'), en: document.getElementById('langEn'), bi: document.getElementById('langBi') };
+function setLang(l){
+  lang = l;
+  const root = document.documentElement;
+  root.classList.remove('l-zh','l-en','l-bi'); root.classList.add('l-'+l);
+  root.lang = l === 'zh' ? 'zh-Hant' : 'en';
+  for (const k of LANGS) btn[k].setAttribute('aria-pressed', String(k === l));
+  try { localStorage.setItem(KEY, l); } catch (e) {}
+}
+for (const k of LANGS) btn[k].addEventListener('click', () => setLang(k));
+setLang(lang);
+
 document.getElementById('copy30').addEventListener('click', () => {
-  const text = document.getElementById('script30').textContent.trim(), msg = document.getElementById('copyMsg');
-  const fallback = () => { const r = document.createRange(); r.selectNodeContents(document.getElementById('script30')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); msg.textContent = 'Text selected. Press Ctrl+C (⌘C) to copy.'; };
-  try { navigator.clipboard.writeText(text).then(() => { msg.textContent = 'Copied.'; }, fallback); } catch (e) { fallback(); }
+  const en = document.getElementById('script30'), zh = document.getElementById('script30z'), msg = document.getElementById('copyMsg');
+  const parts = lang === 'en' ? [en] : lang === 'zh' ? [zh] : [en, zh];
+  const text = parts.map(n => n.textContent.trim()).join('\n\n');
+  const done = lang === 'zh' ? '已複製。' : 'Copied.';
+  const fallback = () => {
+    const r = document.createRange(); r.setStartBefore(parts[0]); r.setEndAfter(parts[parts.length-1]);
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    msg.textContent = lang === 'zh' ? '已選取文字，請按 Ctrl+C（⌘C）複製。' : 'Text selected. Press Ctrl+C (⌘C) to copy.';
+  };
+  try { navigator.clipboard.writeText(text).then(() => { msg.textContent = done; }, fallback); } catch (e) { fallback(); }
 });
 </script>
 </body>

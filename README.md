@@ -111,6 +111,13 @@ After editing `taiwan-400.html`, run `python build_pages.py` and commit both fil
 
 ## Changelog
 
+### 2026-10-28: Chinese alongside the English guide
+
+- `intro.html` now has Chinese alongside every passage, heading, list item and table explanation.
+  - In 中英 mode the page widens and shows English and Chinese side by side; on phones the Chinese sits under each English passage.
+  - A 中文 / EN / 中英 switch, starting in 中英, is remembered per viewer. Adding `#zh`, `#en` or `#bi` to the link opens the page in that mode.
+  - The copy button copies whichever language is showing.
+
 ### 2026-10-27: English guide page
 
 - Added `intro.html`, **Introducing Taiwan's History**, an English-language guide to explaining Taiwan's history. It has:
