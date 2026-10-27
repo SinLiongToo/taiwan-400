@@ -5,6 +5,7 @@ An animated, bilingual (中文 / English) history of Taiwan from 1600 to 2026: w
 **Live pages**
 
 - 台灣四百年 · Taiwan: Four Centuries — https://sinliongtoo.github.io/taiwan-400/
+- 英文導覽 · Introducing Taiwan's History (English guide) — https://sinliongtoo.github.io/taiwan-400/intro.html
 - 荷西時期 · Dutch and Spanish Formosa — https://sinliongtoo.github.io/taiwan-400/dutch.html
 - 郭懷一事件 · The Guo Huaiyi Rebellion — https://sinliongtoo.github.io/taiwan-400/guo.html
 - 清代分類械鬥 · Feuds Between Settler Groups — https://sinliongtoo.github.io/taiwan-400/feuds.html
@@ -100,6 +101,7 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 | `koxinga.html` | 鄭成功攻台 feature page (standalone; uses `portraits.js`) |
 | `airraids.html` | 美軍大空襲 feature page (standalone) |
 | `tapani.html` | 余清芳與西來庵事件 feature page (standalone, portraits embedded) |
+| `intro.html` | Introducing Taiwan's History: an English guide for speakers (standalone) |
 | `228.html` | 二二八與白色恐怖 feature page, two chapters (standalone) |
 | `portraits.js` | Ruler portraits from Wikimedia Commons, embedded as data |
 | `build_pages.py` | Wraps `taiwan-400.html` into `index.html` |
@@ -108,6 +110,19 @@ Both pages share a language switch with three modes: 中文, EN and 中英. Add 
 After editing `taiwan-400.html`, run `python build_pages.py` and commit both files. `228.html` is a complete page and needs no build step.
 
 ## Changelog
+
+### 2026-10-27: English guide page
+
+- Added `intro.html`, **Introducing Taiwan's History**, an English-language guide to explaining Taiwan's history. It has:
+  - an era ribbon drawn to scale;
+  - a 30-second script with a copy button;
+  - one sentence for each of the six eras, with links to the matching feature pages;
+  - a table of key terms with Chinese;
+  - romanisation examples;
+  - tips for careful phrasing;
+  - short answers to common questions;
+  - a five-minute talk outline.
+- The main page has a gold "EN GUIDE" card above the feature cards that links to the guide.
 
 ### 2026-10-20: Fact check of the main timeline
 

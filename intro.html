@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="A practical guide to explaining 400 years of Taiwan's history in English: a 30-second version, six eras, key terms, careful phrasing and answers to common questions.">
+<title>Introducing Taiwan's History</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column in the 台灣四百年 sea-ink look. A to-scale era ribbon (1600–2026) opens the page; each era below repeats the ribbon colour as its marker. Single deliberate dark theme, shared with the other pages. */
+:root {
+  color-scheme: dark;
+  --bg: #08151d;
+  --panel: #0e212c;
+  --line: #21404f;
+  --ink: #ece6d6;
+  --muted: #8fa6b0;
+  --gold: #ecd04f;
+  --focus: #7fd3d0;
+  --c-ind: #5aa36f; --c-voc: #f29a3a; --c-zheng: #b28be6; --c-qing: #ecd04f; --c-jpn: #f0625a; --c-roc: #5b95f5;
+  --f-display: "Noto Serif TC", "Songti TC", Georgia, serif;
+  --f-body: "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+html, body { background: var(--bg); color: var(--ink); margin: 0; }
+body { font-family: var(--f-body); font-size: 16px; line-height: 1.7; }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 24px 64px; display: grid; gap: 44px; }
+.wrap > * { min-width: 0; }
+a { color: var(--gold); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.back { font-size: 14px; color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--ink); }
+header { display: grid; gap: 14px; }
+.eyebrow { font-family: var(--f-mono); font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0; }
+h1 { font-family: var(--f-display); font-weight: 900; font-size: clamp(30px, 6vw, 46px); line-height: 1.2; margin: 0; text-wrap: balance; letter-spacing: .01em; }
+h1 span { display: block; font-size: .5em; font-weight: 500; color: var(--muted); margin-top: 6px; letter-spacing: .08em; }
+.lede { margin: 0; color: var(--muted); font-size: 17px; max-width: 62ch; }
+h2 { font-family: var(--f-display); font-weight: 700; font-size: 24px; line-height: 1.3; margin: 0 0 4px; text-wrap: balance; }
+h2 small { display: block; font-family: var(--f-body); font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: .06em; }
+h3 { font-family: var(--f-display); font-weight: 700; font-size: 19px; margin: 0; line-height: 1.35; }
+section { display: grid; gap: 14px; }
+p { margin: 0; }
+.zh { font-family: var(--f-body); color: var(--muted); font-size: .9em; }
+
+/* era ribbon, drawn to scale: flex-grow = years */
+.ribbon { display: grid; gap: 6px; }
+.bar { display: flex; height: 26px; border-radius: 3px; overflow: hidden; }
+.bar a { display: block; min-width: 3px; }
+.bar a:hover { filter: brightness(1.2); }
+.ticks { position: relative; height: 18px; font-family: var(--f-mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.ticks span { position: absolute; top: 0; transform: translateX(-50%); }
+.ticks span:first-child { transform: none; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 13.5px; color: var(--muted); }
+.legend i, .era i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: none; }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+
+/* the 30-second script */
+.say { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 20px 22px; display: grid; gap: 14px; }
+.say blockquote { margin: 0; font-family: var(--f-display); font-size: 18.5px; line-height: 1.75; font-weight: 500; }
+.say .row { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+button { font: inherit; font-size: 14px; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 4px; padding: 5px 12px; cursor: pointer; }
+button:hover { border-color: var(--muted); }
+.status { font-size: 13px; color: var(--muted); }
+
+/* eras */
+.eras { display: grid; gap: 30px; }
+.era { display: grid; grid-template-columns: 10px minmax(0, 1fr); gap: 0 16px; }
+.era > i { width: 10px; height: auto; border-radius: 3px; }
+.era > div { display: grid; gap: 8px; min-width: 0; }
+.era .when { font-family: var(--f-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; letter-spacing: .04em; }
+.era .line { border-left: 2px solid var(--line); padding-left: 12px; font-style: italic; color: var(--ink); }
+.era .line b { font-style: normal; font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .1em; color: var(--muted); display: block; }
+.era ul { margin: 0; padding-left: 1.1em; color: var(--muted); font-size: 15px; }
+.era .more { font-size: 14px; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+
+/* glossary */
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; min-width: 520px; }
+th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: 0; }
+th { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; background: var(--panel); }
+td:first-child { font-weight: 700; white-space: nowrap; }
+td:nth-child(2) { white-space: nowrap; color: var(--muted); }
+
+/* tips and Q&A */
+.tips { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+.tips li { display: grid; gap: 2px; }
+.tips b { color: var(--ink); }
+.tips span { color: var(--muted); }
+.qa { display: grid; gap: 22px; }
+.qa div { display: grid; gap: 6px; }
+.qa h3 { font-size: 17.5px; }
+.qa p { color: var(--muted); }
+.outline { margin: 0; padding-left: 1.4em; display: grid; gap: 10px; }
+.outline li::marker { font-family: var(--f-mono); color: var(--gold); }
+.outline b { display: block; }
+.outline span { color: var(--muted); font-size: 15px; }
+.links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px 24px; margin: 0; padding: 0; list-style: none; font-size: 15px; }
+.links li { display: flex; gap: 10px; align-items: baseline; }
+.links .y { font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; min-width: 4.5ch; }
+footer { border-top: 1px solid var(--line); padding-top: 16px; font-size: 13.5px; color: var(--muted); display: grid; gap: 8px; }
+@media (max-width: 480px) { .say blockquote { font-size: 17px; } h2 { font-size: 22px; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <a class="back" href="./">← 台灣四百年 · Back to the animated timeline</a>
+    <p class="eyebrow">A guide for speakers · 1600–2026</p>
+    <h1>Introducing Taiwan's History<span>如何用英文介紹台灣歷史</span></h1>
+    <p class="lede">What to say when someone asks "So what's Taiwan's history?" A version you can say in 30 seconds, the six eras with a sentence for each, the words people often get wrong, and short answers to the questions that usually follow.</p>
+  </header>
+
+  <section class="ribbon" aria-labelledby="h-ribbon">
+    <h2 id="h-ribbon">Four centuries at a glance<small>Each colour's width is to scale</small></h2>
+    <div class="bar" role="img" aria-label="Era ribbon from 1600 to 2026: Indigenous until 1624, Dutch and Spanish to 1662, Zheng to 1683, Qing to 1895, Japanese to 1945, Republic of China since.">
+      <a href="#era-ind" style="flex-grow:24.6;background:var(--c-ind)" title="Indigenous island, before 1624"></a>
+      <a href="#era-voc" style="flex-grow:37.5;background:var(--c-voc)" title="Dutch and Spanish, 1624–1662"></a>
+      <a href="#era-zheng" style="flex-grow:21.5;background:var(--c-zheng)" title="Zheng kingdom, 1662–1683"></a>
+      <a href="#era-qing" style="flex-grow:211.8;background:var(--c-qing)" title="Qing rule, 1683–1895"></a>
+      <a href="#era-jpn" style="flex-grow:50.4;background:var(--c-jpn)" title="Japanese rule, 1895–1945"></a>
+      <a href="#era-roc" style="flex-grow:80.2;background:var(--c-roc)" title="Republic of China, 1945–today"></a>
+    </div>
+    <div class="ticks" aria-hidden="true"><span style="left:0">1600</span><span style="left:23.47%">1700</span><span style="left:46.95%">1800</span><span style="left:70.42%">1900</span><span style="left:93.9%">2000</span></div>
+    <div class="legend">
+      <span><i style="background:var(--c-ind)"></i>Indigenous</span>
+      <span><i style="background:var(--c-voc)"></i>Dutch &amp; Spanish</span>
+      <span><i style="background:var(--c-zheng)"></i>Zheng</span>
+      <span><i style="background:var(--c-qing)"></i>Qing</span>
+      <span><i style="background:var(--c-jpn)"></i>Japan</span>
+      <span><i style="background:var(--c-roc)"></i>Republic of China</span>
+    </div>
+    <p class="zh">The Qing era is by far the longest, at 212 years. Japanese rule lasted 50 years and the Republic of China has governed for 80.</p>
+  </section>
+
+  <section aria-labelledby="h-30">
+    <h2 id="h-30">The 30-second version<small>Read it aloud; it takes about half a minute</small></h2>
+    <div class="say">
+      <blockquote id="script30">Taiwan was home to Austronesian Indigenous peoples for thousands of years before any state arrived. In the 1600s the Dutch and Spanish set up trading posts, until Koxinga, a Ming loyalist, drove the Dutch out in 1662. The Qing Empire ruled the island for two centuries, then lost it to Japan in 1895. After 1945 the Republic of China took over. The 228 Incident of 1947 and 38 years of martial law followed, and in the 1980s and 90s Taiwan became a democracy. Its people's sense of who they are has kept changing ever since.</blockquote>
+      <div class="row"><button id="copy30" type="button">Copy the text</button><span class="status" id="copyMsg" role="status"></span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-eras">
+    <h2 id="h-eras">Six eras, a sentence for each<small>Start with the sentence; add the details if there is time</small></h2>
+    <div class="eras">
+      <article class="era" id="era-ind"><i style="background:var(--c-ind)"></i><div>
+        <span class="when">BEFORE 1624</span>
+        <h3>An Indigenous island <span class="zh">原住民族的島嶼</span></h3>
+        <p class="line"><b>SAY</b>Before 1624, Taiwan belonged to its Indigenous peoples. Many linguists think the Austronesian languages, spoken from Madagascar to Hawaiʻi, first spread from here.</p>
+        <ul>
+          <li>Villages governed themselves; in the centre a multi-village alliance, the Middag kingdom, ruled several communities.</li>
+          <li>Chinese fishermen, traders and pirates worked the coast, but the Ming dynasty only patrolled Penghu, the islands in the strait.</li>
+        </ul>
+      </div></article>
+      <article class="era" id="era-voc"><i style="background:var(--c-voc)"></i><div>
+        <span class="when">1624 – 1662</span>
+        <h3>Dutch and Spanish Formosa <span class="zh">荷西時期</span></h3>
+        <p class="line"><b>SAY</b>The Dutch East India Company ran the southwest as a trading colony from Fort Zeelandia, near today's Tainan, while Spain held the north until 1642.</p>
+        <ul>
+          <li>The company traded deerskins and sugar, and brought Chinese settlers over to farm.</li>
+          <li>It ruled Indigenous villages through elders at yearly assemblies (the Landdag), and put down the Guo Huaiyi uprising of Chinese farmers in 1652.</li>
+        </ul>
+        <p class="more"><a href="dutch.html">Dutch &amp; Spanish Formosa</a><a href="guo.html">Guo Huaiyi, 1652</a></p>
+      </div></article>
+      <article class="era" id="era-zheng"><i style="background:var(--c-zheng)"></i><div>
+        <span class="when">1662 – 1683</span>
+        <h3>The Zheng kingdom <span class="zh">明鄭・東寧</span></h3>
+        <p class="line"><b>SAY</b>Koxinga (Zheng Chenggong) besieged Fort Zeelandia for nine months and expelled the Dutch, setting up the first Han Chinese state on Taiwan.</p>
+        <ul>
+          <li>His son Zheng Jing ran it as the Kingdom of Tungning, still using the fallen Ming calendar.</li>
+          <li>The Qing admiral Shi Lang took Penghu in 1683 and the kingdom surrendered.</li>
+        </ul>
+        <p class="more"><a href="koxinga.html">Koxinga takes Taiwan</a></p>
+      </div></article>
+      <article class="era" id="era-qing"><i style="background:var(--c-qing)"></i><div>
+        <span class="when">1683 – 1895</span>
+        <h3>Qing rule <span class="zh">清領時期</span></h3>
+        <p class="line"><b>SAY</b>For about two centuries the Qing treated Taiwan as a frontier. Settlers from Fujian and Guangdong farmed the western plains while the mountains stayed Indigenous.</p>
+        <ul>
+          <li>Life was turbulent. The Lin Shuangwen (1787) and Dai Chaochun (1862) rebellions broke out, and settler groups fought feuds by home region.</li>
+          <li>After the 1874 Mudan Incident the Qing invested more. Taiwan became a province in 1885 and got its first railway in 1891.</li>
+        </ul>
+        <p class="more"><a href="linshuangwen.html">Lin Shuangwen</a><a href="daichaochun.html">Dai Chaochun</a><a href="feuds.html">Settler feuds</a></p>
+      </div></article>
+      <article class="era" id="era-jpn"><i style="background:var(--c-jpn)"></i><div>
+        <span class="when">1895 – 1945</span>
+        <h3>Japanese rule <span class="zh">日治時期</span></h3>
+        <p class="line"><b>SAY</b>China ceded Taiwan to Japan in 1895, and Japan became the first state to govern the whole island, mountains included.</p>
+        <ul>
+          <li>It built railways, schools, police and land registers, and fought resistance from the 1895 war to the Tapani (1915) and Musha (1930) uprisings.</li>
+          <li>During the war with China it pushed assimilation (the Kōminka movement), and Allied bombing hit the island in 1944–45.</li>
+        </ul>
+        <p class="more"><a href="yiwei.html">The 1895 war</a><a href="indigenous.html">Indigenous resistance</a><a href="tapani.html">Tapani</a><a href="wushe.html">Musha</a><a href="airraids.html">Air raids</a></p>
+      </div></article>
+      <article class="era" id="era-roc"><i style="background:var(--c-roc)"></i><div>
+        <span class="when">1945 – TODAY</span>
+        <h3>The Republic of China on Taiwan <span class="zh">戰後・中華民國</span></h3>
+        <p class="line"><b>SAY</b>The Republic of China took over in 1945 and moved its government to Taipei in 1949. After decades of authoritarian rule, Taiwan democratised from the late 1980s.</p>
+        <ul>
+          <li>The 228 Incident (1947) was followed by martial law from 1949 to 1987, a period known as the White Terror.</li>
+          <li>Since then Taiwan has had direct presidential elections from 1996, the first change of ruling party in 2000, an apology to Indigenous peoples in 2016, and Asia's first same-sex marriage law in 2019.</li>
+        </ul>
+        <p class="more"><a href="228.html">228 and the White Terror</a></p>
+      </div></article>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-words">
+    <h2 id="h-words">Words to get right<small>Terms that come up in almost every conversation</small></h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>English</th><th>中文</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td>Indigenous peoples</td><td>原住民族</td><td>The official English term. Taiwan recognises 16 peoples, such as the Amis, Atayal, Paiwan, Bunun and Truku, about 2.5% of the population. Avoid "aborigines".</td></tr>
+        <tr><td>Austronesian</td><td>南島語族</td><td>The language family of Taiwan's Indigenous peoples, which also includes Malay, Tagalog, Māori and Hawaiian.</td></tr>
+        <tr><td>Hoklo</td><td>福佬・閩南</td><td>Descendants of settlers from southern Fujian, the largest group; they speak Taiwanese (Taigi).</td></tr>
+        <tr><td>Hakka</td><td>客家</td><td>Descendants of settlers mostly from Guangdong, with their own language.</td></tr>
+        <tr><td>Waishengren</td><td>外省人</td><td>People who came from China with the ROC after 1945, and their families.</td></tr>
+        <tr><td>VOC</td><td>荷蘭東印度公司</td><td>The Dutch East India Company, which ran Dutch Formosa.</td></tr>
+        <tr><td>Koxinga</td><td>國姓爺・鄭成功</td><td>"Lord of the Imperial Surname", the Western name for Zheng Chenggong.</td></tr>
+        <tr><td>Cession</td><td>割讓</td><td>The 1895 Treaty of Shimonoseki, by which the Qing gave Taiwan and Penghu to Japan.</td></tr>
+        <tr><td>228 Incident</td><td>二二八事件</td><td>The 1947 uprising and military crackdown, named after its date, February 28.</td></tr>
+        <tr><td>White Terror</td><td>白色恐怖</td><td>Political persecution under martial law: arrests, military trials and executions.</td></tr>
+        <tr><td>Tangwai</td><td>黨外</td><td>"Outside the party": the opposition movement before new parties were legal.</td></tr>
+        <tr><td>Transitional justice</td><td>轉型正義</td><td>Dealing with past state abuses, for example by voiding political convictions and opening archives.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section aria-labelledby="h-names">
+    <h2 id="h-names">Names and spellings<small>Why the same name can be written three ways</small></h2>
+    <p>Taiwan spent decades using older romanisations, mainly Wade–Giles, before it adopted Hanyu Pinyin in 2009. People and many places keep their established spellings. Use the form a person used for themselves, and expect your listener to know the older one.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Usual in English</th><th>中文</th><th>Pinyin, for comparison</th></tr></thead>
+      <tbody>
+        <tr><td>Chiang Kai-shek</td><td>蔣中正（介石）</td><td>Jiang Jieshi</td></tr>
+        <tr><td>Lee Teng-hui</td><td>李登輝</td><td>Li Denghui</td></tr>
+        <tr><td>Kaohsiung</td><td>高雄</td><td>Gaoxiong</td></tr>
+        <tr><td>Keelung</td><td>基隆</td><td>Jilong</td></tr>
+        <tr><td>Tamsui</td><td>淡水</td><td>Danshui</td></tr>
+        <tr><td>Koxinga</td><td>鄭成功</td><td>Zheng Chenggong</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section aria-labelledby="h-care">
+    <h2 id="h-care">Saying it carefully<small>Habits that keep you accurate and avoid arguments</small></h2>
+    <ul class="tips">
+      <li><b>Say who governed, and when.</b><span>"The Qing ruled Taiwan from 1683 to 1895" is a fact your listener can check. Words like "always" and "never" turn history into an argument.</span></li>
+      <li><b>Remember the Qing ruled only part of the island.</b><span>For most of its 212 years Qing government stopped at the foothills. Japan was the first state to control the mountains.</span></li>
+      <li><b>Keep "Taiwan" and "the Republic of China" distinct when it matters.</b><span>Taiwan is the island and its people; the Republic of China is the state that has governed it since 1945. Before 1945 the ROC had never ruled Taiwan.</span></li>
+      <li><b>Give disputed numbers as ranges, with a source.</b><span>For 228, official records confirm at least 8,324–11,841 dead and missing (Chen Yi-shen and Hsueh Hua-yuan, eds., 2021). Older estimates run higher.</span></li>
+      <li><b>Name Indigenous peoples individually.</b><span>"The Seediq rose at Musha in 1930" tells more than "the aborigines rebelled".</span></li>
+      <li><b>Leave room for different memories.</b><span>Families experienced Japanese rule, 1945 and martial law in very different ways. "Many people remember…" is often truer than "Taiwanese felt…".</span></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="h-qa">
+    <h2 id="h-qa">Questions people ask<small>Short, factual answers</small></h2>
+    <div class="qa">
+      <div><h3>Has Taiwan always been part of China?</h3>
+        <p>It has had several rulers. Before 1624 no state governed it. The Dutch and Spanish came next, then the Zheng kingdom (1662–1683), the Qing (1683–1895), Japan (1895–1945) and, since 1945, the Republic of China. The People's Republic of China claims Taiwan but has never governed it, and Taiwan's international status remains disputed.</p></div>
+      <div><h3>Who are the Taiwanese?</h3>
+        <p>About 23 million people. Most descend from Hoklo or Hakka settlers of the Qing era. Others are families who arrived with the ROC after 1945. There are 16 recognised Indigenous peoples, and a growing number of new immigrants, many from Southeast Asia. Most people today say they identify as Taiwanese.</p></div>
+      <div><h3>What happened in 1947?</h3>
+        <p>On February 27 a cigarette raid in Taipei turned violent, and the next day protests spread across the island against Chen Yi's administration. In March troops from China crushed them. Thousands were killed, including many local leaders, and for decades the event could not be discussed in public. February 28 is now a national day of remembrance.</p></div>
+      <div><h3>When did Taiwan become a democracy?</h3>
+        <p>Gradually. Martial law ended in 1987, and the national legislature was fully re-elected in 1991–1992. Presidents have been directly elected since 1996, and power first passed peacefully to the opposition in 2000.</p></div>
+      <div><h3>Why do people speak Mandarin, Taiwanese and Hakka?</h3>
+        <p>Each layer of history left a language. Indigenous languages are the oldest. Hoklo and Hakka settlers brought their own, and Japanese was the school language until 1945. Mandarin became the national language under the ROC, and since the 1990s the other languages have been revived in schools and media.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-talk">
+    <h2 id="h-talk">A five-minute talk, step by step<small>An order that works for a class, a meeting or a visitor</small></h2>
+    <ol class="outline">
+      <li><b>Start with the map (30 s).</b><span>An island of about 36,000 km² that the Tropic of Cancer runs through, with mountains taller than any in Japan. Geography explains why the mountains stayed Indigenous for so long.</span></li>
+      <li><b>The first people (30 s).</b><span>Austronesian peoples, thousands of years of settlement, and a language family that reached across the Pacific.</span></li>
+      <li><b>Outsiders arrive by sea (45 s).</b><span>The Dutch, the Spanish, then Koxinga. Taiwan entered world trade as a stop between Japan, China and Southeast Asia.</span></li>
+      <li><b>The Qing frontier (45 s).</b><span>Settlers, rebellions and feuds; a province only in 1885.</span></li>
+      <li><b>The Japanese colony (45 s).</b><span>Modern infrastructure built alongside armed suppression; a generation educated in Japanese.</span></li>
+      <li><b>1945 to 1987 (60 s).</b><span>The ROC takeover, 228, the arrival of the central government in 1949, and martial law.</span></li>
+      <li><b>Democracy and identity (45 s).</b><span>Elections, apologies and the revival of local languages. Finish with a question, such as how people in Taiwan might tell this story differently.</span></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="h-more">
+    <h2 id="h-more">See it on the map<small>Animated pages from this site, in time order</small></h2>
+    <ul class="links">
+      <li><span class="y">1600–</span><a href="./">台灣四百年 · The full timeline</a></li>
+      <li><span class="y">1622</span><a href="dutch.html">Dutch &amp; Spanish Formosa</a></li>
+      <li><span class="y">1652</span><a href="guo.html">The Guo Huaiyi rebellion</a></li>
+      <li><span class="y">1661</span><a href="koxinga.html">Koxinga takes Taiwan</a></li>
+      <li><span class="y">1721</span><a href="feuds.html">Feuds between settler groups</a></li>
+      <li><span class="y">1786</span><a href="linshuangwen.html">The Lin Shuangwen rebellion</a></li>
+      <li><span class="y">1862</span><a href="daichaochun.html">The Dai Chaochun rebellion</a></li>
+      <li><span class="y">1895</span><a href="yiwei.html">The 1895 war</a></li>
+      <li><span class="y">1896</span><a href="indigenous.html">Indigenous resistance</a></li>
+      <li><span class="y">1915</span><a href="tapani.html">The Tapani Incident</a></li>
+      <li><span class="y">1930</span><a href="wushe.html">The Musha Incident</a></li>
+      <li><span class="y">1944</span><a href="airraids.html">The Allied air raids</a></li>
+      <li><span class="y">1947</span><a href="228.html">228 and the White Terror</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Dates and figures match the fact-checked timeline and feature pages on this site; their reference lists give the sources. The population share for Indigenous peoples is the Council of Indigenous Peoples' figure, rounded.</p>
+    <p><a href="./">← Back to 台灣四百年</a></p>
+  </footer>
+</main>
+<script>
+document.getElementById('copy30').addEventListener('click', () => {
+  const text = document.getElementById('script30').textContent.trim(), msg = document.getElementById('copyMsg');
+  const fallback = () => { const r = document.createRange(); r.selectNodeContents(document.getElementById('script30')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); msg.textContent = 'Text selected. Press Ctrl+C (⌘C) to copy.'; };
+  try { navigator.clipboard.writeText(text).then(() => { msg.textContent = 'Copied.'; }, fallback); } catch (e) { fallback(); }
+});
+</script>
+</body>
+</html>

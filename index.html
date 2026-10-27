@@ -73,6 +73,9 @@ button.primary .en { color: #4a3f10; }
 .feature .f-body > span { color: var(--muted); font-size: 14px; display: block; }
 .feature .f-go { font-size: 22px; color: #e06a70; }
 .feature .en { display: block; margin-left: 0; }
+.feature.guide { border-color: #5c5320; background: #15170f; }
+.feature.guide:hover { border-color: var(--gold); }
+.feature.guide .f-date, .feature.guide .f-go { color: var(--gold); }
 @media (max-width: 560px) { .feature { grid-template-columns: minmax(0, 1fr) auto; } .feature .f-date { grid-column: 1 / -1; } }
 /* bilingual: English rides beside or under the Chinese */
 .en { color: var(--muted); font-size: .86em; margin-left: .45em; font-weight: 400; letter-spacing: 0; }
@@ -129,6 +132,15 @@ h2 .en { font-family: var(--f-body); font-size: .78em; }
     <span id="recMsg"></span>
     <a id="dl" hidden></a>
   </div>
+
+  <a class="feature guide" href="intro.html">
+    <span class="f-date">EN GUIDE</span>
+    <span class="f-body">
+      <strong data-k="guideT"></strong>
+      <span data-k="guideD"></span>
+    </span>
+    <span class="f-go" aria-hidden="true">→</span>
+  </a>
 
   <a class="feature" href="dutch.html">
     <span class="f-date">1622 – 1662</span>
@@ -323,6 +335,8 @@ const UI = {
   refP: ['本頁是綜合整理的教育用視覺化。統治範圍與人口是依下列研究整理的示意與估計，不是精確數據。','This page is an educational visualization compiled from the works below. Control areas and population figures are schematic estimates, not exact data.'],
   feat2T: ['專題：余清芳與西來庵事件','Feature: Yu Qingfang and the Tapani Incident'],
   feat3T: ['專題：美軍大空襲','Feature: The Allied air raids'],
+  guideT: ['英文導覽：如何介紹台灣歷史','Introducing Taiwan’s History in English'],
+  guideD: ['30 秒講稿、六個時代各一句、關鍵詞彙、謹慎用語與常見問答，全英文。','A 30-second script, one sentence per era, key terms, careful phrasing and answers to common questions.'],
   feat7T: ['專題：荷西時期','Feature: Dutch and Spanish Formosa'],
   feat7D: ['荷蘭東印度公司從大員擴張到西南平原，西班牙佔據北部。逐年看控制範圍、地方會議、鹿皮與蔗糖貿易。','The Dutch East India Company spread from Tayouan across the southwestern plains while Spain held the north. Follow their reach, the Landdag, and the deerskin and sugar trade, year by year.'],
   feat12T: ['專題：清代分類械鬥','Feature: Feuds between settler groups'],
